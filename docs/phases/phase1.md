@@ -25,8 +25,8 @@
 * groups/\_main.html.erb
 * groups/\_show-top.html.erb
 * groups/\_show-bottom.html.erb
-* (:group_name)/events/new.html.erb
-* (:group_name)/events/show.html.erb
+* events/new.html.erb
+* events/show.html.erb
 
 ## Backbone
 ### Models
