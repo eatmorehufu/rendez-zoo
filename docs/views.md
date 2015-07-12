@@ -59,4 +59,4 @@
 [upcoming-events-composite]: ./wireframes/upcoming_events_composite_view.png
 [header]: ./wireframes/header.png
 [related-group-subview]: ./wireframes/related_group_subview.png
-[calendar]: ./wireframes/calendar.png
+[calendar]: ./wireframes/Calendar.png
