@@ -53,8 +53,8 @@
 [event-new]: ./wireframes/event_new.png
 [user-new]: ./wireframes/user_new.png
 [member-show]: ./wireframes/member_show.png
-[members-index]: ./wireframes/member_index.png
-[member-thumb]: ./wireframes/members_subview-Group.png
+[members-index]: ./wireframes/members_index.png
+[member-thumb]: ./wireframes/member_subview-Group.png
 [photos-index]: ./wireframes/photo_index.png
 [upcoming-events-composite]: ./wireframes/upcoming_events_composite_view.png
 [header]: ./wireframes/header.png
