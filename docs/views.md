@@ -31,4 +31,4 @@
 [group-new]: ./wireframes/group_new.png
 [event-new]: ./wireframes/event_new.png
 [user-new]: ./wireframes/user_new.png
-[user_show]: ./wireframes/member_show.png
+[user-show]: ./wireframes/member_show.png
