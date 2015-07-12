@@ -22,3 +22,4 @@ groups/index.html.erb
 ### Views
 
 ## Gems/Libraries
+Add Geolocation searching and maps via google Api for events and users
