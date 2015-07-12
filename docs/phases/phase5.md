@@ -1,13 +1,18 @@
-# Phase 5: Searching for Blogs and Posts
+# Phase 5: Searching for Groups and Events
 
 ## Rails
 ### Models
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+UsersController (show, edit, update)
+GroupsController (search, edit, update)
+PostsController (search, edit, update)
 
 ### Views
+users/show.html.erb
+events/index.html.erb
+groups/index.html.erb
+
 
 ## Backbone
 ### Models
@@ -15,8 +20,5 @@ Api::PostsController (search)
 ### Collections
 
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
 
 ## Gems/Libraries
-

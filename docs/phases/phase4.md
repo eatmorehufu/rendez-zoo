@@ -1,13 +1,16 @@
-# Phase 4: User Feeds
+# Phase 4: Categories
 
 ## Rails
 ### Models
+* Category
+* UserInterest
+* GroupCategory
 
 ### Controllers
-Api::PostsController (feed)
+Api::UsersController (interests)
+Api::GroupsController (categories)
 
 ### Views
-posts/feed.json.jbuilder
 
 ## Backbone
 ### Models

@@ -28,7 +28,7 @@ group_id    | integer   | not null, foreign key (references groups)
 location    | string    |
 
 
-## event_attendance
+## event_attendances
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

@@ -2,6 +2,8 @@
 
 ## Rails
 ### Models
+* GroupMembership
+* EventAttendance
 
 ### Controllers
 Api::GroupsController (index, show)
@@ -9,6 +11,11 @@ Api::EventsController (index, show)
 Api::UsersController (show)
 
 ### Views
+api/groups/index.json.jbuilder
+api/groups/show.json.jbuilder
+api/events/index.json.jbuilder
+api/events/show.json.jbuilder
+api/users/show.json.jbuilder
 
 ## Backbone
 ### Models
@@ -22,10 +29,10 @@ Api::UsersController (show)
 * Members
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
+* Members (hover view)
+* UpcomingEvents (composite view, contains `Members` subview and `EventShow` subview)
+* PastEvents (composite view, contains `Members` subview and `EventShow` subview)
+* EventShow
+
 
 ## Gems/Libraries

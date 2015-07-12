@@ -2,10 +2,13 @@
 
 ## Rails
 ### Models
+* Photo
 
 ### Controllers
+* PhotosController (create, index)
 
 ### Views
+* (:group_name)/photos/index.html.erb
 
 ## Backbone
 ### Models
@@ -13,7 +16,8 @@
 ### Collections
 
 ### Views
-* PostForm
+* GroupForm
+* EventForm
 
 ## Gems/Libraries
 * Filepicker

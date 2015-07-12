@@ -41,36 +41,37 @@ to phase 2.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Groups and Events (~2 days)
+### Phase 2: Connecting Groups, Events, and Members (~2 days)
 I will add API routes to serve user, group and event data as JSON, then add
 Backbone models and collections that fetch data from those routes. By the end of
-this phase, users will be able to create and view groups and events, all
+this phase, users will be able to create, view and join groups and events, all
 inside a joint rails / Backbone app.
 
 [Details][phase-two]
 
 ### Phase 3: Editing and Displaying Group/Events (~2 days)
-I plan to use third-party libraries to add functionality to the `GroupForm`, 'EventForm' and
-`EventShow` views in this phase. First I'll need to add a Markdown editor to both forms, and make sure that the Markdown is properly escaped and formatted in
-the show views. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
+I plan to use third-party libraries to add functionality to the `GroupForm`,
+`EventForm` and `EventShow` views in this phase. First I'll need to add a
+Markdown editor to both forms, and make sure that the Markdown is properly
+escaped and formatted in the show views. I also plan to integrate Filepicker
+for file upload so users can add images to blog posts. I'll also add photos and
+a `groups` route that uses the `current_user`'s `group_memberships` association
+to serve a list of groups ordered chronologically.
 
 [Details][phase-three]
 
-### Phase 4: User RSVPs (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 4: Categories (~1-2 days)
+I'll start by creating the `Category` model and the join-model of `UserInterest`
+and `GroupCategory`. I'll add controller actions on Users and Groups to
+facilitate their creation on the rails side.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Groups and Events (~2 days)
+### Phase 5: Searching for Groups and Events, Editing and Member pages (~2 days)
 I'll need to add `search` routes to both the Groups and Events controllers.
-On the Backbone side, there will be a `SearchResults` composite view has
-`BlogsIndex` and `PostsIndex` subviews. These views will use plain old `blogs` and
-`posts` collections, but they will fetch from the new `search` routes.
+These will be done via query string on the rails side. I'll also implement edit
+and update functionality for groups, events, and members, and fully implement
+the member show page.
 
 [Details][phase-five]
 

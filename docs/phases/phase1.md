@@ -6,7 +6,6 @@
 * Group
 * Event
 * Session
-* GroupMembership
 
 ### Controllers
 * UsersController (create, new)
@@ -17,15 +16,15 @@
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* shared/`_`header.html.erb
+* shared/\_header.html.erb
 * groups/new.html.erb
 * groups/show.html.erb
-* groups/`_`banner.html.erb
-* groups/`_`sidebar-top.html.erb
-* groups/`_`sidebar-bottom.html.erb
-* groups/`_`main.html.erb
-* groups/`_`show-top.html.erb
-* groups/`_`show-bottom.html.erb
+* groups/\_banner.html.erb
+* groups/\_sidebar-top.html.erb
+* groups/\_sidebar-bottom.html.erb
+* groups/\_main.html.erb
+* groups/\_show-top.html.erb
+* groups/\_show-bottom.html.erb
 * (:group_name)/events/new.html.erb
 * (:group_name)/events/show.html.erb
 
