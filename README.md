@@ -1,4 +1,4 @@
-# Flux-capacitr
+# Rendez-Zoo
 
 [Heroku link][heroku]
 
@@ -42,9 +42,9 @@ to phase 2.
 [Details][phase-one]
 
 ### Phase 2: Viewing Groups and Events (~2 days)
-I will add API routes to serve user, group and event data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create and view groups and events, all
+I will add API routes to serve user, group and event data as JSON, then add
+Backbone models and collections that fetch data from those routes. By the end of
+this phase, users will be able to create and view groups and events, all
 inside a joint rails / Backbone app.
 
 [Details][phase-two]
@@ -66,11 +66,11 @@ see after logging in.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5: Searching for Groups and Events (~2 days)
+I'll need to add `search` routes to both the Groups and Events controllers.
+On the Backbone side, there will be a `SearchResults` composite view has
+`BlogsIndex` and `PostsIndex` subviews. These views will use plain old `blogs` and
+`posts` collections, but they will fetch from the new `search` routes.
 
 [Details][phase-five]
 

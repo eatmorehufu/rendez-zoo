@@ -21,10 +21,11 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 start_time  | datetime  | not null
+end_time    | datetime  |
 title       | string    | not null
 description | string    | not null
 group_id    | integer   | not null, foreign key (references groups)
-location    | string    | not null
+location    | string    |
 
 
 ## event_attendance
@@ -48,7 +49,7 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 user_id         | integer   | not null, foreign key (references users)
-descrption      | text      |
+description     | text      |
 
 
 ## categories

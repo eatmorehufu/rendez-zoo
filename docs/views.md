@@ -21,8 +21,29 @@
 ## Event Form
 ![event-new]
 
-## User Show
-![user-show]
+## Member Show
+![member-show]
+
+## Member Index
+![members-index]
+
+## Member Thumb
+![member-thumb]
+
+## Photo Index
+![photos-index]
+
+## Upcoming Events composite
+![upcoming-events-composite]
+
+## Universal Header
+![header]
+
+## Related Group Thumbnail
+![related-group-subview]
+
+## Calendar Item Thumb
+![calendar]
 
 [session-new]: ./wireframes/session_new.png
 [groups-index]: ./wireframes/groups_index.png
@@ -31,4 +52,11 @@
 [group-new]: ./wireframes/group_new.png
 [event-new]: ./wireframes/event_new.png
 [user-new]: ./wireframes/user_new.png
-[user-show]: ./wireframes/member_show.png
+[member-show]: ./wireframes/member_show.png
+[members-index]: ./wireframes/member_index.png
+[member-thumb]: ./wireframes/members_subview-Group.png
+[photos-index]: ./wireframes/photo_index.png
+[upcoming-events-composite]: ./wireframes/upcoming_events_composite_view.png
+[header]: ./wireframes/header.png
+[related-group-subview]: ./wireframes/related_group_subview.png
+[calendar]: ./wireframes/calendar.png
