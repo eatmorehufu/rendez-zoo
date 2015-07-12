@@ -14,7 +14,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 member_id   | integer   | not null, foreign key (references users)
 group_id    | integer   | not null, foreign key (references groups)
-status      | string    | ["member", "organizer"]
+status      | string    | ["member", "organizer", "owner"]
 
 ## events
 column name | data type | details
@@ -48,7 +48,28 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 user_id         | integer   | not null, foreign key (references users)
-descrption      | text      | 
+descrption      | text      |
+
+
+## categories
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+name            | string    | not null
+
+## group-categories
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+group_id        | integer   | not null, foreign key (references groups)
+category_id     | integer   | not null, foreign key (references category)
+
+## user-interests
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null, foreign key (references users)
+category_id     | integer   | not null, foreign key (references category)
 
 
 ## sessions

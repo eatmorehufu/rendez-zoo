@@ -1,26 +1,34 @@
 # View Wireframes
 
 ## New Session
-![new-session]
+![session-new]
 
-## Feed Show (landing page)
-![feed-show]
+## New User
+![user-new]
 
-## Blog Show
-![blog-show]
+## Groups Index (landing page)
+![groups-index]
 
-## Post Show
-![post-show]
+## Group Show
+![group-show]
 
-## Post Form
-![post-form]
+## Event Show
+![event-show]
 
-## Search Results
-![search-results]
+## Group Form
+![group-new]
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+## Event Form
+![event-new]
+
+## User Show
+![user-show]
+
+[session-new]: ./wireframes/session_new.png
+[groups-index]: ./wireframes/groups_index.png
+[group-show]: ./wireframes/group_show.png
+[event-show]: ./wireframes/event_show.png
+[group-new]: ./wireframes/group_new.png
+[event-new]: ./wireframes/event_new.png
+[user-new]: ./wireframes/user_new.png
+[user_show]: ./wireframes/member_show.png
