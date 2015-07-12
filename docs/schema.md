@@ -52,6 +52,15 @@ user_id         | integer   | not null, foreign key (references users)
 description     | text      |
 
 
+## photos
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+title           | string    |
+event_id        | integer   | foreign key (references events)
+photo_url       | string    | not null
+group_id        | integer   | not null, foreign key (references groups)
+
 ## categories
 column name     | data type | details
 ----------------|-----------|-----------------------

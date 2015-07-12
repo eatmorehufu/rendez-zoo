@@ -1,23 +1,25 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Connecting Groups, Events, and Members
 
 ## Rails
 ### Models
 
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+Api::GroupsController (index, show)
+Api::EventsController (index, show)
+Api::UsersController (show)
 
 ### Views
-* blogs/show.json.jbuilder
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+* Group (parses nested `events` and `members` associations)
+* Event (parses nested `attendees` association)
+* Member (parses nested `groups` association)
 
 ### Collections
-* Blogs
-* Posts
+* Groups
+* Events
+* Members
 
 ### Views
 * BlogForm
