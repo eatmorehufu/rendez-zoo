@@ -18,3 +18,7 @@ ul {
   clear: both;
   display: block;
 }
+
+img, a {
+  display: block;
+}

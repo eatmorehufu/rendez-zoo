@@ -34,5 +34,16 @@
 #group-main {
   display: block;
   float: right;
+  background: darkgray;
   width: 660px;
+}
+
+#group-show-top {
+  display: block;
+  background: lightgray;
+}
+
+#group-show-bottom {
+  display: block;
+  background: white;
 }
