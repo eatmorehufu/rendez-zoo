@@ -41,15 +41,17 @@ column name     | data type | details
 id              | integer   | not null, primary key
 email           | string    | not null, unique
 password_digest | string    | not null
-username        | string    | not null, unique
-avatar_url      | string    | not null
+username        | string    | not null
 
-## users_descriptions
+
+## users_details
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 user_id         | integer   | not null, foreign key (references users)
 description     | text      |
+avatar_url      | string    |
+zip_code        | string    |
 
 
 ## photos
