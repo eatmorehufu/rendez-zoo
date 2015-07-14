@@ -1,0 +1,38 @@
+.group-show-main {
+  width: 960px;
+  margin: auto;
+  padding: 20px;
+  background: lightblue;
+}
+
+#group-banner {
+  display: block;
+  background: lightyellow;
+}
+
+.group-sidebars {
+  float: left;
+  display: block;
+  width: 300px;
+}
+
+#sidebar-top {
+  display: block;
+  background: pink;
+}
+
+#sidebar-bottom {
+  display: block;
+  background: lightgreen;
+}
+
+#group-banner {
+  display: block;
+  width: 100%
+}
+
+#group-main {
+  display: block;
+  float: right;
+  width: 660px;
+}

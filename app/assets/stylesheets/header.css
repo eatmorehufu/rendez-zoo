@@ -5,6 +5,7 @@
 .nav-bar {
   width: 1000px;
   margin: auto;
+  background: pink;
 }
 
 .navigation-header li {

@@ -1,9 +1,10 @@
+<main class="group-show-main group">
 <%= render "banner", group: @group %>
+  <section class="group-sidebars group">
+    I am the sidebar container
+    <%= render "sidebar_top", group: @group %>
+    <%= render "sidebar_bottom", group: @group %>
+  </section>
 
-<section class="group-sidebars">
-  I am the sidebar container
-  <%= render "sidebar_top", group: @group %>
-  <%= render "sidebar_bottom", group: @group %>
-</section>
-
-<%= render "main", group: @group %>
+  <%= render "main", group: @group %>
+</main>
