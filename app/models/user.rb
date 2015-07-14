@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true}
 
   has_many :sessions
+  has_one :user_detail
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
