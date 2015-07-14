@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_one :user_detail
   has_many :group_memberships
   has_many :groups, through: :group_memberships, source: :group
+  has_many :event_attendances
+  has_many :events, through: :event_attendances, source: :event
 
 
   attr_reader :password

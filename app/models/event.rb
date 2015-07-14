@@ -17,4 +17,6 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
   has_one :event_address
+  has_many :event_attendances
+  has_many :attendants, through: :event_attendances, source: :attendant
 end
