@@ -7,7 +7,10 @@
     <li><a href="#">Members</a></li>
     <li><a href="#">Photos</a></li>
   </ul>
-  <% if group.organizers.include?(current_user)%>
-  <%= render "events/create_button", group: group %>
-  <% end %>
+  <ul class="group-banner-buttons">
+    <% if group.organizers.include?(current_user)%>
+      <li><%= render "events/create_button", group: group %></li>
+    <% end %>
+    <li><button class="join-leave-button">Join or Leave</button></li>
+  </ul>
 </header>
