@@ -1,4 +1,4 @@
-<main class="group-show-main group">
+<main class="group-show-main group" id="content">
 <%= render "banner", group: @group %>
   <section class="group-sidebars group">
     <%= render "sidebar_top", group: @group %>
@@ -7,3 +7,7 @@
 
   <%= render "main", group: @group %>
 </main>
+
+$(function(){
+  RendezZoo.initialize({$rootEl : $("#content")})
+})
