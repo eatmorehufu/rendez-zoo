@@ -4,16 +4,18 @@
 <% nav_text_b = logged_in? ? "Notifications" : "Log In" %>
 
 
-<header class="navigation-header">
-  <ul class="left-header-nav">
-    <li><a href="#">Find a group!</a></li>
-    <li><a href="<%= new_group_url %>">Create a group!</a></li>
-  </ul>
+<header class="navigation-header group">
+  <div class="nav-bar">
+    <ul class="left-header-nav group">
+      <li><a href="<%= root_url %>">Logo</a></li>
+      <li><a href="#">Find a group!</a></li>
+      <li><a href="<%= new_group_url %>">Create a group!</a></li>
+    </ul>
 
-  <ul class="right-header-nav">
-    <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
-    <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
-    <li><a href="#">Menu</a></li>
-  </ul>
-
+    <ul class="right-header-nav group">
+      <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
+      <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
+      <li><a href="#">Menu</a></li>
+    </ul>
+  </div>
 </header>

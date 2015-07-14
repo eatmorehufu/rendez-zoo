@@ -1,0 +1,25 @@
+.navigation-header {
+  background: lightgreen;
+}
+
+.nav-bar {
+  width: 1000px;
+  margin: auto;
+}
+
+.navigation-header li {
+  float: left;
+}
+
+.navigation-header a {
+  display: block;
+  padding: 20px;
+  background: yellow;
+}
+
+.navigation-header .left-header-nav {
+  float: left;
+}
+.navigation-header .right-header-nav {
+  float: right;
+}
