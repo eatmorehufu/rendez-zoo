@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
     if user.present?
+      login!(user)
       redirect_to groups_url
     else
       flash.now[:errors] = "Couldn't find user."

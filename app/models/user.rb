@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_one :user_detail
 
   attr_reader :password
-  
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def is_password(password)
+  def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
