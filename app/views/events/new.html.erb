@@ -1,0 +1,36 @@
+<h1>Events#new</h1>
+<form action="<%= group_events_url(@group.id) %>" method="POST">
+  <%= user_auth_token %>
+  <label>Event Name!
+    <input type="text" name="event[title]" value="<%=%>">
+  </label>
+  <label>Event Description
+    <textarea name="event[description]"><%= @event.description %></textarea>
+  </label>
+  <label>Event Start
+    <input type="datetime-local" name="event[start_time]" value="<%=%>">
+  </label>
+  <label>Event end
+    <input type="datetime-local" name="event[end_time]" value="<%=%>">
+  </label>
+  <label>Address
+    <label>Street Field 1:
+      <input type="text" name="event[street1]" value="<%=%>">
+    </label>
+    <label>Street Field 2:
+      <input type="text" name="event[street2]" value="<%=%>">
+    </label>
+    <label>City:
+      <input type="text" name="event[city]" value="<%=%>">
+    </label>
+    <label>State:
+      <input type="text" name="event[state]" value="<%=%>">
+    </label>
+    <label>Zip Code
+      <input type="text" name="event[zip_code]" value="<%=%>">
+    </label>
+
+  </label>
+
+  <button>Add New Group!</button>
+</form>

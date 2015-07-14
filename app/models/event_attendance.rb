@@ -11,7 +11,7 @@
 
 class EventAttendance < ActiveRecord::Base
   validates :attendant_id, :event_id, presence: true
-  validates :attendant_id, unique: { scope: :event_id }
+  validates :attendant_id, uniqueness: { scope: :event_id }
 
   belongs_to :attendant,
     class_name: "User",

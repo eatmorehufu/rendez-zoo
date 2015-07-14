@@ -10,6 +10,11 @@
 #  group_id    :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  street1     :string
+#  street2     :string
+#  city        :string
+#  zip_code    :string
+#  state       :string
 #
 
 require 'rails_helper'
