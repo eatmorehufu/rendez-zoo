@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def new
   end
 
@@ -18,7 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    logout!(current_sesh.id)
+    redirect_to groups_url
   end
 
 end

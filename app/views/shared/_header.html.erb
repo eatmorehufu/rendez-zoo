@@ -1,11 +1,18 @@
-I'm the header!
+<% nav_url_a = logged_in? ? "#" : new_user_url %>
+<% nav_url_b = logged_in? ? "#" : new_session_url %>
+<% nav_text_a = logged_in? ? "Profile Menu" : "Sign Up"%>
+<% nav_text_b = logged_in? ? "Notifications" : "Log In" %>
+
+
 <header class="navigation-header">
   <ul class="left-header-nav">
     <li>I'm the left header nav!</li>
   </ul>
 
   <ul class="right-header-nav">
-    <li><a href="<%= new_user_url %>">Sign Up</a></li>
-    <li><a href="<%= new_session_url %>">Sign In</a></li>
+    <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
+    <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
+    <li><a href="#">Menu</a></li>
   </ul>
+  
 </header>
