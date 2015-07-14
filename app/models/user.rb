@@ -17,11 +17,22 @@ class User < ActiveRecord::Base
 
   has_many :sessions
   has_one :user_detail
-  has_many :group_memberships
-  has_many :groups, through: :group_memberships, source: :group
+
+  has_many :group_memberships,
+    -> { where "status != 'owner'" },
+    class_name: "GroupMembership",
+    foreign_key: :member_id
+
+  has_many :group_ownerships,
+    -> { where status: "owner" },
+    class_name: "GroupMembership",
+    foreign_key: :member_id
+
   has_many :event_attendances
   has_many :events, through: :event_attendances, source: :event
 
+  has_many :member_groups, through: :group_memberships, source: :group
+  has_many :owned_groups, through: :group_ownerships, source: :group
 
   attr_reader :password
 
