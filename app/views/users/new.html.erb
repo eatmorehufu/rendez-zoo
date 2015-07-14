@@ -1,1 +1,13 @@
-I'm the new user page!
+<form class="new-user" action="<%=users_url%>" method="POST">
+  <%= user_auth_token %>
+  <label>Email
+    <input type="text" name="user[email]">
+  </label>
+  <label>Username
+    <input type="text" name="user[username]">
+  </label>
+  <label>Password
+    <input type="password" name="user[password]">
+  </label>
+  <button>Create New User</button>
+</form>

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :sessions
   has_one :user_detail
 
+  attr_reader :password
+  
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil
