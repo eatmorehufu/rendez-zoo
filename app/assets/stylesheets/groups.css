@@ -10,6 +10,19 @@
   background: lightyellow;
 }
 
+.group-banner-nav {
+  float: left;
+}
+
+.group-banner-buttons {
+  float: right;
+}
+
+#group-banner li {
+  float: left;
+  padding: 10px;
+}
+
 .group-sidebars {
   float: left;
   display: block;
@@ -19,6 +32,22 @@
 #sidebar-top {
   display: block;
   background: pink;
+}
+
+.sidebar-top-details {
+  padding: 20px;
+}
+
+.sidebar-top-events-links {
+  padding: 20px;
+}
+
+.sidebar-top-organizer {
+  padding: 20px;
+}
+
+#sidebar-categories {
+  padding: 20px;
 }
 
 #sidebar-bottom {
@@ -41,6 +70,14 @@
 #group-show-top {
   display: block;
   background: lightgray;
+}
+
+.member-thumbs {
+  float: left;
+}
+
+.group-show-top-nav button {
+  float right;
 }
 
 #group-show-bottom {
