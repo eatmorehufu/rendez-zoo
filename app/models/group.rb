@@ -11,4 +11,6 @@
 #
 
 class Group < ActiveRecord::Base
+  validates :title, :zip_code, presence: true
+  
 end
