@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @group = Group.find_by(id: params[:group_id])
+    @event = Event.new
   end
 
   def show
