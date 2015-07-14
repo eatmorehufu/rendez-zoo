@@ -12,5 +12,6 @@
 
 class Group < ActiveRecord::Base
   validates :title, :zip_code, presence: true
-  
+
+  has_many :events
 end
