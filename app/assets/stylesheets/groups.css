@@ -1,3 +1,22 @@
+.groups-index {
+  width: 1000px;
+  background: lightgray;
+  margin: auto;
+}
+.groups-list > li {
+  float: left;
+  margin: 20px;
+  background: orange;
+}
+
+.groups-list > li > a{
+  height: 100px;
+  width: 260px;
+  padding: 10px;
+
+}
+
+
 .group-show-main {
   width: 960px;
   margin: auto;
