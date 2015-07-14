@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  username        :string           not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 
 describe "user" do
   it 'errors when no username is given' do
