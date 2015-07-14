@@ -77,7 +77,7 @@
 }
 
 .group-show-top-nav button {
-  float right;
+  float: right;
 }
 
 #group-show-bottom {
