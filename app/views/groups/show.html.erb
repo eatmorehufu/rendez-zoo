@@ -1,12 +1,15 @@
 <header class="group-banner">
   I am the group splash banner.
   Group name: <%= @group.title %>
-  Group description: <%= @group.description %>
+  <% if @group.organizers.include?(current_user)%>
+  <%= render "events/create_button", group: @group %>
+  <% end %>
 </header>
 
 <section class="group-sidebars">
   I am the sidebar container
   <section class="sidebar-top">
+    Group description: <%= @group.description %>
     I am the sidebar-top
   </section>
   <section class="sidebar-bottom">

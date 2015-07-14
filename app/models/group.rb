@@ -15,5 +15,13 @@ class Group < ActiveRecord::Base
 
   has_many :events
   has_many :group_memberships, inverse_of: :group
+
+  has_many :organizer_memberships,
+    -> { where("status != 'member'")},
+    class_name: "GroupMembership",
+    foreign_key: :group_id
+
   has_many :members, through: :group_memberships, source: :member
+
+  has_many :organizers, through: :organizer_memberships, source: :member
 end
