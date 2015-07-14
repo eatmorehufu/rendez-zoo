@@ -1,0 +1,10 @@
+<form class="new-session" action="<%=sessions_url%>" method="POST">
+  <%= user_auth_token %>
+  <label>Email
+    <input type="text" name="user[email]">
+  </label>
+  <label>Password
+    <input type="password" name="user[password]">
+  </label>
+  <button>Log In</button>
+</form>
