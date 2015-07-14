@@ -1,0 +1,7 @@
+<header id="group-banner">
+  I am the group splash banner.
+  Group name: <%= group.title %>
+  <% if group.organizers.include?(current_user)%>
+  <%= render "events/create_button", group: group %>
+  <% end %>
+</header>

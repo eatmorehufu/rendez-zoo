@@ -1,28 +1,9 @@
-<header class="group-banner">
-  I am the group splash banner.
-  Group name: <%= @group.title %>
-  <% if @group.organizers.include?(current_user)%>
-  <%= render "events/create_button", group: @group %>
-  <% end %>
-</header>
+<%= render "banner", group: @group %>
 
 <section class="group-sidebars">
   I am the sidebar container
-  <section class="sidebar-top">
-    Group description: <%= @group.description %>
-    I am the sidebar-top
-  </section>
-  <section class="sidebar-bottom">
-    I am the sidebar-bottom, will need an ID
-  </section>
+  <%= render "sidebar_top", group: @group %>
+  <%= render "sidebar_bottom", group: @group %>
 </section>
 
-<main class="group-man">
-  I am the main window
-  <section class="group-show-top">
-    I am the top main show, will need an ID
-  </section>
-  <section class="group-show-bottom">
-    I am the group show bottom
-  </section>
-</main>
+<%= render "main", group: @group %>
