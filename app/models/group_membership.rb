@@ -17,7 +17,8 @@ class GroupMembership < ActiveRecord::Base
   belongs_to :member,
     class_name: "User",
     foreign_key: :member_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :group_memberships
 
-  belongs_to :group
+  belongs_to :group, inverse_of: :group_memberships
 end

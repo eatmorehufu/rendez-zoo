@@ -14,7 +14,6 @@ class Group < ActiveRecord::Base
   validates :title, :zip_code, presence: true
 
   has_many :events
-  has_many :group_memberships
+  has_many :group_memberships, inverse_of: :group
   has_many :members, through: :group_memberships, source: :member
-  
 end
