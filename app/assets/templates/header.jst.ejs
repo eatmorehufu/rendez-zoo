@@ -14,7 +14,7 @@
   <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
   <li><a href="#">Menu</a></li>
   <% if (loggedIn) {%>
-  <form action="/sessions" method="POST">
+  <form action="/session" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <button>Log Out</button>
   </form>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'root#root'
   resources :users, only: [:new, :create, :edit, :update]
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
     resource :current_user, only: [:show]
