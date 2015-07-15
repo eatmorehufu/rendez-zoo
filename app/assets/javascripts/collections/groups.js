@@ -13,5 +13,7 @@ RendezZoo.Collections.Groups = Backbone.Collection.extend({
         }.bind(this)
       })
     }
+
+    return group;
   }
 })

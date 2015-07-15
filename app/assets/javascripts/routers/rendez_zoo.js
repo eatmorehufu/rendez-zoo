@@ -19,7 +19,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     RendezZoo.groups.fetch();
     var groupIndexView = new RendezZoo.Views.GroupsIndex({collection: RendezZoo.groups})
 
-    this._swapComposites(groupIndexView);
+    this._swapViews(groupIndexView);
   },
 
   newGroup: function (){
@@ -27,13 +27,14 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   groupShow: function (id){
-    
+    var group = RendezZoo.groups.getOrFetch(id);
+    var groupShowView = new RendezZoo.Views.GroupShow({model: group});
 
-
+    this._swapViews(groupShowView);
   },
 
 
-  _swapComposites: function (view) {
+  _swapViews: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.find("#page-body").html(view.render().$el);
