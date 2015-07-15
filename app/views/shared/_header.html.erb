@@ -16,6 +16,13 @@
       <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
       <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
       <li><a href="#">Menu</a></li>
+      <% if logged_in? %>
+      <form action="<%= session_url(current_sesh)%>" method="POST">
+        <%= user_auth_token %>
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Log Out</button>
+      </form>
+      <% end %>
     </ul>
   </div>
 </header>
