@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create!(username: 'sennacy', email: 'sennacy@cat.com', password: 'password')
 group = Group.create!(title: 'Pound Dawgs', description: "Ruff 'n' Tuff", owner_id: user.id, zip_code: "11111")
+GroupMembership.create!(member_id: user.id, group_id: group.id, status: "organizer")

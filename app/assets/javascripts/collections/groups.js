@@ -1,5 +1,6 @@
 RendezZoo.Collections.Groups = Backbone.Collection.extend({
   url: "/api/groups",
+  model: RendezZoo.Models.Group,
 
   getOrFetch: function(id) {
     var group = RendezZoo.groups.get(id);

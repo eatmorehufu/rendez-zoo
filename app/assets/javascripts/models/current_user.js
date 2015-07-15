@@ -1,3 +1,3 @@
 RendezZoo.Models.CurrentUser = Backbone.Model.extend({
-  url: "api/current_user"
+  url: "/api/current_user"
 })
