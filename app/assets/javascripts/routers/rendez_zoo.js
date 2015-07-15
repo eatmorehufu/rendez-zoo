@@ -10,7 +10,9 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "groupsIndex"
+    "": "groupsIndex",
+    "groups/new": "newGroup",
+    "groups/:id": "groupShow"
   },
 
   groupsIndex: function() {
@@ -19,6 +21,15 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     var groupIndexView = new RendezZoo.Views.GroupsIndex({collection: groups})
 
     this._swapComposites(groupIndexView);
+  },
+
+  newGroup: function (){
+
+  },
+
+  groupShow: function (){
+    
+
   },
 
 

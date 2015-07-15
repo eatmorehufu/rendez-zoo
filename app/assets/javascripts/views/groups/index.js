@@ -3,8 +3,8 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   tagName: "section",
 
   initialize: function(options) {
-    this.$el.addClass("groups-index")
-    
+    this.$el.addClass("groups-index");
+    this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function() {
