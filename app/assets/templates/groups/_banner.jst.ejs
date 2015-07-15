@@ -1,16 +1,16 @@
 <header id="group-banner" class="group">
   I am the group splash banner.
-  Group name: <%= group.title %>
+  Group name: <%= group.escape("title") %>
 
   <ul class="group-banner-nav group">
-    <li><a href="<%= group_url(group) %>">Home</a></li>
-    <li><a href="#">Members</a></li>
-    <li><a href="#">Photos</a></li>
+    <li><a href="/#/groups/<%= group.id %>">Home</a></li>
+    <li><a href="/#/groups/<%= group.id %>/members">Members</a></li>
+    <li><a href="/#/groups/<%= group.id %>/photos">Photos</a></li>
   </ul>
   <ul class="group-banner-buttons">
-    <% if logged_in? && group.owner_id === current_user.id%>
-      <li><%= render "events/create_button", group: group %></li>
-    <% end %>
+    <% if (currentUser && currentUser.id === group.get("owner_id")) {%>
+      <li><a href="/#/groups/<%= group.id %>/events/new">Add event!<a></li>
+    <% }; %>
     <li><button class="join-leave-button">Join or Leave</button></li>
   </ul>
 </header>

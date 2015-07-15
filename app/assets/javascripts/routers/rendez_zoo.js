@@ -28,7 +28,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
 
   groupShow: function (id){
     var group = RendezZoo.groups.getOrFetch(id);
-    var groupShowView = new RendezZoo.Views.GroupShow({model: group});
+    var groupShowView = new RendezZoo.Views.GroupShow({model: group, currentUser: this._currentUser});
 
     this._swapViews(groupShowView);
   },
