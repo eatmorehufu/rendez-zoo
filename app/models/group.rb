@@ -8,6 +8,7 @@
 #  zip_code    :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  owner_id    :integer          not null
 #
 
 class Group < ActiveRecord::Base

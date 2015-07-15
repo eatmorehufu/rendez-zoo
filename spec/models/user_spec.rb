@@ -12,11 +12,11 @@
 
 
 describe "user" do
-  it 'errors when no username is given' do
+  it 'must have a username' do
     expect(FactoryGirl.build(:user, username: '')).to_not be_valid
   end
 
-  it 'errors when no email is given' do
+  it 'must have an email' do
     expect(FactoryGirl.build(:user, email: '')).to_not be_valid
   end
 
