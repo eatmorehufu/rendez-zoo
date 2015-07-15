@@ -19,20 +19,19 @@ class User < ActiveRecord::Base
   has_one :user_detail
 
   has_many :group_memberships,
-    -> { where "status != 'owner'" },
+    -> { where("owner_id != ?", self.id) },
     class_name: "GroupMembership",
-    foreign_key: :member_id
-
-  has_many :group_ownerships,
-    -> { where status: "owner" },
-    class_name: "GroupMembership",
-    foreign_key: :member_id
+    foreign_key: :member_id,
+    inverse_of: :member
 
   has_many :event_attendances
   has_many :events, through: :event_attendances, source: :event
 
   has_many :member_groups, through: :group_memberships, source: :group
-  has_many :owned_groups, through: :group_ownerships, source: :group
+
+  has_many :owned_groups,
+    class_name: "Group",
+    foreign_key: :owner_id
 
   attr_reader :password
 

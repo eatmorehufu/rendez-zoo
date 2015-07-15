@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714203646) do
+ActiveRecord::Schema.define(version: 20150715000347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 20150714203646) do
     t.string   "zip_code",    null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "owner_id",    null: false
   end
 
+  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree
   add_index "groups", ["title"], name: "index_groups_on_title", using: :btree
   add_index "groups", ["zip_code"], name: "index_groups_on_zip_code", using: :btree
 
