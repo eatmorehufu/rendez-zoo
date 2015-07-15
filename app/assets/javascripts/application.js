@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require meetup_clone_project_proposal
+//= require rendez_zoo
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
