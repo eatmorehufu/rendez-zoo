@@ -44,7 +44,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     testEvent.save(attrs, {
       success: function(){
         this.model.groupEvents().add(testEvent, { merge: true });
-        Backbone.history.navigate("/groups/" + this.model.id + "/events/" + testEvent.id, { trigger: true };
+        Backbone.history.navigate("/groups/" + this.model.id + "/events/" + testEvent.id, { trigger: true });
       }.bind(this),
 
       fail: function(){

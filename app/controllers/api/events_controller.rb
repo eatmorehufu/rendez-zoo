@@ -1,9 +1,8 @@
 module Api
   class EventsController < ApplicationController
     def create
-      @event = Event.new(event_params)
-      @event.group_id = params[:group_id]
-      if @event.save
+      @event = Event.includes(:group).new(event_params)
+      if @event.group.owner == current_user && @event.save
         render :show
       else
         render json: "Error, error!"
@@ -28,6 +27,7 @@ module Api
     def event_params
       params.require(:event).permit(
         :start_time,
+        :group_id,
         :end_time,
         :title,
         :description,
