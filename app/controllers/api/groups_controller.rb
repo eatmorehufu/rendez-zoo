@@ -17,7 +17,6 @@ module Api
       group = current_user.owned_groups.new(group_params)
       if group.save
         GroupMembership.create!(group_id: group.id, member_id: current_user.id, status: "organizer")
-        #display some sort of success message
         render :show
       else
         render json: group.errors.full_messages

@@ -12,25 +12,48 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "groupsIndex",
     "groups/new": "newGroup",
+    "groups/:id/events/new": "newEvent",
+    "groups/:id/members": "groupMemberIndex",
+    "groups/:id/photos": "groupPhotoIndex",
     "groups/:id": "groupShow"
   },
 
   groupsIndex: function() {
     RendezZoo.groups.fetch();
-    var groupIndexView = new RendezZoo.Views.GroupsIndex({collection: RendezZoo.groups})
+    var groupIndexView = new RendezZoo.Views.GroupsIndex({
+      collection: RendezZoo.groups
+    });
 
     this._swapViews(groupIndexView);
   },
 
   newGroup: function (){
+    var newGroup = new RendezZoo.Models.Group();
+    var newGroupView = new RendezZoo.Views.NewGroup({ model: newGroup });
 
+    this._swapViews(newGroupView);
   },
 
   groupShow: function (id){
     var group = RendezZoo.groups.getOrFetch(id);
-    var groupShowView = new RendezZoo.Views.GroupShow({model: group, currentUser: this._currentUser});
+    var groupShowView = new RendezZoo.Views.GroupShow({
+      model: group,
+      currentUser: this._currentUser
+    });
 
     this._swapViews(groupShowView);
+  },
+
+  newEvent: function (id) {
+
+  },
+
+  groupMemberIndex: function(id) {
+
+  },
+
+  groupPhotoIndex: function(id) {
+
   },
 
 
