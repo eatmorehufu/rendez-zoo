@@ -8,7 +8,16 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     this.$el.addClass("group-show-main group");
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.currentUser, 'sync', this.render);
-    this._subPage = options.subPage
+    this._subPage = options.subPage;
+    options.subId && this.bindModels(options.subId);
+  },
+
+  bindModels: function(subId) {
+    if (this._subPage === "eventDetail") {
+      this._subModel = this.model.groupEvents().getOrFetch(subId)
+    }
+
+    this.listenTo(this._subModel, 'sync', this.render.bind(this));
   },
 
   render: function() {
@@ -33,7 +42,8 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
 
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
       model: this.model,
-      subPage: this._subPage
+      subPage: this._subPage,
+      subModel: this._subModel
     });
 
     this.$el.append(groupShowMainView.render().$el);
