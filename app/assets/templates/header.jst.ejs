@@ -1,5 +1,5 @@
 <% var nav_url_a = loggedIn  ? "#" : "/users/new" %>
-<% var nav_url_b = loggedIn ? "#" : "/sessions/new" %>
+<% var nav_url_b = loggedIn ? "#" : "/session/new" %>
 <% var nav_text_a = loggedIn ? "Profile Menu" : "Sign Up"%>
 <% var nav_text_b = loggedIn ? "Notifications" : "Log In" %>
 
@@ -14,9 +14,6 @@
   <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
   <li><a href="#">Menu</a></li>
   <% if (loggedIn) {%>
-  <form action="/session" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Log Out</button>
-  </form>
+    <button class="log-out">Log Out</button>
   <% }%>
 </ul>
