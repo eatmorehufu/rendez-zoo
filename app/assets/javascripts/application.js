@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require jquery.serializejson
 //= require rendez_zoo
 //= require_tree ./utils
 //= require_tree ../templates

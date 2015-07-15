@@ -14,12 +14,12 @@ module Api
     end
 
     def create
-      group = current_user.owned_groups.new(group_params)
-      if group.save
-        GroupMembership.create!(group_id: group.id, member_id: current_user.id, status: "organizer")
-        render :show
+      @group = current_user.owned_groups.new(group_params)
+      if @group.save
+        GroupMembership.create!(group_id: @group.id, member_id: current_user.id, status: "organizer")
+        render :show;
       else
-        render json: group.errors.full_messages
+        render json: @group.errors.full_messages
       end
     end
 

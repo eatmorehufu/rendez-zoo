@@ -18,6 +18,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
     this.model.save(attrs, {
       success: function(){
         RendezZoo.groups.add(this.model);
+        debugger;
         Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
       }.bind(this)
     })
