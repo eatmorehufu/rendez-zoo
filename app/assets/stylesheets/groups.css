@@ -26,7 +26,15 @@
 
 #group-banner {
   display: block;
+  height: 200px;
+  border: 1px solid white;
+  border-radius: 3px;
   background: lightyellow;
+}
+
+#group-banner .splash {
+  height: 150px;
+  display: block;
 }
 
 .group-banner-nav {

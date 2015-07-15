@@ -10,17 +10,32 @@
 
 .navigation-header li {
   float: left;
+  height: 60px;
 }
 
 .navigation-header a {
+  padding: 9px;
   display: block;
-  padding: 20px;
-  background: yellow;
+  background: white;
 }
 
 .navigation-header .left-header-nav {
   float: left;
 }
+
+.left-header-nav strong {
+  display: block;
+  color: red;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.left-header-nav small {
+  color: lightgray;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
 .navigation-header .right-header-nav {
   float: right;
 }
