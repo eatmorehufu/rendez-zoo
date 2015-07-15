@@ -7,5 +7,11 @@ module Api
       render json: @group
     end
 
+    def index
+      @groups = Group.all
+
+      render :index
+    end
+
   end
 end

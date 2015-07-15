@@ -1,5 +1,5 @@
 <ul class="groups-list group">
-  <% groups.each do |group| %>
-    <li><a href="<%="/#/groups/" + group.id%>"><%= group.title %></a></li>
-  <% end %>
+  <% groups.forEach(function(group){ %>
+    <li><a href="<%="/#/groups/" + group.id%>"><%= group.escape("title") %></a></li>
+  <% }) %>
 </ul>
