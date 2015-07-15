@@ -4,6 +4,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   newEventTemplate: JST['events/_new'],
   tagName: "section",
 
+  events: {
+    "submit .new-event-form": "newEvent"
+  },
+
   initialize: function(options){
     this.$el.addClass("group-main");
     this.subPage = options.subPage;
@@ -11,7 +15,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   render: function() {
     if (this.subPage === "newEvent") {
-      var mainTop = this.newEvent();
+      var mainTop = this.newEventTemplate();
     } else if (this.subPage === "memberIndex") {
       var mainTop = this.memberIndex();
     } else if (this.subPage === "memberDetail") {
@@ -32,8 +36,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     return this;
   },
 
-  newEvent: function() {
-    var newEvent = new RendezZoo.Models.Event({collection: this.model.groupEvents()})
+  newEvent: function(event) {
 
   },
 

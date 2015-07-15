@@ -33,8 +33,4 @@ class EventsController < ApplicationController
       :zip_code
     )
   end
-
-  def address_params
-    params.require(:event_address).permit()
-  end
 end
