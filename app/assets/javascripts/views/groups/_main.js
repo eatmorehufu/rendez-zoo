@@ -1,6 +1,7 @@
 RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   templateTop: JST['groups/_show_top'],
   templateBottom: JST['groups/_show_bottom'],
+  newEventTemplate: JST['events/_new'],
   tagName: "section",
 
   initialize: function(options){
@@ -9,16 +10,31 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   render: function() {
+    if (this.subPage === "newEvent") {
+      var mainTop = this.newEvent();
+    } else if (this.subPage === "memberIndex") {
+      var mainTop = this.memberIndex();
+    } else if (this.subPage === "memberDetail") {
+      var mainTop = this.memberDetail();
+    } else {
+      var mainTop = this.templateTop({ group: this.model });
+      if (this.subPage === "upcoming") {
 
-    var mainTop = this.templateTop({ group: this.model });
-    var mainBottom = this.templateBottom({ group: this.model });
+      } else if (this.subPage === "past") {
+
+      } else {
+        var mainBottom = this.templateBottom({ group: this.model });
+      }
+    }
     this.$el.html(mainTop);
-    this.$el.append(mainBottom);
+    mainBottom && this.$el.append(mainBottom);
+
     return this;
   },
 
   newEvent: function() {
-    var newEvent = new RendezZoo.Models.Event({collection: group.groupEvents()})
+    var newEvent = new RendezZoo.Models.Event({collection: this.model.groupEvents()})
+
   },
 
   upcomingEvents: function(){
@@ -30,6 +46,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   memberIndex: function() {
+
+  },
+
+  memberDetail: function() {
 
   }
 })

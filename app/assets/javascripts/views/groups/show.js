@@ -32,7 +32,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     this.$('.group-sidebars').append(sidebarBottomView.render().$el);
 
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
-      group: this.model,
+      model: this.model,
       subPage: this._subPage
     });
 
