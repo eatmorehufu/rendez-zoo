@@ -1,20 +1,22 @@
-<div class="nav-bar group">
-  <ul class="left-header-nav group">
-    <li><a href="<%= root_url %>">Logo</a></li>
-    <li><a href="#">Find a group!</a></li>
-    <li><a href="<%= new_group_url %>">Create a group!</a></li>
-  </ul>
+<% var nav_url_a = loggedIn  ? "#" : "/users/new" %>
+<% var nav_url_b = loggedIn ? "#" : "/sessions/new" %>
+<% var nav_text_a = loggedIn ? "Profile Menu" : "Sign Up"%>
+<% var nav_text_b = loggedIn ? "Notifications" : "Log In" %>
 
-  <ul class="right-header-nav group">
-    <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
-    <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
-    <li><a href="#">Menu</a></li>
-    <% if logged_in? %>
-    <form action="<%= session_url(current_sesh)%>" method="POST">
-      <%= user_auth_token %>
-      <input type="hidden" name="_method" value="DELETE">
-      <button>Log Out</button>
-    </form>
-    <% end %>
-  </ul>
-</div>
+<ul class="left-header-nav group">
+  <li><a href="#">Logo</a></li>
+  <li><a href="#">Find a group!</a></li>
+  <li><a href="#">Create a group!</a></li>
+</ul>
+
+<ul class="right-header-nav group">
+  <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
+  <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
+  <li><a href="#">Menu</a></li>
+  <% if (loggedIn) {%>
+  <form action="/sessions" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Log Out</button>
+  </form>
+  <% }%>
+</ul>

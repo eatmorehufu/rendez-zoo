@@ -1,13 +1,13 @@
 RendezZoo.Views.Header = Backbone.CompositeView.extend({
   template: JST['header'],
-  tagName: "section",
   initialize: function(options){
-    this.currentUser = options.currentUser;
-    this.$el.addClass("navigation-header")
+    this.loggedIn = (options.currentUser && typeof options.currentUser.id !== "undefined");
+    this.$el.addClass("nav-bar group")
+    this.listenTo(this.currentUser, 'sync', this.render)
   },
 
   render: function() {
-    var content = this.template({currentUser: this.currentUser})
+    var content = this.template({loggedIn: this.loggedIn})
     this.$el.html(content)
     return this
   }

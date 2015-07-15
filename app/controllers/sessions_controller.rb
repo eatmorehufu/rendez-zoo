@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   def new
   end
 
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     )
     if user.present?
       login!(user)
-      redirect_to groups_url
+      redirect_to root_url
     else
       flash.now[:errors] = "Couldn't find user."
       render :new
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!(current_sesh.id)
-    redirect_to groups_url
+    redirect_to root_url
   end
 
 end
