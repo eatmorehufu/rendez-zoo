@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def show
-
+    @event = Event.includes(:group).find(params[:id])
   end
 
   private

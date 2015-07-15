@@ -1,0 +1,9 @@
+<main class="group-show-main group" id="content">
+<%= render "groups/banner", group: @event.group %>
+  <section class="group-sidebars group">
+    <%= render "groups/sidebar_top", group: @event.group %>
+    <%= render "groups/sidebar_bottom", group: @event.group %>
+  </section>
+
+  <%= render "main", group: @event.group, event: @event %>
+</main>
