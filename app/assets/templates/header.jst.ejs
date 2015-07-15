@@ -1,0 +1,22 @@
+<header class="navigation-header">
+  <div class="nav-bar group">
+    <ul class="left-header-nav group">
+      <li><a href="<%= root_url %>">Logo</a></li>
+      <li><a href="#">Find a group!</a></li>
+      <li><a href="<%= new_group_url %>">Create a group!</a></li>
+    </ul>
+
+    <ul class="right-header-nav group">
+      <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
+      <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
+      <li><a href="#">Menu</a></li>
+      <% if logged_in? %>
+      <form action="<%= session_url(current_sesh)%>" method="POST">
+        <%= user_auth_token %>
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Log Out</button>
+      </form>
+      <% end %>
+    </ul>
+  </div>
+</header>
