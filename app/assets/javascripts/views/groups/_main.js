@@ -4,13 +4,14 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   tagName: "section",
 
   initialize: function(options){
-    this.$el.addClass("group-main")
-  }
+    this.$el.addClass("group-main");
+  },
 
   render: function() {
-    var content = this.template({ group: this.model })
-    this.$el.html(content);
-
+    var mainTop = this.templateTop({ group: this.model });
+    var mainBottom = this.templateBottom({ group: this.model });
+    this.$el.html(mainTop);
+    this.$el.append(mainBottom);
     return this;
   }
 })
