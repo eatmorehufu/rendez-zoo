@@ -4,9 +4,5 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-  },
-
-  initialize: {
-    
   }
 })

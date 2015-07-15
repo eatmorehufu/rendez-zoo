@@ -1,8 +1,8 @@
 RendezZoo.Models.Group = Backbone.Model.extend({
-  urlRoot: "api/groups/",
+  urlRoot: "/api/groups/",
 
   parse: function(response){
-
+    console.log(response)
 
 
     return response
