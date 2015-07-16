@@ -1,0 +1,17 @@
+.sign-up-in img {
+  height: 100%;
+  width: 100%;
+}
+
+.sign-up-in a {
+  float: left;
+  height: 32px;
+  width: 46px;
+}
+
+.sign-up-in h1 {
+  float: left;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 16px;
+}

@@ -1,11 +1,11 @@
 .navigation-header {
-  background: lightgreen;
+  background: white;
 }
 
 .nav-bar {
   width: 1000px;
   margin: auto;
-  background: pink;
+  background: white;
 }
 
 .navigation-header li {
@@ -14,25 +14,51 @@
 }
 
 .navigation-header a {
-  padding: 9px;
+  float: left;
   display: block;
   background: white;
+  margin-right: 10px;
+}
+
+.left-header-nav a:hover {
+  background: #F4001B;
+}
+
+.left-header-nav a:hover strong {
+  color: white;
 }
 
 .navigation-header .left-header-nav {
   float: left;
 }
 
+.logo img {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 50px;
+  width: 70px;
+}
+
+.left-header-nav a {
+  padding: 9px;
+  height: calc(100% - 18px);
+}
+
+.logo {
+  padding: 0px;
+}
+
 .left-header-nav strong {
+  font-weight: 700;
   display: block;
-  color: red;
+  color: #F4001B;
   font-size: 20px;
   font-family: sans-serif;
 }
 
 .left-header-nav small {
   color: lightgray;
-  font-size: 15px;
+  font-size: 13px;
   font-family: sans-serif;
 }
 
