@@ -10,7 +10,7 @@ RendezZoo.Models.Event = Backbone.Model.extend({
 
   attendees: function(){
     if (!this._attendees) {
-      this._attendees = new RendezZoo.Collections.Members({ rsvpEvent: this });
+      this._attendees = new RendezZoo.Collections.Users({ rsvpEvent: this });
     }
 
     return this._attendees;

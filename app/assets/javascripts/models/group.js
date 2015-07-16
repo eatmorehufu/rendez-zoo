@@ -22,7 +22,7 @@ RendezZoo.Models.Group = Backbone.Model.extend({
 
   groupMembers: function() {
     if (!this._groupMembers) {
-      this._groupMembers = new RendezZoo.Collections.Members({ group: this })
+      this._groupMembers = new RendezZoo.Collections.Users({ group: this })
     }
 
     return this._groupMembers
@@ -30,7 +30,7 @@ RendezZoo.Models.Group = Backbone.Model.extend({
 
   groupOrganizers: function() {
     if (!this._groupOrganizers) {
-      this._groupOrganizers = new RendezZoo.Collections.Members({ group: this })
+      this._groupOrganizers = new RendezZoo.Collections.Users({ group: this })
     }
 
     return this._groupOrganizers

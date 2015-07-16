@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create]
 
   namespace :api, defaults: { format: :json } do
-    resource :current_user, only: [:show, :destroy]
+    resource :session, only: [:show, :create, :destroy]
+    resources :users, only: [:show, :create, :edit, :update]
     resources :groups, only: [:index, :show, :create] do
       delete "leave"
       post "join"
