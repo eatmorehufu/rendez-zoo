@@ -1,7 +1,7 @@
 RendezZoo.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl
-    this._currentUser = new RendezZoo.Models.CurrentUser();
+
     this._currentUser.fetch();
     this._headerView = new RendezZoo.Views.Header({
       currentUser: this._currentUser
@@ -11,6 +11,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "groupsIndex",
+    "users/new": "newUser",
+    "session/new": "signIn",
     "groups/new": "newGroup",
     "groups/:id/events/new": "newEvent",
     "groups/:group_id/events/:event_id": "eventDetail",
@@ -76,6 +78,50 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
 
   },
 
+  newUser: function () {
+    if (!this._requireSignedOut()) { return; }
+
+    var newUser = RendezZoo.Models.User();
+    var formView = new RendezZoo.Views.UsersForm({
+      model: newUser
+    })
+
+    this._swapView(formView)
+  },
+
+  signIn: function(callback) {
+    if (!this._requireSignedOut(callback)) { return; }
+
+    var signInView = new RendezZoo.Views.SignIn({
+      callback: callback
+    });
+
+    this._swapView(signInView)
+  },
+
+  _requireSignedIn: function(callback){
+  if (!RendezZoo.currentUser.isSignedIn()) {
+    callback = callback || this._goHome.bind(this);
+    this.signIn(callback);
+    return false;
+  }
+
+    return true;
+  },
+
+  _requireSignedOut: function(callback){
+    if (RendezZoo.currentUser.isSignedIn()) {
+      callback = callback || this._goHome.bind(this);
+      callback();
+      return false;
+    }
+
+    return true;
+  },
+
+  _goHome: function(){
+    Backbone.history.navigate("", { trigger: true });
+  },
 
   _swapViews: function (view) {
     this._currentView && this._currentView.remove();
