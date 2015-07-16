@@ -23,11 +23,15 @@ module Api
       end
     end
 
-  private
+    def leave
 
-  def group_params
-    params.require(:group).permit(:title, :description, :zip_code, :owner_id)
-  end
+    end
+
+    private
+
+    def group_params
+      params.require(:group).permit(:title, :description, :zip_code, :owner_id)
+    end
 
   end
 end

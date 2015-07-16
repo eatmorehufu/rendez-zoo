@@ -8,20 +8,20 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   initialize: function(options) {
-    this._currentUser = options.currentUser;
+    this.currentUser = options.currentUser;
     this.$el.addClass("group-show-main group");
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this._currentUser, 'sync', this.render);
-    this._subPage = options.subPage;
+    this.listenTo(this.currentUser, 'sync', this.render);
+    this.subPage = options.subPage;
     options.subId && this.bindModels(options.subId);
   },
 
   bindModels: function(subId) {
-    if (this._subPage === "eventDetail") {
-      this._subModel = this.model.groupEvents().getOrFetch(subId)
+    if (this.subPage === "eventDetail") {
+      this.subModel = this.model.groupEvents().getOrFetch(subId)
     }
 
-    this.listenTo(this._subModel, 'sync', this.render.bind(this));
+    this.listenTo(this.subModel, 'sync', this.render.bind(this));
   },
 
   render: function() {
@@ -29,7 +29,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     var bannercontent = this.bannerTemplate({
       group: this.model,
-      currentUser: this._currentUser
+      currentUser: this.currentUser
     });
     this.$el.prepend(bannercontent);
 
@@ -46,9 +46,9 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
 
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
       model: this.model,
-      subPage: this._subPage,
-      subModel: this._subModel,
-      currentUser: this._currentUser
+      subPage: this.subPage,
+      subModel: this.subModel,
+      currentUser: this.currentUser
     });
 
     this.$el.append(groupShowMainView.render().$el);
@@ -58,6 +58,23 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
 
   joinOrLeave: function(event) {
     event.preventDefault();
-    alert("you pushed me!");
+    if (!this.currentUser) {
+      alert("please sign in!");
+    } else if (this.model.get('owner_id') === this.currentUser.id) {
+      alert("Can't leave a group you own or organize!");
+    } else if (this.model.groupOrganizers().get(this.currentUser.id)) {
+      alert("Consider resigning from the organizer position first?");
+    } else if (this.model.groupMembers().get(this.currentUser.id)) {
+      $.ajax({
+        url: "/api/groups/" + this.model.id + "/leave",
+        dataType: 'json',
+        type: "DELETE",
+        success: function(result){
+          alert("Left the group!")
+        }
+      });
+    } else {
+
+    }
   }
 })

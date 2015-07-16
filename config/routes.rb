@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resource :current_user, only: [:show, :destroy]
-    resources :groups, only: [:index, :show, :create]
+    resources :groups, only: [:index, :show, :create] do
+      post "leave", only: [:delete]
+    end
     resources :events, only: [:index, :show, :create]
   end
 end
