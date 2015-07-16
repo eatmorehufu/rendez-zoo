@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :email, :password_digest, :username, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
+  validates_format_of :email, with: /.+@.+\..+/i
 
   has_many :sessions
   has_one :user_detail

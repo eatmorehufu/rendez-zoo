@@ -25,4 +25,12 @@ describe "user" do
     expect(user.password_digest.length).to be > 0
   end
 
+  it 'must have a password longer than 6 characters' do
+    expect(FactoryGirl.build(:user, password: '123')).to_not be_valid
+  end
+
+  it 'must have a properly formatted email address' do
+    expect(FactoryGirl.build(:user, email:"bob")).to_not be_valid
+  end
+
 end
