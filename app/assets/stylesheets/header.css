@@ -28,6 +28,10 @@
   color: white;
 }
 
+.left-header-nav a:hover small {
+  color: white;
+}
+
 .navigation-header .left-header-nav {
   float: left;
 }
@@ -42,10 +46,6 @@
 .left-header-nav a {
   padding: 9px;
   height: calc(100% - 18px);
-}
-
-.logo {
-  padding: 0px;
 }
 
 .left-header-nav strong {

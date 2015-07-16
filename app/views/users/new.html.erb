@@ -4,26 +4,23 @@
     <h1>Sign Up</h1>
   </div>
 </header>
+<section class="new-user group">
+  <form  action="<%=users_url%>" method="POST">
+    <%= user_auth_token %>
+    <label><h3>Your name (this is public)</h3>
+      <input type="text" name="user[username]">
+    </label>
+    <label><h3>Email address</h3>
+      <input type="text" name="user[email]">
+    </label>
+    <label><h3>Password</h3>
+      <input type="password" name="user[password]">
+    </label>
+    <button>Sign Up</button>
 
-<form class="new-user" action="<%=users_url%>" method="POST">
-  <%= user_auth_token %>
-  <h1>Welcome to Rendez-Zoo!</h1>
-  <label>Your name (this is public)
-    <input type="text" name="user[username]">
-  </label>
-  <label>Email address
-    <input type="text" name="user[email]">
-  </label>
-  <label>Password
-    <input type="password" name="user[password]">
-  </label>
-  <button>Sign Up</button>
+    <footer>
+      Already a member? <a href="<%= new_session_url %>">Log In</a>
+    </footer>
+  </form>
 
-  <small class="fine-print">By clicking "Sign up", you confirm that you accept
-    nothing, no terms or privacy policy.</small>
-
-</form>
-
-<footer>
-  Already a member? <a href="<%= new_session_url %>">Log In</a>
-</footer>
+</section>

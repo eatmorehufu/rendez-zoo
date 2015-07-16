@@ -1,4 +1,4 @@
-main, section, h1, h2, h3,
+html, body, main, section, h1, h2, h3,
 p, li, ul, div, span, strong,
 small, a, button, small, strong {
   color: inherit;
