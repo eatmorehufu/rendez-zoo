@@ -1,10 +1,10 @@
 <% if (group.groupOrganizers().get(currentUser.id) ||  group.groupMembers().get(currentUser.id)) {%>
-<% var buttonText = "Leave" %>
-<% var buttonData = "leave" %>
+<% var buttonText = "Leave"; %>
+<% var buttonData = "leave"; %>
 <% } else { %>
-<% var buttonText = "Join" %>
-<% var buttonData = "join" %>
-<% } %>
+<% var buttonText = "Join"; %>
+<% var buttonData = "join"; %>
+<% }; %>
 
 <section id="group-show-top">
   Group description: group.description
