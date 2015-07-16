@@ -15,10 +15,12 @@ class Group < ActiveRecord::Base
   validates :title, :zip_code, :owner_id, presence: true
 
   has_many :events
-  has_many :group_memberships, inverse_of: :group
+  has_many :group_memberships,
+    -> { where("status = 'member'")},
+    inverse_of: :group
 
   has_many :organizer_memberships,
-    -> { where("status != 'member'")},
+    -> { where("status = 'organizer'")},
     class_name: "GroupMembership",
     foreign_key: :group_id
 
@@ -29,4 +31,5 @@ class Group < ActiveRecord::Base
     foreign_key: :owner_id
 
   has_many :organizers, through: :organizer_memberships, source: :member
+
 end

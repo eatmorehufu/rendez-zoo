@@ -20,15 +20,21 @@ class User < ActiveRecord::Base
   has_one :user_detail
 
   has_many :group_memberships,
-    -> { where("owner_id != ?", self.id) },
+    -> { where("status = 'member'") },
     class_name: "GroupMembership",
-    foreign_key: :member_id,
-    inverse_of: :member
+    foreign_key: :member_id
+
+  has_many :organizer_memberships,
+    -> {where("status = 'organizer'") },
+    class_name: "GroupMembership",
+    foreign_key: :member_id
 
   has_many :event_attendances
   has_many :events, through: :event_attendances, source: :event
 
   has_many :member_groups, through: :group_memberships, source: :group
+
+  has_many :organizer_groups, through: :organizer_memberships, source: :group
 
   has_many :owned_groups,
     class_name: "Group",
