@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
   validate :end_time_limit
 
   belongs_to :group
-  has_many :event_attendances, inverse_of: :event
+  has_many :event_attendances, dependent: :destroy, inverse_of: :event
   has_many :attendees, through: :event_attendances, source: :attendee
 
   private

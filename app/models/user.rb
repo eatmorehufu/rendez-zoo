@@ -16,24 +16,27 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true}
   validates_format_of :email, with: /.+@.+\..+/i
 
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
   has_one :user_detail
 
   has_many :group_memberships,
     -> { where("status = 'member'") },
     class_name: "GroupMembership",
-    foreign_key: :member_id
+    foreign_key: :member_id,
+    dependent: :destroy
 
   has_many :organizer_memberships,
     -> {where("status = 'organizer'") },
     class_name: "GroupMembership",
-    foreign_key: :member_id
+    foreign_key: :member_id,
+    dependent: :destroy
 
   has_many :event_attendances,
     class_name: "EventAttendance",
     foreign_key: :attendant_id,
-    inverse_of: :attendee
-    
+    inverse_of: :attendee,
+    dependent: :destroy
+
   has_many :events, through: :event_attendances, source: :event
 
   has_many :member_groups, through: :group_memberships, source: :group
