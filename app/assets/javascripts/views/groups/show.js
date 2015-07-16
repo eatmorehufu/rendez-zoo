@@ -3,11 +3,15 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   bannerTemplate: JST['groups/_banner'],
   tagName: "section",
 
+  events: {
+    "click button.join-leave-button": "joinOrLeave"
+  },
+
   initialize: function(options) {
     this._currentUser = options.currentUser;
     this.$el.addClass("group-show-main group");
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.currentUser, 'sync', this.render);
+    this.listenTo(this._currentUser, 'sync', this.render);
     this._subPage = options.subPage;
     options.subId && this.bindModels(options.subId);
   },
@@ -43,11 +47,17 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
       model: this.model,
       subPage: this._subPage,
-      subModel: this._subModel
+      subModel: this._subModel,
+      currentUser: this._currentUser
     });
 
     this.$el.append(groupShowMainView.render().$el);
 
     return this;
+  },
+
+  joinOrLeave: function(event) {
+    event.preventDefault();
+    alert("you pushed me!");
   }
 })

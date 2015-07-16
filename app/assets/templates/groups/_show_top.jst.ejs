@@ -1,9 +1,21 @@
+<% if (group.groupOrganizers().get(currentUser.id) ||  group.groupMembers().get(currentUser.id)) {%>
+<% var buttonText = "Leave" %>
+<% var buttonData = "leave" %>
+<% } else { %>
+<% var buttonText = "Join" %>
+<% var buttonData = "join" %>
+<% } %>
+
 <section id="group-show-top">
   Group description: group.description
   <nav class="group-show-top-nav">
     <div class="member-thumbs" data-event="all">
       Member thumbnails here in Backbone
     </div>
-    <button class="join-leave-button">Join or Leave</button>
+    <button
+      class="join-leave-button"
+      data-membership-toggle="<%= buttonData %>">
+      <%= buttonText %>
+    </button>
   </nav>
 </section>

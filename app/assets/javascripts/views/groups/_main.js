@@ -13,6 +13,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.$el.addClass("group-main");
     this._subPage = options.subPage;
     this._subModel = options.subModel;
+    this._currentUser = options.currentUser;
   },
 
   render: function() {
@@ -30,7 +31,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-        var mainTop = this.templateTop({ group: this.model });
+        var mainTop = this.templateTop({ group: this.model, currentUser: this._currentUser });
         if (this._subPage === "upcoming") {
 
         } else if (this._subPage === "past") {

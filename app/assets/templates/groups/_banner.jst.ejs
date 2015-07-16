@@ -1,3 +1,11 @@
+<% if (group.groupOrganizers().get(currentUser.id) ||  group.groupMembers().get(currentUser.id)) {%>
+<% var buttonText = "Leave" %>
+<% var buttonData = "leave" %>
+<% } else { %>
+<% var buttonText = "Join" %>
+<% var buttonData = "join" %>
+<% } %>
+
 <header id="group-banner" class="group">
   I am the group splash banner.
   Group name: <%= group.escape("title") %>
@@ -7,10 +15,14 @@
     <li><a href="/#/groups/<%= group.id %>/members">Members</a></li>
     <li><a href="/#/groups/<%= group.id %>/photos">Photos</a></li>
   </ul>
-  <ul class="group-banner-buttons">
+  <div class="group-banner-buttons">
     <% if (currentUser && currentUser.id === group.get("owner_id")) {%>
-      <li><a href="/#/groups/<%= group.id %>/events/new">Add event!<a></li>
-    <% }; %>
-    <li><button class="join-leave-button">Join or Leave</button></li>
-  </ul>
+      <a href="/#/groups/<%= group.id %>/events/new">Add event!<a>
+    <% } %>
+    <button
+      class="join-leave-button"
+      data-membership-toggle="<%= buttonData %>">
+      <%= buttonText %>
+    </button>
+  </div>
 </header>
