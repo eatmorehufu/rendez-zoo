@@ -1,28 +1,6 @@
-<% nav_url_a = logged_in? ? "#" : new_user_url %>
-<% nav_url_b = logged_in? ? "#" : new_session_url %>
-<% nav_text_a = logged_in? ? "Profile Menu" : "Sign Up"%>
-<% nav_text_b = logged_in? ? "Notifications" : "Log In" %>
-
-
 <header class="navigation-header">
   <div class="nav-bar group">
-    <ul class="left-header-nav group">
-      <li><a href="<%= root_url %>">Logo</a></li>
-      <li><a href="#"><strong>Find</strong><small>a Rendez-Zoo Group</small></a></li>
-      <li><a href="<%= new_group_url %>"><strong>Start</strong><small> a Rendez-Zoo group</small></a></li>
-    </ul>
-
-    <ul class="right-header-nav group">
-      <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
-      <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
-      <li><a href="#">Menu</a></li>
-      <% if logged_in? %>
-      <form action="<%= session_url(current_sesh)%>" method="POST">
-        <%= user_auth_token %>
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Log Out</button>
-      </form>
-      <% end %>
-    </ul>
-  </div>
+      <a href="<%= root_url %>">Logo</a>
+      <h1>Sign Up</h1>
+  </li>
 </header>

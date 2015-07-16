@@ -1,13 +1,29 @@
+<header class="navigation-header">
+  <div class="sign-up-in">
+    <a href="<%= root_url %>"><%= image_tag 'rendez-zoo-logo.jpeg' %></a>
+    <h1>Sign Up</h1>
+  </div>
+</header>
+
 <form class="new-user" action="<%=users_url%>" method="POST">
   <%= user_auth_token %>
-  <label>Email
-    <input type="text" name="user[email]">
-  </label>
-  <label>Username
+  <h1>Welcome to Rendez-Zoo!</h1>
+  <label>Your name (this is public)
     <input type="text" name="user[username]">
+  </label>
+  <label>Email address
+    <input type="text" name="user[email]">
   </label>
   <label>Password
     <input type="password" name="user[password]">
   </label>
-  <button>Create New User</button>
+  <button>Sign Up</button>
+
+  <small class="fine-print">By clicking "Sign up", you confirm that you accept
+    nothing, no terms or privacy policy.</small>
+
 </form>
+
+<footer>
+  Already a member? <a href="<%= new_session_url %>">Log In</a>
+</footer>
