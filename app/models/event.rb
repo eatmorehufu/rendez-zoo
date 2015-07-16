@@ -30,7 +30,8 @@ class Event < ActiveRecord::Base
   private
 
   def future_start_time
-    if self.created_at > self.start_time
+    if (self.created_at && self.created_at > self.start_time) ||
+      (!self.created_at && Time.now > self.start_time)
       errors.add(:start_time, "can't be in the past.")
     end
   end
