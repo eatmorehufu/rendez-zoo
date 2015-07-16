@@ -10,7 +10,7 @@ module Api
     end
 
     def create
-      user = User.find_by_Credentials(
+      user = User.find_by_credentials(
         params[:user][:email],
         params[:user][:password]
       )

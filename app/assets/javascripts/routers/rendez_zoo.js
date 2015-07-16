@@ -84,7 +84,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
       model: newUser
     })
 
-    this._swapView(formView)
+    this._swapViews(formView)
   },
 
   signIn: function(callback) {
@@ -94,7 +94,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
       callback: callback
     });
 
-    this._swapView(signInView)
+    this._swapViews(signInView)
   },
 
   _requireSignedIn: function(callback){

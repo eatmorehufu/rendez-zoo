@@ -14,7 +14,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.$el.addClass("group-main");
     this.subPage = options.subPage;
     this.subModel = options.subModel;
-    this.currentUser = options.currentUser;
   },
 
   render: function() {
@@ -32,7 +31,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-        var mainTop = this.templateTop({ group: this.model, currentUser: this.currentUser });
+        var mainTop = this.templateTop({ group: this.model, currentUser: RendezZoo.currentUser });
         if (this.subPage === "upcoming") {
 
         } else if (this.subPage === "past") {
@@ -66,17 +65,17 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   toggleRSVP: function(event){
     event.preventDefault();
-    if (this.currentUser.isNew()) {
+    if (RendezZoo.currentUser.isNew()) {
       alert("please sign in!");
-    } else if (this.subModel.attendees().get(this.currentUser.id)) {
+    } else if (this.subModel.attendees().get(RendezZoo.currentUser.id)) {
       $.ajax({
         url: "/api/events/" + this.subModel.id + "/unrsvp",
         dataType: 'json',
         type: "DELETE",
         success: function(result){
           alert("No longer attending the event!")
-          this.subModel.attendees().remove(this.currentUser)
-          this.currentUser.rsvpEvents().remove(this.subModel)
+          this.subModel.attendees().remove(RendezZoo.currentUser)
+          RendezZoo.currentUser.rsvpEvents().remove(this.subModel)
           this.render();
         }.bind(this)
       });
@@ -87,8 +86,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         type: "POST",
         success: function(result){
           alert("Attending the event!")
-          this.subModel.attendees().add(this.currentUser)
-          this.currentUser.rsvpEvents().add(this.subModel)
+          this.subModel.attendees().add(RendezZoo.currentUser)
+          RendezZoo.currentUser.rsvpEvents().add(this.subModel)
           this.render();
         }.bind(this)
       })

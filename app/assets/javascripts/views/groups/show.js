@@ -8,10 +8,9 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   initialize: function(options) {
-    this.currentUser = options.currentUser;
     this.$el.addClass("group-show-main group");
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.currentUser, 'sync', this.render);
+    this.listenTo(RendezZoo.currentUser, 'sync', this.render);
     this.subPage = options.subPage;
     options.subId && this.bindModels(options.subId);
   },
@@ -29,7 +28,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     this.$el.html(content);
     var bannercontent = this.bannerTemplate({
       group: this.model,
-      currentUser: this.currentUser
+      currentUser: RendezZoo.currentUser
     });
     this.$el.prepend(bannercontent);
 
@@ -48,7 +47,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       model: this.model,
       subPage: this.subPage,
       subModel: this.subModel,
-      currentUser: this.currentUser
+      currentUser: RendezZoo.currentUser
     });
 
     this.$el.append(groupShowMainView.render().$el);
@@ -58,21 +57,21 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
 
   joinOrLeave: function(event) {
     event.preventDefault();
-    if (this.currentUser.isNew()) {
+    if (RendezZoo.currentUser.isNew()) {
       alert("please sign in!");
-    } else if (this.model.get('owner_id') === this.currentUser.id) {
+    } else if (this.model.get('owner_id') === RendezZoo.currentUser.id) {
       alert("Can't leave a group you own or organize!");
-    } else if (this.model.groupOrganizers().get(this.currentUser.id)) {
+    } else if (this.model.groupOrganizers().get(RendezZoo.currentUser.id)) {
       alert("Consider resigning from the organizer position first?");
-    } else if (this.model.groupMembers().get(this.currentUser.id)) {
+    } else if (this.model.groupMembers().get(RendezZoo.currentUser.id)) {
       $.ajax({
         url: "/api/groups/" + this.model.id + "/leave",
         dataType: 'json',
         type: "DELETE",
         success: function(result){
           alert("Left the group!")
-          this.model.groupMembers().remove(this.currentUser)
-          this.currentUser.memberGroups().remove(this.model)
+          this.model.groupMembers().remove(RendezZoo.currentUser)
+          RendezZoo.currentUser.memberGroups().remove(this.model)
           this.render();
         }.bind(this)
       });
@@ -83,8 +82,8 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         type: "POST",
         success: function(result){
           alert("Joined the group!")
-          this.model.groupMembers().add(this.currentUser)
-          this.currentUser.memberGroups().add(this.model)
+          this.model.groupMembers().add(RendezZoo.currentUser)
+          RendezZoo.currentUser.memberGroups().add(this.model)
           this.render();
         }.bind(this)
       })
