@@ -24,7 +24,17 @@ module Api
     end
 
     def leave
+      @group = current_user.member_groups.find(params[:group_id])
+      @group.members.destroy(current_user)
 
+      render :show
+    end
+
+    def join
+      @group = Group.find(params[:group_id])
+      GroupMembership.create!(group_id: @group.id, member_id: current_user.id)
+
+      render :show
     end
 
     private

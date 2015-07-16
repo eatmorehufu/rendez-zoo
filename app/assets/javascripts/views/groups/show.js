@@ -71,10 +71,21 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         type: "DELETE",
         success: function(result){
           alert("Left the group!")
-        }
+          this.model.groupMembers().remove(this.currentUser)
+          this.render();
+        }.bind(this)
       });
     } else {
-
+      $.ajax({
+        url: "/api/groups/" + this.model.id + "/join",
+        dataType: 'json',
+        type: "POST",
+        success: function(result){
+          alert("Joined the group!")
+          this.model.groupMembers().add(this.currentUser)
+          this.render();
+        }.bind(this)
+      })
     }
   }
 })

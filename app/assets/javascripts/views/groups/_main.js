@@ -6,7 +6,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "submit .new-event-form": "newEvent"
+    "submit .new-event-form": "newEvent",
+    "click .rsvp-button": "toggleRSVP"
   },
 
   initialize: function(options){
