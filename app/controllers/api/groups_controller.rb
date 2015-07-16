@@ -2,7 +2,7 @@ module Api
   class GroupsController < ApplicationController
 
     def show
-      @group = Group.includes(:events, :members).find(params[:id])
+      @group = Group.includes(:events, :members, :organizers).find(params[:id])
 
       render :show
     end
