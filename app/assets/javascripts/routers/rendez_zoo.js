@@ -2,10 +2,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl
 
-    this._currentUser.fetch();
-    this._headerView = new RendezZoo.Views.Header({
-      currentUser: this._currentUser
-    })
+    RendezZoo.currentUser.fetch();
+    this._headerView = new RendezZoo.Views.Header()
     this.$rootEl.find(".navigation-header").html(this._headerView.render().$el);
   },
 

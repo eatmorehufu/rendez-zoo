@@ -6,9 +6,8 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
   },
 
   initialize: function(options){
-    this._currentUser = options.currentUser;
     this.$el.addClass("nav-bar group");
-    this.listenTo(this._currentUser, 'sync destroy', this.render)
+    this.listenTo(RendezZoo.currentUser, 'sync destroy', this.render)
   },
 
   render: function() {
