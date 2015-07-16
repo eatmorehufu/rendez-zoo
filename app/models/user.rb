@@ -29,7 +29,11 @@ class User < ActiveRecord::Base
     class_name: "GroupMembership",
     foreign_key: :member_id
 
-  has_many :event_attendances
+  has_many :event_attendances,
+    class_name: "EventAttendance",
+    foreign_key: :attendant_id,
+    inverse_of: :attendee
+    
   has_many :events, through: :event_attendances, source: :event
 
   has_many :member_groups, through: :group_memberships, source: :group

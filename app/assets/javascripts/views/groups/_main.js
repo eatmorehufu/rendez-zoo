@@ -12,19 +12,18 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.$el.addClass("group-main");
-    this._subPage = options.subPage;
-    this._subModel = options.subModel;
-    this._currentUser = options.currentUser;
+    this.subPage = options.subPage;
+    this.subModel = options.subModel;
+    this.currentUser = options.currentUser;
   },
 
   render: function() {
-    switch (this._subPage) {
+    switch (this.subPage) {
       case "newEvent":
         var mainTop = this.newEventTemplate();
         break;
       case "eventDetail":
-        this._subModel.fetch();
-        var mainTop = this.eventDetailTemplate({ groupEvent: this._subModel });
+        var mainTop = this.eventDetailTemplate({ groupEvent: this.subModel });
         break;
       case "memberIndex":
         var mainTop = this.memberIndex();
@@ -33,10 +32,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-        var mainTop = this.templateTop({ group: this.model, currentUser: this._currentUser });
-        if (this._subPage === "upcoming") {
+        var mainTop = this.templateTop({ group: this.model, currentUser: this.currentUser });
+        if (this.subPage === "upcoming") {
 
-        } else if (this._subPage === "past") {
+        } else if (this.subPage === "past") {
 
         } else {
           var mainBottom = this.templateBottom({ group: this.model });
@@ -69,25 +68,27 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     event.preventDefault();
     if (!this.currentUser) {
       alert("please sign in!");
-    } else if (this._subModel.attendees().get(this.currentUser.id)) {
+    } else if (this.subModel.attendees().get(this.currentUser.id)) {
       $.ajax({
-        url: "/api/events/" + this.model.id + "/unrsvp",
+        url: "/api/events/" + this.subModel.id + "/unrsvp",
         dataType: 'json',
         type: "DELETE",
         success: function(result){
           alert("No longer attending the event!")
-          this._subModel.attendees().remove(this.currentUser)
+          this.subModel.attendees().remove(this.currentUser)
+          this.currentUser.rsvpEvents().remove(this.subModel)
           this.render();
         }.bind(this)
       });
     } else {
       $.ajax({
-        url: "/api/events/" + this.model.id + "/rsvp",
+        url: "/api/events/" + this.subModel.id + "/rsvp",
         dataType: 'json',
         type: "POST",
         success: function(result){
           alert("Attending the event!")
-          this.model.groupMembers().add(this.currentUser)
+          this.subModel.attendees().add(this.currentUser)
+          this.currentUser.rsvpEvents().add(this.subModel)
           this.render();
         }.bind(this)
       })

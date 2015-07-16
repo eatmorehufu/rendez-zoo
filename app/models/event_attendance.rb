@@ -16,7 +16,8 @@ class EventAttendance < ActiveRecord::Base
   belongs_to :attendee,
     class_name: "User",
     foreign_key: :attendant_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :event_attendances
 
-  belongs_to :event
+  belongs_to :event, inverse_of: :event_attendances
 end

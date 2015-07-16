@@ -23,11 +23,17 @@ module Api
     end
 
     def rsvp
+      @event = Event.find(params[:event_id])
+      @event.attendee_ids = @event.attendee_ids.concat([current_user.id])
 
+      render :show
     end
 
     def unrsvp
+      @event = current_user.events.find(params[:event_id])
+      @event.attendee_ids = @event.attendee_ids - [current_user.id]
 
+      render :show
     end
 
     private

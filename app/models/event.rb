@@ -21,6 +21,6 @@ class Event < ActiveRecord::Base
   validates :group_id, :start_time, :title, :description, presence: true
 
   belongs_to :group
-  has_many :event_attendances
+  has_many :event_attendances, inverse_of: :event
   has_many :attendees, through: :event_attendances, source: :attendee
 end
