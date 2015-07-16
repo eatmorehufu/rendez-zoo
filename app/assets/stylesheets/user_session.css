@@ -36,6 +36,7 @@
 .new-user label {
   display: block;
   padding: 15px 0px;
+  border-bottom: 1px solid #eee;
 }
 
 .new-user label:hover {
@@ -63,4 +64,22 @@
   color: white;
   padding: 15px;
   border-radius: 5px;
+}
+
+.new-user button:hover {
+  cursor: pointer;
+  background: #E3000A;
+}
+
+.new-user footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.new-user footer > a{
+  color: blue;
+}
+
+.new-user footer > a >small{
+  color: black
 }

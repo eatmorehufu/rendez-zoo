@@ -7,6 +7,7 @@
 <section class="new-user group">
   <form  action="<%=users_url%>" method="POST">
     <%= user_auth_token %>
+    <h1 class="errors"><%= flash[:errors] %></h1>
     <label><h3>Your name (this is public)</h3>
       <input type="text" name="user[username]">
     </label>
@@ -19,7 +20,7 @@
     <button>Sign Up</button>
 
     <footer>
-      Already a member? <a href="<%= new_session_url %>">Log In</a>
+      <a href="<%= new_session_url %>"><small>Already a member?</small> Log In</a>
     </footer>
   </form>
 
