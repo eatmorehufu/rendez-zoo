@@ -72,6 +72,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         success: function(result){
           alert("Left the group!")
           this.model.groupMembers().remove(this.currentUser)
+          this.currentUser.memberGroups().remove(this.model)
           this.render();
         }.bind(this)
       });
@@ -83,6 +84,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         success: function(result){
           alert("Joined the group!")
           this.model.groupMembers().add(this.currentUser)
+          this.currentUser.memberGroups().add(this.model)
           this.render();
         }.bind(this)
       })

@@ -71,22 +71,22 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       alert("please sign in!");
     } else if (this._subModel.attendees().get(this.currentUser.id)) {
       $.ajax({
-        url: "/api/groups/" + this.model.id + "/leave",
+        url: "/api/events/" + this.model.id + "/unrsvp",
         dataType: 'json',
         type: "DELETE",
         success: function(result){
-          alert("Left the group!")
-          this.model.groupMembers().remove(this.currentUser)
+          alert("No longer attending the event!")
+          this._subModel.attendees().remove(this.currentUser)
           this.render();
         }.bind(this)
       });
     } else {
       $.ajax({
-        url: "/api/groups/" + this.model.id + "/join",
+        url: "/api/events/" + this.model.id + "/rsvp",
         dataType: 'json',
         type: "POST",
         success: function(result){
-          alert("Joined the group!")
+          alert("Attending the event!")
           this.model.groupMembers().add(this.currentUser)
           this.render();
         }.bind(this)

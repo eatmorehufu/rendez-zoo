@@ -4,8 +4,10 @@ RendezZoo.Models.CurrentUser = Backbone.Model.extend({
   parse: function(response) {
     response.memberGroups && this.memberGroups().set(response.memberGroups);
     response.organizerGroups && this.organizerGroups().set(response.organizerGroups);
+    response.rsvpEvents && this.rsvpEvents().set(response.rsvpEvents);
 
     delete response.memberGroups;
+    delete response.rsvpEvents;
     delete response.organizerGroups;
 
     return response;
@@ -25,5 +27,13 @@ RendezZoo.Models.CurrentUser = Backbone.Model.extend({
     }
 
     return this._organizerGroups
+  },
+
+  rsvpEvents: function() {
+    if (!this._rsvpEvents) {
+      this._rsvpEvents = new RendezZoo.Collections.Events({ member: this })
+    }
+
+    return this._rsvpEvents
   }
 })
