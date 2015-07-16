@@ -23,6 +23,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.newEventTemplate();
         break;
       case "eventDetail":
+        this._subModel.fetch();
         var mainTop = this.eventDetailTemplate({ groupEvent: this._subModel });
         break;
       case "memberIndex":
@@ -62,6 +63,35 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         alert("whoops");
       }
     })
+  },
+
+  toggleRSVP: function(event){
+    event.preventDefault();
+    if (!this.currentUser) {
+      alert("please sign in!");
+    } else if (this._subModel.attendees().get(this.currentUser.id)) {
+      $.ajax({
+        url: "/api/groups/" + this.model.id + "/leave",
+        dataType: 'json',
+        type: "DELETE",
+        success: function(result){
+          alert("Left the group!")
+          this.model.groupMembers().remove(this.currentUser)
+          this.render();
+        }.bind(this)
+      });
+    } else {
+      $.ajax({
+        url: "/api/groups/" + this.model.id + "/join",
+        dataType: 'json',
+        type: "POST",
+        success: function(result){
+          alert("Joined the group!")
+          this.model.groupMembers().add(this.currentUser)
+          this.render();
+        }.bind(this)
+      })
+    }
   },
 
   upcomingEvents: function(){

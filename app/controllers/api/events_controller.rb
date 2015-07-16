@@ -15,10 +15,18 @@ module Api
     end
 
     def show
-      @event = Event.includes(:group).find(params[:id])
+      @event = Event.includes(:attendees).find(params[:id])
     end
 
     def index
+
+    end
+
+    def rsvp
+
+    end
+
+    def unrsvp
 
     end
 
