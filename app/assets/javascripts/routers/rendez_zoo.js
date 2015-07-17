@@ -1,9 +1,9 @@
 RendezZoo.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
-    this.$rootEl = options.$rootEl
+    this.$rootEl = options.$rootEl;
 
     RendezZoo.currentUser.fetch();
-    this._headerView = new RendezZoo.Views.Header()
+    this._headerView = new RendezZoo.Views.Header();
     this.$rootEl.find(".navigation-header").html(this._headerView.render().$el);
   },
 
@@ -29,7 +29,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newGroup: function (){
-    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; }
+    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; };
     var newGroup = new RendezZoo.Models.Group();
     var newGroupView = new RendezZoo.Views.NewGroup({ model: newGroup });
 
@@ -47,7 +47,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newEvent: function (id) {
-    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; }
+    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; };
 
     var group = RendezZoo.groups.getOrFetch(id);
     var groupShowView = new RendezZoo.Views.GroupShow({
@@ -80,19 +80,19 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newUser: function () {
-    if (!this._requireSignedOut()) { return; }
-    var formView = new RendezZoo.Views.UsersForm({})
+    if (!this._requireSignedOut()) { return; };
+    var formView = new RendezZoo.Views.UsersForm({});
 
-    this._swapViews(formView)
+    this._swapViews(formView);
   },
 
   signIn: function(callback) {
-    if (!this._requireSignedOut(callback)) { return; }
+    if (!this._requireSignedOut(callback)) { return; };
     var signInView = new RendezZoo.Views.SignIn({
       callback: callback
     });
 
-    this._swapViews(signInView)
+    this._swapViews(signInView);
   },
 
   _requireSignedIn: function(callback){
@@ -100,7 +100,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     callback = callback || this._goHome.bind(this);
     this.signIn(callback);
     return false;
-  }
+  };
 
     return true;
   },
@@ -110,7 +110,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
       callback = callback || this._goHome.bind(this);
       callback();
       return false;
-    }
+    };
 
     return true;
   },

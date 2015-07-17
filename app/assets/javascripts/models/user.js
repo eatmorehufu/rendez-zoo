@@ -16,25 +16,25 @@ RendezZoo.Models.User = Backbone.Model.extend({
   memberGroups: function(){
     if (!this._memberGroups){
       this._memberGroups = new RendezZoo.Collections.Groups({ member: this });
-    }
+    };
 
     return this._memberGroups;
   },
 
   organizerGroups: function(){
     if (!this._organizerGroups) {
-      this._organizerGroups = new RendezZoo.Collections.Groups({ organizer: this })
-    }
+      this._organizerGroups = new RendezZoo.Collections.Groups({ organizer: this });
+    };
 
-    return this._organizerGroups
+    return this._organizerGroups;
   },
 
   rsvpEvents: function() {
     if (!this._rsvpEvents) {
-      this._rsvpEvents = new RendezZoo.Collections.Events({ member: this })
+      this._rsvpEvents = new RendezZoo.Collections.Events({ member: this });
     }
 
-    return this._rsvpEvents
+    return this._rsvpEvents;
   }
 })
 
@@ -73,7 +73,7 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
   },
 
   signOut: function(options){
-    var model=this;
+    var model = this;
     $.ajax({
       url: this.url,
       type: "DELETE",
@@ -89,7 +89,7 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
     if (this.isSignedIn()){
       RendezZoo.currentUser.trigger("signIn");
     } else {
-      RendezZoo.currentUser.trigger("signOut")
+      RendezZoo.currentUser.trigger("signOut");
     }
   },
 
