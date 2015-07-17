@@ -1,6 +1,7 @@
 module Api
   class EventsController < ApplicationController
     def create
+      debugger
       @event = Event.includes(:group).new(event_params)
       if @event.group.organizers.include?(current_user) && @event.save
         @event.attendee_ids = [current_user.id]
@@ -41,16 +42,18 @@ module Api
 
     def event_params
       params.require(:event).permit(
-        :start_time,
+        :start_timepick,
         :group_id,
-        :end_time,
+        :end_timepick,
         :title,
         :description,
         :street1,
         :street2,
         :city,
         :state,
-        :zip_code
+        :zip_code,
+        :start_day,
+        :end_day
       )
     end
   end

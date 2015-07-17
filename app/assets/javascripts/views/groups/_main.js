@@ -31,7 +31,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-      
+
         if (
           this.model.groupOrganizers().get(RendezZoo.currentUser.id) ||
           this.model.groupMembers().get(RendezZoo.currentUser.id)
@@ -55,6 +55,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         }
     }
     this.$el.html(mainTop);
+    this.$(".datepicker").datepicker();
+    this.$(".timepicker").timepicker();
     mainBottom && this.$el.append(mainBottom);
 
     return this;
@@ -65,6 +67,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var testEvent = new RendezZoo.Models.Event();
     var attrs = $(event.currentTarget).serializeJSON().event;
     attrs.group_id = this.model.id;
+    debugger;
     testEvent.save(attrs, {
       success: function(){
         this.model.groupEvents().add(testEvent, { merge: true });

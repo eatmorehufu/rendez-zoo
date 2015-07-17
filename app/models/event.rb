@@ -22,12 +22,21 @@ class Event < ActiveRecord::Base
   validate :future_start_time
   validate :start_time_limit
   validate :end_time_limit
-
   belongs_to :group
   has_many :event_attendances, dependent: :destroy, inverse_of: :event
   has_many :attendees, through: :event_attendances, source: :attendee
+  after_initialize :parse_time
 
   private
+
+  def parse_time
+
+    if !self.start_time
+
+
+    end
+
+  end
 
   def future_start_time
     if (self.created_at && self.created_at > self.start_time) ||
