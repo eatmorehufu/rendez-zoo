@@ -2,6 +2,6 @@
   <ul>
     <% group.groupEvents().forEach(function(groupEvent){ %>
     <li><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%=groupEvent.escape('title')%></a></li>
-    <% }) %>
+    <% }); %>
   </ul>
 </section>

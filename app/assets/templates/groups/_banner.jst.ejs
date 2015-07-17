@@ -9,7 +9,7 @@
   <div class="group-banner-buttons">
     <% if (currentUser && currentUser.id === group.get("owner_id")) {%>
       <a href="/#/groups/<%= group.id %>/events/new">Add event!<a>
-    <% } %>
+    <% }; %>
     <button
       class="join-leave-button">
       <%= buttonText %>
