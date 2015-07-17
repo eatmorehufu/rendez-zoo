@@ -12,7 +12,7 @@ RendezZoo.Collections.Groups = Backbone.Collection.extend({
         success: function(){
           RendezZoo.groups.add(group, { merge: true });
         }.bind(this)
-      })
+      });
     }
 
     return group;

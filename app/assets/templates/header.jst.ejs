@@ -1,19 +1,5 @@
-<% var nav_url_a = loggedIn  ? "#" : "/#/users/new"; %>
-<% var nav_url_b = loggedIn ? "#" : "/#/session/new"; %>
-<% var nav_text_a = loggedIn ? "Profile Menu" : "Sign Up";%>
-<% var nav_text_b = loggedIn ? "Notifications" : "Log In"; %>
-
 <a href="#" class="logo"><img src="/images/rendez-zoo-logo.jpeg" alt="Rendez zoo logo"></a>
 <ul class="left-header-nav group">
   <li><a href="#"><strong>Find</strong><small>a Rendez-Zoo Group</small></a></li>
   <li><a href="/#/groups/new"><strong>Start</strong><small> a Rendez-Zoo group</small></a></li>
-</ul>
-
-<ul class="right-header-nav group">
-  <li><a href="<%= nav_url_a %>"><%= nav_text_a %></a></li>
-  <li><a href="<%= nav_url_b %>"><%= nav_text_b %></a></li>
-  <li><a href="#">Menu</a></li>
-  <% if (loggedIn) {%>
-    <button class="log-out">Log Out</button>
-  <% }%>
 </ul>

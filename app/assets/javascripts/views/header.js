@@ -1,5 +1,7 @@
 RendezZoo.Views.Header = Backbone.CompositeView.extend({
   template: JST['header'],
+  loggedInTemplate: JST['_logged_in_buttons'],
+  loggedOutTemplate: JST['_logged_out_buttons'],
 
   events: {
     "click .log-out": "logOut"
@@ -7,13 +9,17 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.$el.addClass("nav-bar group");
-    this.listenTo(RendezZoo.currentUser, 'signIn signOut sync destroy', this.render)
+    this.listenTo(RendezZoo.currentUser, 'signIn signOut sync destroy', this.render);
   },
 
   render: function() {
-    this.loggedIn = !(RendezZoo.currentUser.isNew());
-    var content = this.template({loggedIn: this.loggedIn});
+    var content = this.template({
+      loggedIn: this.loggedIn
+    });
+
+    var buttons = RendezZoo.currentUser.isSignedIn() ? this.loggedInTemplate() : this.loggedOutTemplate();
     this.$el.html(content);
+    this.$el.append(buttons);
     return this;
   },
 
