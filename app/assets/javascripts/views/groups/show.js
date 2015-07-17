@@ -74,9 +74,8 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       buttonText: buttonText,
       buttonActive: buttonActive
     }));
-
-    if (this.model.owner_id === RendezZoo.currentUser.id) {
-      this.$('.group-banner-buttons').prepend(this.editGroupLinkTemplate())
+    if (this.model.get('owner_id') === RendezZoo.currentUser.id) {
+      this.$('.group-banner-buttons').prepend(this.editGroupLinkTemplate({group: this.model}))
     }
   },
 

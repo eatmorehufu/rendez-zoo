@@ -28,18 +28,22 @@ class Event < ActiveRecord::Base
   after_initialize :parse_time
 
   def start_timepick=(timepick)
+    return if timepick == ""
     @start_timepick = timepick[0...-2] + " " + timepick[-2..-1]
   end
 
   def start_day=(day)
+    return if day == ""
     @start_day = day
   end
 
   def end_timepick=(timepick)
+    return if timepick == ""
     @end_timepick = timepick[0...-2] + " " + timepick[-2..-1]
   end
 
   def end_day=(day)
+    return if day == ""
     @end_day = day
   end
 
