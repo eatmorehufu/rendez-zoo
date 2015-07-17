@@ -18,7 +18,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   bindModels: function(subId) {
     if (this.subPage === "eventDetail") {
       this.subModel = this.model.groupEvents().getOrFetch(subId)
-    }
+    };
 
     this.listenTo(this.subModel, 'sync', this.render.bind(this));
   },
@@ -77,7 +77,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       this.leaveGroup();
     } else {
       this.joinGroup();
-    }
+    };
   },
 
   leaveGroup: function(){
@@ -105,6 +105,6 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         RendezZoo.currentUser.memberGroups().add(this.model)
         this.render();
       }.bind(this)
-    })
+    });
   }
 })

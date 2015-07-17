@@ -7,7 +7,7 @@ RendezZoo.Views.UsersForm = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.$el.addClass("new-user group");
-    this.callback = options.callback
+    this.callback = options.callback;
     this.listenTo(RendezZoo.currentUser, "signIn", this.signInCallBack);
   },
 
@@ -19,7 +19,7 @@ RendezZoo.Views.UsersForm = Backbone.CompositeView.extend({
 
   submit: function(event) {
     event.preventDefault();
-    var attrs = $(event.currentTarget).serializeJSON()
+    var attrs = $(event.currentTarget).serializeJSON();
     RendezZoo.currentUser.signUp(attrs);
   },
 
