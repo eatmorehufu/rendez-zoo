@@ -1,7 +1,6 @@
 RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   template: JST['groups/index'],
   memberTemplate: JST['groups/_member_groups'],
-  adminTemplate: JST['groups/_admin_groups'],
   indexTemplate: JST['groups/_index_groups'],
   tagName: "section",
 
@@ -17,10 +16,10 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
 
     if (RendezZoo.currentUser.isSignedIn()) {
       if (RendezZoo.currentUser.organizerGroups().length > 0) {
-        this.$el.append(this.adminTemplate({groups: RendezZoo.currentUser.organizerGroups()}));
+        this.$el.append(this.memberTemplate({groups: RendezZoo.currentUser.organizerGroups(), heading: "Your Admin Groups"}));
       }
       if (RendezZoo.currentUser.memberGroups().length > 0) {
-        this.$el.append(this.adminTemplate({groups: RendezZoo.currentUser.memberGroups()}));
+        this.$el.append(this.memberTemplate({groups: RendezZoo.currentUser.memberGroups(), heading: "Your Member Groups"}));
       }
     }
 
