@@ -27,13 +27,34 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :event_attendances, source: :attendee
   after_initialize :parse_time
 
+  def start_timepick=(timepick)
+    @start_timepick = timepick[0...-2] + " " + timepick[-2..-1]
+  end
+
+  def start_day=(day)
+    @start_day = day
+  end
+
+  def end_timepick=(timepick)
+    @end_timepick = timepick[0...-2] + " " + timepick[-2..-1]
+  end
+
+  def end_day=(day)
+    @end_day = day
+  end
+
   private
 
   def parse_time
+    if @start_day && @start_timepick
+      #"07/30/2015 2:00am"
+      starting_time = @start_day + "-" + @start_timepick
+      self.start_time = DateTime.strptime(starting_time, "%m/%d/%Y-%H:%M %p")
+    end
 
-    if !self.start_time
-
-
+    if @end_timepick && @end_day
+      ending_time = @end_day + "-" + @end_timepick
+      self.end_time = DateTime.strptime(ending_time, "%m/%d/%Y-%H:%M %p")
     end
 
   end

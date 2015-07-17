@@ -14,7 +14,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
 
   submitForm: function(event){
     event.preventDefault();
-    var attrs = $(event.currentTarget).serializeJSON().group;
+    var attrs = $(event.currentTarget).serializeJSON();
     this.model.save(attrs, {
       success: function(){
         RendezZoo.groups.add(this.model);

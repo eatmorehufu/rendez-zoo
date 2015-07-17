@@ -1,7 +1,6 @@
 module Api
   class EventsController < ApplicationController
-    def create
-      debugger
+    def create      
       @event = Event.includes(:group).new(event_params)
       if @event.group.organizers.include?(current_user) && @event.save
         @event.attendee_ids = [current_user.id]

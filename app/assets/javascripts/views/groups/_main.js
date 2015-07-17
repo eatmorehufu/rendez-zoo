@@ -65,8 +65,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   newEvent: function(event) {
     event.preventDefault();
     var testEvent = new RendezZoo.Models.Event();
-    var attrs = $(event.currentTarget).serializeJSON().event;
-    attrs.group_id = this.model.id;
+    var attrs = $(event.currentTarget).serializeJSON();
+    attrs.event.group_id = this.model.id;
     debugger;
     testEvent.save(attrs, {
       success: function(){
