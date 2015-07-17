@@ -3,10 +3,11 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   templateBottom: JST['groups/_show_bottom'],
   newEventTemplate: JST['events/_new'],
   eventDetailTemplate: JST['events/_show'],
+  groupEditTemplate: JST['groups/new'],
   tagName: "section",
 
   events: {
-    "submit .new-event-form": "newEvent",
+    "submit .event-form": "saveEvent",
     "click .rsvp-button": "toggleRSVP"
   },
 
@@ -19,7 +20,18 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   render: function() {
     switch (this.subPage) {
       case "newEvent":
-        var mainTop = this.newEventTemplate();
+        var heading = "Create a new Event"
+        var buttonText = "Create Event"
+        this.subModel = new RendezZoo.Models.Event();
+        var mainTop = this.newEventTemplate({groupEvent: this.subModel, buttonText: buttonText, heading: heading});
+        break;
+      case "editEvent":
+        var heading = "Edit Event"
+        var buttonText = "Edit Event"
+        var mainTop = this.newEventTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
+        break;
+      case "editGroup":
+        var mainTop = this.groupEditTemplate({ group: this.model })
         break;
       case "eventDetail":
         var mainTop = this.eventDetailTemplate({ groupEvent: this.subModel });
@@ -62,16 +74,14 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     return this;
   },
 
-  newEvent: function(event) {
+  saveEvent: function(event) {
     event.preventDefault();
-    var testEvent = new RendezZoo.Models.Event();
     var attrs = $(event.currentTarget).serializeJSON();
     attrs.event.group_id = this.model.id;
-    debugger;
-    testEvent.save(attrs, {
+    this.subModel.save(attrs, {
       success: function(){
-        this.model.groupEvents().add(testEvent, { merge: true });
-        Backbone.history.navigate("/groups/" + this.model.id + "/events/" + testEvent.id, { trigger: true });
+        this.model.groupEvents().add(this.subModel, { merge: true });
+        Backbone.history.navigate("/groups/" + this.model.id + "/events/" + this.subModel.id, { trigger: true });
       }.bind(this),
 
       fail: function(){

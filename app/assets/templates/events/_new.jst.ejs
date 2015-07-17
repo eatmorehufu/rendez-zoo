@@ -1,10 +1,10 @@
-<h1>Events#new</h1>
-<form class="new-event-form">
+<h1><%= heading %></h1>
+<form class="event-form">
   <label>Event Name!
-    <input type="text" name="event[title]">
+    <input type="text" name="event[title]" value="<%= groupEvent.escape("title") %>">
   </label>
   <label>Event Description
-    <textarea name="event[description]"></textarea>
+    <textarea name="event[description]"><%= groupEvent.escape("description")%></textarea>
   </label>
   <label>Event Start
     <input type="text" class="datepicker" name="event[start_day]">
@@ -16,22 +16,22 @@
   </label>
   <label>Address
     <label>Street Field 1:
-      <input type="text" name="event[street1]">
+      <input type="text" name="event[street1]" value="<%= groupEvent.escape('street1') %>">
     </label>
     <label>Street Field 2:
-      <input type="text" name="event[street2]">
+      <input type="text" name="event[street2]" value="<%= groupEvent.escape('street2') %>">
     </label>
     <label>City:
-      <input type="text" name="event[city]">
+      <input type="text" name="event[city]" value="<%= groupEvent.escape('city') %>">
     </label>
     <label>State:
-      <input type="text" name="event[state]">
+      <input type="text" name="event[state]" value="<%= groupEvent.escape('state') %>">
     </label>
     <label>Zip Code
-      <input type="text" name="event[zip_code]">
+      <input type="text" name="event[zip_code]" value="<%= groupEvent.escape('zip_code') %>">
     </label>
 
   </label>
 
-  <button>Add a new Event!</button>
+  <button><%= buttonText %></button>
 </form>

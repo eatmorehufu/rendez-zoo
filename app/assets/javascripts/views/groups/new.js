@@ -6,7 +6,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    var content = this.template();
+    var content = this.template({group: this.model});
     this.$el.html(content);
 
     return this;
