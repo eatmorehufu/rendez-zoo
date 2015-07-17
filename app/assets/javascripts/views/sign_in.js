@@ -7,7 +7,7 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.callback = options.callback;
-    this.listenTo(RendezZoo.currentUser, "signIn", this.signInCallback);
+    this.listenTo(RendezZoo.currentUser, "signIn sync", this.signInCallBack);
   },
 
   render: function() {
@@ -22,6 +22,8 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
     RendezZoo.currentUser.signIn({
       email: attrs.email,
       password: attrs.password,
+      success: function(){
+      },
       error: function() {
         alert("Wrong username/password combination. Please try again.");
       }
@@ -29,6 +31,7 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
   },
 
   signInCallBack: function(event) {
+    console.log("entering signInCallBack");
     if (this.callback) {
       this.callback();
     } else {

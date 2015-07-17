@@ -61,6 +61,7 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
       url: this.url,
       type: "POST",
       data: credentials,
+      dataType: 'json',
       success: function(data){
         model.set(data);
         options.success && options.success();
@@ -86,9 +87,9 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
 
   fireSessionEvent: function() {
     if (this.isSignedIn()){
-      this.trigger("signIn");
+      RendezZoo.currentUser.trigger("signIn");
     } else {
-      this.trigger("signOut")      
+      RendezZoo.currentUser.trigger("signOut")
     }
   }
 

@@ -7,18 +7,21 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.$el.addClass("nav-bar group");
-    this.listenTo(RendezZoo.currentUser, 'sync destroy', this.render)
+    this.listenTo(RendezZoo.currentUser, 'signIn signOut sync destroy', this.render)
   },
 
   render: function() {
-    this.loggedIn = !!(this._currentUser && this._currentUser.id);
+    this.loggedIn = !(RendezZoo.currentUser.isNew());
     var content = this.template({loggedIn: this.loggedIn});
     this.$el.html(content);
     return this;
   },
 
   logOut: function() {
-    this._currentUser.destroy();
-    this._currentUser.fetch();
+    RendezZoo.currentUser.signOut({
+      success: function(){
+        Backbone.history.navigate("", { trigger: true })
+      }
+    });
   }
 })
