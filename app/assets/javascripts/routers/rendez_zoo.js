@@ -47,7 +47,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newEvent: function (id) {
-    if (!this._requireSignedIn(this.newEvent.bind(this))) { return; };
+    if (!this._requireSignedIn(this.newEvent.bind(this, id))) { return; };
 
     var group = RendezZoo.groups.getOrFetch(id);
     var groupShowView = new RendezZoo.Views.GroupShow({
