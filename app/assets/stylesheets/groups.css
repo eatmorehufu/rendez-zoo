@@ -93,7 +93,7 @@
   width: 100%
 }
 
-#group-main {
+.group-main {
   display: block;
   float: right;
   background: darkgray;
@@ -106,7 +106,7 @@
 }
 
 .member-thumbs {
-  float: left;
+  display: block;
 }
 
 .group-show-top-nav button {
@@ -116,4 +116,8 @@
 #group-show-bottom {
   display: block;
   background: white;
+}
+
+.upcoming-navigation button, a {
+  float: left;
 }

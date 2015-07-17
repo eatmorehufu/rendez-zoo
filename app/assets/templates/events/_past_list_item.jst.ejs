@@ -1,0 +1,8 @@
+<li>
+  <h3><%= groupEvent.escape('start_time') %></h3>
+  <h2><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
+  <h2> attendees aaagh </h2>
+  <h3><%= groupEvent.attendees().length%> attended</h3>
+
+  <p><%= groupEvent.escape("description")%><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">See More</a></p>
+</li>

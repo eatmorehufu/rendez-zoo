@@ -1,0 +1,16 @@
+<li>
+  <section class="mini-event-main">
+    <h2><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
+    <h3>attendee list</h3>
+
+    <p><%= groupEvent.escape("description")%><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">See More</a></p>
+    <footer> Hosted By: Member</footer>
+  </section>
+
+  <section class="mini-event-sidebar">
+    <h2><%= groupEvent.escape('start_time') %></h2>
+    <button class="rsvp-button" data-groupEvent-id="<%=groupEvent.id%>">Join/RSVP</button>
+    <h3>Days until Event (Can I do this inside JST?)</h3>
+    <h3><%= groupEvent.attendees().length %></h3>
+  </section>
+</li>

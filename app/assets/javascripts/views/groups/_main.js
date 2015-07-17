@@ -4,6 +4,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   newEventTemplate: JST['events/_new'],
   eventDetailTemplate: JST['events/_show'],
   groupEditTemplate: JST['groups/new'],
+  upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
+  pastEventMiniTemplate: JST['events/_past_list_item'],
   tagName: "section",
 
   events: {
@@ -44,34 +46,34 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-
-        if (
-          this.model.groupOrganizers().get(RendezZoo.currentUser.id) ||
-          this.model.groupMembers().get(RendezZoo.currentUser.id)
-        ) {
-          var buttonText = "Leave";
-        } else {
-          var buttonText = "Join";
-        };
-
         var mainTop = this.templateTop({
           group: this.model,
           currentUser: RendezZoo.currentUser,
-          buttonText: buttonText
         });
-        if (this.subPage === "upcoming") {
-
-        } else if (this.subPage === "past") {
-
-        } else {
-          var mainBottom = this.templateBottom({ group: this.model });
-        }
+        var mainBottom = this.templateBottom({ group: this.model });
     }
+
     this.$el.html(mainTop);
+
+    if (mainBottom) {
+      this.$el.append(mainBottom);
+      this.model.groupEvents().forEach(function(groupEvent){
+        this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
+          group: this.model,
+          groupEvent: groupEvent
+        }))
+      }.bind(this))
+
+      this.model.groupEvents().forEach(function(groupEvent){
+        this.$('.past-events-mini').append(this.pastEventMiniTemplate({
+          group: this.model,
+          groupEvent: groupEvent
+        }))
+      }.bind(this))
+    }
+
     this.$(".datepicker").datepicker();
     this.$(".timepicker").timepicker();
-    mainBottom && this.$el.append(mainBottom);
-
     return this;
   },
 
@@ -131,14 +133,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
       }.bind(this)
     })
-  },
-
-  upcomingEvents: function(){
-
-  },
-
-  pastEvents: function(){
-
   },
 
   memberIndex: function() {
