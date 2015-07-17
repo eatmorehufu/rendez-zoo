@@ -8,7 +8,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   events: {
     "submit .event-form": "saveEvent",
-    "click .rsvp-button": "toggleRSVP"
+    "click .rsvp-button": "toggleRSVP",
+    "submit .group-form": "saveGroup"
   },
 
   initialize: function(options){
@@ -31,7 +32,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.newEventTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
         break;
       case "editGroup":
-        var mainTop = this.groupEditTemplate({ group: this.model })
+        var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
         break;
       case "eventDetail":
         var mainTop = this.eventDetailTemplate({ groupEvent: this.subModel });
@@ -119,6 +120,17 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         }.bind(this)
       })
     }
+  },
+
+  saveGroup: function(event){
+    event.preventDefault();
+    var attrs = $(event.currentTarget).serializeJSON();
+    this.model.save(attrs, {
+      success: function(){
+        RendezZoo.groups.add(this.model, { merge: true });
+        Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
+      }.bind(this)
+    })
   },
 
   upcomingEvents: function(){

@@ -2,6 +2,9 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   template: JST['groups/show'],
   bannerTemplate: JST['groups/_banner'],
   tagName: "section",
+  joinOrLeaveButtonTemplate: JST['groups/_join_button'],
+  addEventLinkTemplate: JST['events/_add_link'],
+  editGroupLinkTemplate: JST['groups/_edit_link'],
 
   events: {
     "click button.join-leave-button": "joinOrLeave"
@@ -26,21 +29,13 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template({ group: this.model });
     this.$el.html(content);
-    if (
-      this.model.groupOrganizers().get(RendezZoo.currentUser.id) ||
-      this.model.groupMembers().get(RendezZoo.currentUser.id)
-    ) {
-      var buttonText = "Leave";
-    } else {
-      var buttonText = "Join";
-    };
 
     var bannercontent = this.bannerTemplate({
       group: this.model,
       currentUser: RendezZoo.currentUser,
-      buttonText: buttonText
     });
     this.$el.prepend(bannercontent);
+    this.setBannerButtons();
 
     var sidebarTopView = new RendezZoo.Views.GroupSidebarTopSub({
       group: this.model
@@ -62,6 +57,27 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     this.$el.append(groupShowMainView.render().$el);
 
     return this;
+  },
+
+  setBannerButtons: function(){
+    if (this.model.groupOrganizers().get(RendezZoo.currentUser.id)){
+      var buttonActive = "disabled";
+      var buttonText = "Leave";
+      this.$('.group-banner-buttons').html(this.addEventLinkTemplate({ group: this.model }));
+    } else if (this.model.groupMembers().get(RendezZoo.currentUser.id)) {
+      var buttonText = "Leave";
+      var buttonActive = "";
+    } else {
+      var buttonText = "Join";
+    };
+    this.$('.group-banner-buttons').append(this.joinOrLeaveButtonTemplate({
+      buttonText: buttonText,
+      buttonActive: buttonActive
+    }));
+
+    if (this.model.owner_id === RendezZoo.currentUser.id) {
+      this.$('.group-banner-buttons').prepend(this.editGroupLinkTemplate())
+    }
   },
 
   joinOrLeave: function(event) {

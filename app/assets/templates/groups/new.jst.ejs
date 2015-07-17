@@ -1,5 +1,5 @@
-<h1>Groups#new</h1>
-<form class="create-new-group">
+<h1 class="create-new-group-title"><%= heading %></h1>
+<form class="group-form">
   <label>Group Name!
     <input type="text" name="group[title]" value="<%= group.escape('title') %>">
   </label>
@@ -10,5 +10,5 @@
     <input type="text" name="group[zip_code]" value="<%= group.escape('zip_code')%>">
   </label>
 
-  <button>Add New Group!</button>
+  <button><%= buttonText %></button>
 </form>

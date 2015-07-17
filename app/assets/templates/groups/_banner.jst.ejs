@@ -6,13 +6,6 @@
     <li><a href="/#/groups/<%= group.id %>/members">Members</a></li>
     <li><a href="/#/groups/<%= group.id %>/photos">Photos</a></li>
   </ul>
-  <div class="group-banner-buttons">
-    <% if (currentUser && currentUser.id === group.get("owner_id")) {%>
-      <a href="/#/groups/<%= group.id %>/events/new">Add event!<a>
-    <% }; %>
-    <button
-      class="join-leave-button">
-      <%= buttonText %>
-    </button>
-  </div>
+  <ul class="group-banner-buttons">
+  </ul>
 </header>
