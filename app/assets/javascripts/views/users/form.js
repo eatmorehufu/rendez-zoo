@@ -7,7 +7,10 @@ RendezZoo.Views.UsersForm = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.$el.addClass("new-user group");
+    this.callback = options.callback
+    this.listenTo(RendezZoo.currentUser, "signIn", this.signInCallBack);
   },
+
   render: function () {
     this.$el.html(this.template());
 
@@ -17,17 +20,14 @@ RendezZoo.Views.UsersForm = Backbone.CompositeView.extend({
   submit: function(event) {
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON()
-    console.log(attrs)
-    $.ajax({
-      url: "/api/users/",
-      type: "POST",
-      data: attrs,
-      dataType: 'json',
-      success: function(data){
-        RendezZoo.currentUser.set(data);
-      },
-      error: function(){
-      }
-    });
+    RendezZoo.currentUser.signUp(attrs);
+  },
+
+  signInCallBack: function(event) {
+    if (this.callback) {
+      this.callback();
+    } else {
+      Backbone.history.navigate("", { trigger: true });
+    }
   }
 })

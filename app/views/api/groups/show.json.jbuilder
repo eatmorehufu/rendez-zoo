@@ -7,12 +7,12 @@ end
 
 json.members do
   json.array! @group.members do |member|
-    json.partial! "/api/members/thumb", member: member
+    json.partial! "/api/users/thumb", user: member
   end
 end
 
 json.organizers do
   json.array! @group.organizers do |organizer|
-    json.partial! "/api/members/thumb", member: organizer
+    json.partial! "/api/users/thumb", user: organizer
   end
 end

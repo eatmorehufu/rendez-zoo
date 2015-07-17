@@ -91,6 +91,20 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
     } else {
       RendezZoo.currentUser.trigger("signOut")
     }
+  },
+
+  signUp: function(options) {
+    $.ajax({
+      url: "/api/users/",
+      type: "POST",
+      data: options,
+      dataType: 'json',
+      success: function(data){
+        RendezZoo.currentUser.set(data);
+      },
+      error: function(){
+      }
+    });
   }
 
 })

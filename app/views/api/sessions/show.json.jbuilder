@@ -1,1 +1,1 @@
-json.partial! "/api/members/thumb", member: current_user
+json.partial! "/api/users/deep_show", user: current_user
