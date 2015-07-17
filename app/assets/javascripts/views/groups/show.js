@@ -26,9 +26,19 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template({ group: this.model });
     this.$el.html(content);
+    if (
+      this.model.groupOrganizers().get(RendezZoo.currentUser.id) ||
+      this.model.groupMembers().get(RendezZoo.currentUser.id)
+    ) {
+      var buttonText = "Leave";
+    } else {
+      var buttonText = "Join";
+    };
+
     var bannercontent = this.bannerTemplate({
       group: this.model,
-      currentUser: RendezZoo.currentUser
+      currentUser: RendezZoo.currentUser,
+      buttonText: buttonText
     });
     this.$el.prepend(bannercontent);
 

@@ -1,15 +1,6 @@
-<% if (group.groupOrganizers().get(currentUser.id) ||  group.groupMembers().get(currentUser.id)) {%>
-<% var buttonText = "Leave"; %>
-<% var buttonData = "leave"; %>
-<% } else { %>
-<% var buttonText = "Join"; %>
-<% var buttonData = "join"; %>
-<% }; %>
-
 <header id="group-banner" class="group">
-  I am the group splash banner.
-  Group name: <%= group.escape("title") %>
   <div class="splash"></div>
+  Group name: <%= group.escape("title") %>
   <ul class="group-banner-nav group">
     <li><a href="/#/groups/<%= group.id %>">Home</a></li>
     <li><a href="/#/groups/<%= group.id %>/members">Members</a></li>
@@ -20,8 +11,7 @@
       <a href="/#/groups/<%= group.id %>/events/new">Add event!<a>
     <% } %>
     <button
-      class="join-leave-button"
-      data-membership-toggle="<%= buttonData %>">
+      class="join-leave-button">
       <%= buttonText %>
     </button>
   </div>

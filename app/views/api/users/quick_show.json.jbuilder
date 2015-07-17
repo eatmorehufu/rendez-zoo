@@ -1,1 +1,1 @@
-json.partial! @user("thumb", user: @user)
+json.partial! ("thumb", user: @user)

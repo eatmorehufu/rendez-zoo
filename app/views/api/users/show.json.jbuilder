@@ -1,1 +1,1 @@
-json.partial! @user, "deep_show", user: @user
+json.partial! "deep_show", user: @user
