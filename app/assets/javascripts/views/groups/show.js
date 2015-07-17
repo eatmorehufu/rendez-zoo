@@ -74,29 +74,37 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     } else if (this.model.groupOrganizers().get(RendezZoo.currentUser.id)) {
       alert("Consider resigning from the organizer position first?");
     } else if (this.model.groupMembers().get(RendezZoo.currentUser.id)) {
-      $.ajax({
-        url: "/api/groups/" + this.model.id + "/leave",
-        dataType: 'json',
-        type: "DELETE",
-        success: function(result){
-          alert("Left the group!")
-          this.model.groupMembers().remove(RendezZoo.currentUser)
-          RendezZoo.currentUser.memberGroups().remove(this.model)
-          this.render();
-        }.bind(this)
-      });
+      this.leaveGroup();
     } else {
-      $.ajax({
-        url: "/api/groups/" + this.model.id + "/join",
-        dataType: 'json',
-        type: "POST",
-        success: function(result){
-          alert("Joined the group!")
-          this.model.groupMembers().add(RendezZoo.currentUser)
-          RendezZoo.currentUser.memberGroups().add(this.model)
-          this.render();
-        }.bind(this)
-      })
+      this.joinGroup();
     }
+  },
+
+  leaveGroup: function(){
+    $.ajax({
+      url: "/api/groups/" + this.model.id + "/leave",
+      dataType: 'json',
+      type: "DELETE",
+      success: function(result){
+        alert("Left the group!")
+        this.model.groupMembers().remove(RendezZoo.currentUser)
+        RendezZoo.currentUser.memberGroups().remove(this.model)
+        this.render();
+      }.bind(this)
+    });
+  },
+
+  joinGroup: function (){
+    $.ajax({
+      url: "/api/groups/" + this.model.id + "/join",
+      dataType: 'json',
+      type: "POST",
+      success: function(result){
+        alert("Joined the group!")
+        this.model.groupMembers().add(RendezZoo.currentUser)
+        RendezZoo.currentUser.memberGroups().add(this.model)
+        this.render();
+      }.bind(this)
+    })
   }
 })

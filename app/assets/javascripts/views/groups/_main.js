@@ -31,7 +31,21 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.memberDetail();
         break;
       default:
-        var mainTop = this.templateTop({ group: this.model, currentUser: RendezZoo.currentUser });
+      
+        if (
+          this.model.groupOrganizers().get(RendezZoo.currentUser.id) ||
+          this.model.groupMembers().get(RendezZoo.currentUser.id)
+        ) {
+          var buttonText = "Leave";
+        } else {
+          var buttonText = "Join";
+        };
+
+        var mainTop = this.templateTop({
+          group: this.model,
+          currentUser: RendezZoo.currentUser,
+          buttonText: buttonText
+        });
         if (this.subPage === "upcoming") {
 
         } else if (this.subPage === "past") {
