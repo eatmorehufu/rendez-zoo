@@ -29,6 +29,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newGroup: function (){
+    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; }
     var newGroup = new RendezZoo.Models.Group();
     var newGroupView = new RendezZoo.Views.NewGroup({ model: newGroup });
 
@@ -46,6 +47,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   newEvent: function (id) {
+    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; }
+    
     var group = RendezZoo.groups.getOrFetch(id);
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group,
@@ -89,7 +92,6 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
 
   signIn: function(callback) {
     if (!this._requireSignedOut(callback)) { return; }
-
     var signInView = new RendezZoo.Views.SignIn({
       callback: callback
     });
