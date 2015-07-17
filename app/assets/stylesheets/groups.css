@@ -3,6 +3,12 @@
   background: lightgray;
   margin: auto;
 }
+
+.groups-index .banner {
+  height: 300px;
+  display: block;
+}
+
 .groups-list > li {
   float: left;
   margin: 20px;

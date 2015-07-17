@@ -1,11 +1,13 @@
 RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
   template: JST['users/sign_in'],
+  tagName: "section",
 
   events: {
     "submit form.new-session": "signIn"
   },
 
   initialize: function(options){
+    this.$el.addClass("new-user group")
     this.callback = options.callback;
     this.listenTo(RendezZoo.currentUser, "signIn", this.signInCallBack);
   },
