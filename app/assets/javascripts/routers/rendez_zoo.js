@@ -13,6 +13,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     "session/new": "signIn",
     "groups/new": "newGroup",
     "groups/:id/events/new": "newEvent",
+    "groups/:id/edit": "editGroup",
+    "groups/:group_id/events/:event_id/edit" : "editEvent",
     "groups/:group_id/events/:event_id": "eventDetail",
     "groups/:id/members": "groupMemberIndex",
     "groups/:id/photos": "groupPhotoIndex",

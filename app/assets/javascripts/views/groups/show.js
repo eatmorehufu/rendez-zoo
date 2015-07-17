@@ -10,7 +10,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.$el.addClass("group-show-main group");
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(RendezZoo.currentUser, 'sync', this.render);
+    this.listenTo(RendezZoo.currentUser, 'signIn signOut', this.render);
     this.subPage = options.subPage;
     options.subId && this.bindModels(options.subId);
   },

@@ -79,6 +79,8 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
       type: "DELETE",
       dataType: "json",
       success: function(data) {
+        model.memberGroups().reset();
+        model.organizerGroups().reset();
         model.clear();
         options.success && options.success();
       }
