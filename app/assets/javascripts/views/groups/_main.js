@@ -3,7 +3,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   templateBottom: JST['groups/_show_bottom'],
   newEventTemplate: JST['events/_new'],
   eventDetailTemplate: JST['events/_show'],
-  groupEditTemplate: JST['groups/new'],
+  groupEditTemplate: JST['groups/_form'],
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
   tagName: "section",

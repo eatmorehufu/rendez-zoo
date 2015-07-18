@@ -204,3 +204,24 @@
   display: block;
   background: white;
 }
+
+.group-form-main {
+  padding: 20px;
+  width: 698px;
+  margin: auto;
+  background: white;
+  font-family: sans-serif;
+  border: 1px solid #ccc;
+}
+
+.group-form input {
+  display: block;
+}
+
+.group-form textarea {
+  display: block;
+}
+
+.group-form-title {
+  font-size: 40px;
+}
