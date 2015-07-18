@@ -4,7 +4,7 @@ RendezZoo.Views.GroupSidebarTopSub = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template({ group: this.model })
     this.$el.html(content);
-    
+
     return this;
   }
 })

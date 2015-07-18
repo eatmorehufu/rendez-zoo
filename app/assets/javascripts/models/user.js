@@ -2,7 +2,6 @@ RendezZoo.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users",
 
   parse: function(response) {
-    console.log(response);
     response.memberGroups && this.memberGroups().set(response.memberGroups);
     response.organizerGroups && this.organizerGroups().set(response.organizerGroups);
     response.rsvpEvents && this.rsvpEvents().set(response.rsvpEvents);

@@ -23,13 +23,12 @@
 
 #page-body {
   padding-top: 18px;
-  background: #1D1308;
+  background: lightgray;
 }
 
 .group-show-main {
-  width: 958px;
+  width: 960px;
   margin: auto;
-  background: lightblue;
 }
 
 #group-banner {
@@ -40,11 +39,6 @@
   background: #33241A;
   font-family: sans-serif;
   margin-bottom: 20px;
-}
-
-#group-banner .splash {
-  height: 115px;
-  display: block;
 }
 
 .group-banner-nav-bar {
@@ -86,16 +80,34 @@
   margin-top: 10px;
   display: block;
   text-align: center;
+  vertical-align: bottom;
   float: none;
   color: white;
   font-size: 40px;
-  height: 120px;
+  height: 100px;
+}
+
+#group-banner h1:after {
+  display: block;
+  content: "";
+  height: 10px;
+  background: white;
+  opacity: 0.7;
 }
 
 .group-sidebars {
   float: left;
   display: block;
-  width: 300px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  width: 178px;
+  padding: 20px 10px;
+}
+
+.group-sidebars li {
+  float: none;
+  display: block;
 }
 
 #sidebar-top {
@@ -104,7 +116,11 @@
 }
 
 .sidebar-top-details {
-  padding: 20px;
+}
+
+.sidebar-top-details img {
+  width: 178px;
+  display: block;
 }
 
 .sidebar-top-events-links {
@@ -133,7 +149,9 @@
   display: block;
   float: right;
   background: darkgray;
-  width: 660px;
+  border: 1px solid white;
+  border-radius: 3px;
+  width: 738px;
 }
 
 #group-show-top {
