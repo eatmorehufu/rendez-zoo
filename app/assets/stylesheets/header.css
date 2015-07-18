@@ -1,4 +1,5 @@
 .navigation-header {
+  font-family: sans-serif;
   background: white;
 }
 
@@ -16,7 +17,6 @@
 .navigation-header a {
   float: left;
   display: block;
-  background: white;
   margin-right: 10px;
 }
 
@@ -64,4 +64,28 @@
 
 .navigation-header .right-header-nav {
   float: right;
+}
+
+.right-header-nav > li > a{
+  padding: 9px 18px;
+  margin: 11px 5px;
+  font-weight: bold;
+}
+
+.sign-up-header-button {
+  color: white;
+  background: #F4001B;
+  border-radius: 3px;
+}
+
+.sign-up-header-button:hover{
+  background: #CA352B;
+}
+
+.log-in-header-button {
+  color: gray;
+}
+
+.log-in-header-button:hover{
+  color: #409BC7;
 }
