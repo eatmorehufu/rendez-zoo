@@ -64,3 +64,11 @@
 .new-user footer > a >small{
   color: black
 }
+
+.new-session {
+  font-family: sans-serif;
+}
+
+.new-session h1 {
+  font-size: 20px;
+}
