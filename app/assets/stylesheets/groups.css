@@ -1,5 +1,5 @@
 .groups-index {
-  width: 1000px;
+  width: 960px;
   background: lightgray;
   margin: auto;
 }
@@ -19,32 +19,51 @@
   height: 100px;
   width: 260px;
   padding: 10px;
-
 }
 
+#page-body {
+  padding-top: 18px;
+  background: #1D1308;
+}
 
 .group-show-main {
-  width: 960px;
+  width: 958px;
   margin: auto;
-  padding: 20px;
   background: lightblue;
 }
 
 #group-banner {
   display: block;
-  height: 200px;
+  height: 158px;
   border: 1px solid white;
   border-radius: 3px;
-  background: lightyellow;
+  background: #33241A;
+  font-family: sans-serif;
 }
 
 #group-banner .splash {
-  height: 150px;
+  height: 115px;
   display: block;
+}
+
+.group-banner-nav-bar {
+  background: white;
 }
 
 .group-banner-nav {
   float: left;
+  padding: 5px;
+}
+
+.group-banner-nav a {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: darkgray;
+}
+
+.group-banner-nav a:hover {
+  color: white;
+  background: #33241A;
 }
 
 .group-banner-buttons {
@@ -53,7 +72,15 @@
 
 #group-banner li {
   float: left;
-  padding: 10px;
+}
+
+#group-banner h1 > a{
+  display: block;
+  text-align: center;
+  float: none;
+  color: white;
+  font-size: 50px;
+  height: 120px;
 }
 
 .group-sidebars {
