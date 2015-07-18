@@ -96,13 +96,11 @@
 }
 
 .group-sidebars {
+  font-family: sans-serif;
   float: left;
   display: block;
-  background: white;
-  border: 1px solid white;
   border-radius: 3px;
-  width: 178px;
-  padding: 20px 10px;
+  width: 200px;
 }
 
 .group-sidebars li {
@@ -111,24 +109,57 @@
 }
 
 #sidebar-top {
+  background: white;
+  padding: 20px 10px;
   display: block;
-  background: pink;
+  margin-bottom: 20px;
+  border: 1px solid white;
 }
 
 .sidebar-top-details {
+  position: relative;
+}
+
+.sidebar-top-details a {
+  line-height: 30px;
+  padding-top: 10px;
 }
 
 .sidebar-top-details img {
-  width: 178px;
+  width: 100%;
+  height: auto;
   display: block;
 }
 
+.sidebar-top-details a:before{
+  top: -5px;
+  display: block;
+  content: "";
+  height: 1px;
+  background: #ccc;
+}
+
+
 .sidebar-top-events-links {
-  padding: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.sidebar-top-events-links li {
+  padding: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.sidebar-top-events-links .link-num {
+  float: right;
+}
+
+.sidebar-top-events-links .link-label {
+  float: left;
 }
 
 .sidebar-top-organizer {
-  padding: 20px;
+  margin: 10px;
 }
 
 #sidebar-categories {
@@ -137,7 +168,9 @@
 
 #sidebar-bottom {
   display: block;
-  background: lightgreen;
+  background: white;
+  border: 1px solid white;
+  padding: 20px 10px;
 }
 
 #group-banner {
@@ -170,8 +203,4 @@
 #group-show-bottom {
   display: block;
   background: white;
-}
-
-.upcoming-navigation button, a {
-  float: left;
 }

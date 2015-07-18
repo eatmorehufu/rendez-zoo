@@ -1,22 +1,29 @@
-<section id="sidebar-top">
-  <ul class="sidebar-top-details">
-    <li><img src="http://placecorgi.com/200/200"></li>
-    <li><a href="#"><%= group.get('zip_code') %></a></li>
-    <li><a href="#"><%= group.groupOrganizers().length + group.groupMembers().length %> member(s)</a></li>
-  </ul>
+<div class="sidebar-top-details">
+  <img src="http://placecorgi.com/200/200">
+  <a href="#"><%= group.get('zip_code') %></a>
+</div>
 
-  <ul class="sidebar-top-events-links">
-    <li><button>Upcoming Events</button></li>
-    <li><button>Past Events</button></li>
-    <li><a href="/#/groups/<%= group.id%>/calendar">Calendar Events</a></li>
-  </ul>
+<ul class="sidebar-top-events-links">
+  <li class="group"><a href="/#/groups/<%= group.id %>/members">
+    <span class="link-label">Members </span>
+    <span class="link-num"><%= group.groupOrganizers().length + group.groupMembers().length %></span>
+  </a></li>
+  <li class="group">
+    <span class="link-label">Upcoming Events</span>
+    <span class="link-num">num</span>
+  </li>
+  <li class="group">
+    <span class="link-label">Past Events</span>
+    <span class="link-num">num</span>
+  </li>
+  <li><a href="/#/groups/<%= group.id%>/calendar">Calendar Events</a></li>
+</ul>
 
-  <div class="sidebar-top-organizer">
-    <a href="#">Owner</a>
-  </div>
+<div class="sidebar-top-organizer">
+  <a href="#">Owner</a>
+</div>
 
 
-  <div id="sidebar-categories">
-    tags
-  </div>
-</section>
+<ul id="sidebar-categories">
+  tags
+</ul>
