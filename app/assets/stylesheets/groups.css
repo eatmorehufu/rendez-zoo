@@ -39,6 +39,7 @@
   border-radius: 3px;
   background: #33241A;
   font-family: sans-serif;
+  margin-bottom: 20px;
 }
 
 #group-banner .splash {
@@ -48,11 +49,18 @@
 
 .group-banner-nav-bar {
   background: white;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .group-banner-nav {
   float: left;
   padding: 5px;
+}
+
+.group-banner-nav .active{
+  color: white;
+  background: #33241A;
 }
 
 .group-banner-nav a {
@@ -75,11 +83,12 @@
 }
 
 #group-banner h1 > a{
+  margin-top: 10px;
   display: block;
   text-align: center;
   float: none;
   color: white;
-  font-size: 50px;
+  font-size: 40px;
   height: 120px;
 }
 

@@ -1,6 +1,7 @@
 .navigation-header {
   font-family: sans-serif;
   background: white;
+  border-bottom: 1px solid #ccc;
 }
 
 .nav-bar {
@@ -11,7 +12,7 @@
 
 .navigation-header li {
   float: left;
-  height: 60px;
+  height: 58px;
 }
 
 .navigation-header a {
@@ -49,6 +50,7 @@
 }
 
 .left-header-nav strong {
+  letter-spacing: 1px;
   font-weight: 700;
   display: block;
   color: #F4001B;
