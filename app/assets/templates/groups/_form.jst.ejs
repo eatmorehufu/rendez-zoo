@@ -1,12 +1,14 @@
-<h1 class="group-form-title"><%= heading %></h1>
+<div class="group-form-header">
+  <h1 class="group-form-title"><%= heading %></h1>
+</div>
 <form class="group-form">
-  <label>Group Name!
+  <label>What is your group's name?
     <input type="text" name="group[title]" value="<%= group.escape('title') %>">
   </label>
-  <label>Group Description
+  <label>What is your group about?
     <textarea name="group[description]"><%= group.escape("description") %></textarea>
   </label>
-  <label>Group Location (Zip)
+  <label>Where are you located? (zip code)
     <input type="text" name="group[zip_code]" value="<%= group.escape('zip_code')%>">
   </label>
 
