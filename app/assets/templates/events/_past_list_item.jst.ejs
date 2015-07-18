@@ -1,8 +1,9 @@
-<li>
-  <h3><%= groupEvent.escape('start_time') %></h3>
+<li class="past-event-list-item">
+  <h4><%= groupEvent.escape('start_time') %></h3>
   <h2><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
-  <h2> attendees aaagh </h2>
+  <div> attendees aaagh </div>
   <h3><%= groupEvent.attendees().length%> attended</h3>
 
-  <p><%= groupEvent.escape("description")%><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">See More</a></p>
+  <p><%= groupEvent.escape("description")%></p>
+  <small class="learn-more"><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">LEARN MORE</small>
 </li>

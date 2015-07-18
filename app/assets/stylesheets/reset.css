@@ -1,10 +1,11 @@
-html, body, main, section, h1, h2, h3,
+html, body, main, section, h1, h2, h3, h4,
 p, li, ul, div, span, strong,
 small, a, button, small, strong {
   color: inherit;
   border: 0;
   margin: 0;
   padding: 0;
+  outline: 0;
   font: inherit;
   text-decoration: none;
 }

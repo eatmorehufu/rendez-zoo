@@ -8,8 +8,11 @@
 }
 
 .upcoming-events-mini {
+  color: #333;
   padding: 10px;
-  margin: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
 .mini-event-list-item {
@@ -24,8 +27,10 @@
 }
 
 .past-events-mini {
+  color: #333;
   padding: 10px;
-  margin: 10px;
+  background: white;
+  border: 1px solid #ccc;
 }
 
 .mini-event-main:after{
@@ -45,7 +50,7 @@
   padding-left: 10px;
 }
 
-.mini-event-main small {
+.learn-more {
   font-size: 10px;
 }
 
@@ -70,4 +75,18 @@
 
 .mini-event-sidebar li {
   padding: 5px 0px;
+}
+
+.past-event-list-item {
+  font-family: sans-serif;
+}
+
+.past-event-list-item h4 {
+  font-size: 14px;
+}
+
+.past-event-list-item h2 {
+  font-size: 20px;
+  color: #409BC7;
+  font-weight: 300;
 }
