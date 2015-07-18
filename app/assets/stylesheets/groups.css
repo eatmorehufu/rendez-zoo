@@ -179,15 +179,16 @@
 .group-main {
   display: block;
   float: right;
-  background: darkgray;
-  border: 1px solid white;
-  border-radius: 3px;
-  width: 738px;
+  width: 740px;
 }
 
 #group-show-top {
+  border-radius: 3px;
+  border: 1px solid #ccc;
   display: block;
-  background: lightgray;
+  padding: 10px;
+  background: white;
+  margin-bottom: 20px;
 }
 
 .member-thumbs {
