@@ -223,3 +223,42 @@
 .group-form-title {
   font-size: 40px;
 }
+
+.group-banner-buttons {
+  padding: 5px;
+}
+.group-banner-buttons button {
+  position: relative;
+  background: #F4001B;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 0px 2px black;
+  margin-left: 5px;
+}
+
+.group-banner-buttons a {
+  background: #F4001B;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin: 0px 5px;
+}
+
+.group-banner-buttons a:hover {
+  background: #CA352B;
+}
+
+.group-banner-buttons .join-leave-button:active, {
+  top: 2px;
+  box-shadow: none;
+}
+
+.group-banner-buttons .join-leave-button:hover {
+  background: #CA352B;
+}
+
+.group-banner-buttons .join-leave-button:disabled {
+  background: gray;
+  box-shadow: none;
+}

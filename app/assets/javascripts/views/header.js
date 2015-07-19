@@ -17,7 +17,7 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
       loggedIn: this.loggedIn
     });
 
-    var buttons = RendezZoo.currentUser.isSignedIn() ? this.loggedInTemplate() : this.loggedOutTemplate();
+    var buttons = RendezZoo.currentUser.isSignedIn() ? this.loggedInTemplate({currentUser: RendezZoo.currentUser}) : this.loggedOutTemplate();
     this.$el.html(content);
     this.$el.append(buttons);
     return this;
