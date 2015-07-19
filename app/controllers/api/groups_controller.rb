@@ -50,7 +50,7 @@ module Api
     private
 
     def group_params
-      params.require(:group).permit(:title, :description, :zip_code, :owner_id)
+      params.require(:group).permit(:title, :description, :zip_code, :owner_id, :avatar)
     end
 
   end
