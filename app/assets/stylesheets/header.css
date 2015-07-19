@@ -91,3 +91,85 @@
 .log-in-header-button:hover{
   color: #409BC7;
 }
+
+.profile-menu {
+  position: relative;
+}
+
+.profile-menu > h3 {
+  margin-top: 7px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #F4001B;
+  border-radius: 3px;
+}
+
+.profile-menu > h3:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.profile-menu-items {
+  position: absolute;
+  width: 100px;
+  right: 0;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  box-shadow: 3px 3px 10px #888;
+  /*display: none;*/
+}
+
+.profile-menu-items:before, .profile-menu-items:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-top: 0;
+}
+
+.profile-menu-items:after {
+  top: -14px;
+  right: 0px;
+  border-bottom-color: white;
+  border-width: 15px;
+}
+.profile-menu-items:before {
+  top: -15px;
+  right: 0;
+  border-bottom-color: #ccc;
+  border-width: 15px;
+}
+
+
+.profile-menu-items > li {
+  border-bottom: 1px solid #ccc;
+  float: none;
+  height: auto;
+  background: white;
+  color: #555;
+}
+
+.profile-menu-items a, .profile-menu-items button{
+  color: inherit;
+  float: none;
+  display: block;
+  margin: 5px 0px;
+  padding: 10px 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-menu-items button:hover{
+  cursor: pointer;
+}
+
+.profile-menu-items > li:hover a, .profile-menu-items > li:hover button {
+  background: #F4001B;
+  color: white;
+}
+.profile-menu-items > .open {
+  display: block;
+}
