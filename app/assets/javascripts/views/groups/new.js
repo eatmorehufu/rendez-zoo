@@ -24,7 +24,8 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
     var attrs = $(event.currentTarget).serializeJSON();
     this.model.save(attrs, {
       success: function(){
-        RendezZoo.groups.add(this.model);
+        RendezZoo.groups.add(this.model, { merge: true });
+        RendezZoo.currentUser.organizerGroups().add(this.model, { merge: true });
         Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
       }.bind(this)
     })

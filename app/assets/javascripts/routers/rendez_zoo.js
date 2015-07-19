@@ -50,6 +50,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   editGroup: function(id){
+    console.log(RendezZoo.currentUser.organizerGroups());
     if (!this._requireSignedIn(this.editGroup.bind(this, id))) { return; };
     if (!RendezZoo.currentUser.organizerGroups().get(id)) { return; };
     var editGroup = RendezZoo.groups.getOrFetch(id);

@@ -21,6 +21,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   render: function() {
+    console.log("entering main render");
     switch (this.subPage) {
       case "newEvent":
         var heading = "Create a new Event"
@@ -34,6 +35,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.newEventTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
         break;
       case "editGroup":
+        console.log("entering edit group")
         var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
         break;
       case "eventDetail":
