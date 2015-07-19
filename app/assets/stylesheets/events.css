@@ -16,6 +16,8 @@
 }
 
 .mini-event-list-item {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
   position: relative;
 }
 
@@ -38,7 +40,7 @@
   width: 1px;
   background: #eee;
   position: absolute;
-  top: 65px;
+  top: 54px;
   bottom: 0;
   right: 210px;
 }

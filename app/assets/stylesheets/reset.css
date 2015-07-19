@@ -23,3 +23,7 @@ ul {
 img, a {
   display: block;
 }
+
+a {
+  color: #409BC7;
+}
