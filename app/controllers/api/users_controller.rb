@@ -11,10 +11,11 @@ module Api
     end
 
     def update
-      if params[:id] != current_user.id
+      if params[:id].to_i != current_user.id
         render json: "error, error"
       else
-        @user.update!(user_params)
+        current_user.update!(user_params)
+        debugger
         render :show
       end
     end
