@@ -120,6 +120,7 @@
   border-bottom: none;
   box-shadow: 3px 3px 10px #888;
   display: none;
+  background: white;
 }
 
 .profile-menu-items:before, .profile-menu-items:after {
