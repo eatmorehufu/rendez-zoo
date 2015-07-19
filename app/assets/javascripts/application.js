@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery.timepicker.min
+//= require date
 //= require underscore
 //= require backbone
 //= require jquery.serializejson

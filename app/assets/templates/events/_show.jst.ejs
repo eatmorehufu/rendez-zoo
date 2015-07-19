@@ -1,7 +1,8 @@
 <section class="event-details group">
   <section class="event-details-main">
     <h1><%= groupEvent.escape("title") %></h1>
-    <h2><%= groupEvent.escape("start_time") %> <%= groupEvent.escape("end_time") %></h3>
+    <h2><%= startTime.fullDay %></h2>
+    <h3><%= startTime.fullTime %></h3>
     <h2 id="event-location">Google Map</h2>
     <p><%= groupEvent.escape("description") %></p>
   </section>

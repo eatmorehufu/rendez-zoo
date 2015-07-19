@@ -7,7 +7,8 @@
   </section>
 
   <ul class="mini-event-sidebar">
-    <li><h2><%= groupEvent.escape('start_time')%></h2></li>
+    <li><h2><%= startTime.shortDay %></h2></li>
+    <li><h3> <%=startTime.fullTime %></h3></li>
     <li><h3><strong><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">RSVP</a></strong></h3></li>
     <li><small><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.attendees().length %><strong> Attending</strong></a></small></li>
   </ul>

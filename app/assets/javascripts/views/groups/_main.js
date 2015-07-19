@@ -37,7 +37,13 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
         break;
       case "eventDetail":
-        var mainTop = this.eventDetailTemplate({ groupEvent: this.subModel });
+        var startTime = this.formatTime(this.subModel.get('start_time'));
+        var endTime = this.formatTime(this.subModel.get('end_time'));
+        var mainTop = this.eventDetailTemplate({
+          groupEvent: this.subModel,
+          startTime: startTime,
+          endTime: endTime
+        });
         break;
       case "memberIndex":
         var mainTop = this.memberIndex();
@@ -58,16 +64,24 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     if (mainBottom) {
       this.$el.append(mainBottom);
       this.model.groupEvents().forEach(function(groupEvent){
+        var startTime = this.formatTime(groupEvent.get('start_time'));
+        var endTime = this.formatTime(groupEvent.get('end_time'));
         this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
           group: this.model,
-          groupEvent: groupEvent
+          groupEvent: groupEvent,
+          startTime: startTime,
+          endTime: endTime
         }))
       }.bind(this))
 
       this.model.groupEvents().forEach(function(groupEvent){
+        var startTime = this.formatTime(groupEvent.get('start_time'));
+        var endTime = this.formatTime(groupEvent.get('end_time'));
         this.$('.past-events-mini').append(this.pastEventMiniTemplate({
           group: this.model,
-          groupEvent: groupEvent
+          groupEvent: groupEvent,
+          startTime: startTime,
+          endTime: endTime
         }))
       }.bind(this))
     }
@@ -141,5 +155,16 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   memberDetail: function() {
 
+  },
+
+  formatTime: function(timeString) {
+    var formatted = {}
+    if (timeString) {
+      formatted.fullDay = Date.parse(timeString.slice(0, -5)).toString("dddd, MMMM d, yyyy");
+      formatted.shortDay = Date.parse(timeString.slice(0, -5)).toString("ddd, MMM d");
+      formatted.fullTime = Date.parse(timeString.slice(0, -5)).toString("h:mm tt");
+      formatted.mediumDay = Date.parse(timeString.slice(0, -5)).toString("MMMM dd");
+    }
+    return formatted;
   }
 })

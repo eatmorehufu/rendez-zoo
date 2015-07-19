@@ -8,7 +8,8 @@ small, a, button, small, strong {
   outline: 0;
   font: inherit;
   text-decoration: none;
-  background: inherit;
+  background: transparent;
+  vertical-align: inherit;
 }
 
 ul {
