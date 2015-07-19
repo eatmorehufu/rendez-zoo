@@ -33,8 +33,9 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   userProfile: function() {
-    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; };
-    var userProfileView = new RendezZoo.Views.UserShow({model: RendezZoo.currentUser});
+    if (!this._requireSignedIn(this.userProfile.bind(this))) { return; };
+    var user = RendezZoo.users.getOrFetch(RendezZoo.currentUser.id);
+    var userProfileView = new RendezZoo.Views.UserShow({model: user});
 
     this._swapViews(userProfileView);
   },
