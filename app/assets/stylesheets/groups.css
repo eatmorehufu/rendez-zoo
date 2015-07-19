@@ -36,7 +36,7 @@
   height: 158px;
   border: 1px solid white;
   border-radius: 3px;
-  background: #33241A;
+  background: #F4001B;
   font-family: sans-serif;
   margin-bottom: 20px;
 }
@@ -63,7 +63,7 @@
 
 .group-banner-nav a:hover {
   color: white;
-  background: #33241A;
+  background: #F4001B;
 }
 
 .group-banner-buttons {

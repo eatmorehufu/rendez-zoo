@@ -90,3 +90,83 @@
   color: #409BC7;
   font-weight: 300;
 }
+
+.event-details {
+  position: relative;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.event-details-main {
+  float: left;
+  width: 498px;
+}
+
+.event-details-main:after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  background: #ccc;
+  top: 0;
+  bottom: 0;
+  right: 200px;
+}
+
+.event-details-main h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.event-details-main h2 {
+  font-size: 25px;
+  padding: 20px 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+.event-details-main p {
+  padding-top: 20px;
+}
+
+.event-details-sidebar {
+  float: right;
+  width: 160px;
+  padding: 20px 0px 20px 20px;
+}
+
+.rsvp-button {
+  position: relative;
+  color: white;
+  background: #F4001B;
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 3px;
+  box-shadow: 0px 2px black;
+  margin-bottom: 20px;
+}
+
+.rsvp-button:hover {
+  background: #CA352B;
+}
+
+.rsvp-button:active {
+  top: 2px;
+  box-shadow: none;
+}
+
+.event-details-sidebar h3 {
+  padding: 10px 0px;
+  font-size: 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+.event-details-sidebar h3:before{
+  position: absolute;
+  content: "";
+  height: 1px;
+  background: #ccc;
+  left: 538px;
+  right: 0;
+  top: 100px
+}
