@@ -1,0 +1,3 @@
+RendezZoo.closeMenuMixin = {
+
+}

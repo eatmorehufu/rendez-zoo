@@ -5,6 +5,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     RendezZoo.currentUser.fetch();
     this._headerView = new RendezZoo.Views.Header();
     this.$rootEl.find(".navigation-header").html(this._headerView.render().$el);
+    $('#page-body').on("click", this.closeMenu);
   },
 
   routes: {
@@ -148,5 +149,9 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.find("#page-body").html(view.render().$el);
+  },
+
+  closeMenu: function(event) {
+    $(document).find('.profile-menu-items').removeClass('open');
   }
 })

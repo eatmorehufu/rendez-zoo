@@ -29,4 +29,4 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
       }.bind(this)
     })
   }
-})
+});

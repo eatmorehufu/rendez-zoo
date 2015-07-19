@@ -103,6 +103,7 @@
   font-weight: bold;
   color: #F4001B;
   border-radius: 3px;
+  border: 1px solid #ccc;
 }
 
 .profile-menu > h3:hover {
@@ -113,11 +114,12 @@
 .profile-menu-items {
   position: absolute;
   width: 100px;
-  right: 0;
+  right: 10px;
+  top: 50px;
   border: 1px solid #ccc;
   border-bottom: none;
   box-shadow: 3px 3px 10px #888;
-  /*display: none;*/
+  display: none;
 }
 
 .profile-menu-items:before, .profile-menu-items:after {
@@ -131,16 +133,16 @@
 }
 
 .profile-menu-items:after {
-  top: -14px;
+  top: -9px;
   right: 0px;
   border-bottom-color: white;
-  border-width: 15px;
+  border-width: 10px;
 }
 .profile-menu-items:before {
-  top: -15px;
+  top: -10px;
   right: 0;
   border-bottom-color: #ccc;
-  border-width: 15px;
+  border-width: 10px;
 }
 
 
@@ -170,6 +172,6 @@
   background: #F4001B;
   color: white;
 }
-.profile-menu-items > .open {
+.profile-menu-items.open {
   display: block;
 }

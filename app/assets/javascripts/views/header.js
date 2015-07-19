@@ -4,7 +4,8 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
   loggedOutTemplate: JST['_logged_out_buttons'],
 
   events: {
-    "click .log-out": "logOut"
+    "click .log-out": "logOut",
+    "click .profile-menu > h3" : "openMenu"
   },
 
   initialize: function(options){
@@ -29,5 +30,9 @@ RendezZoo.Views.Header = Backbone.CompositeView.extend({
         Backbone.history.navigate("", { trigger: true })
       }
     });
-  }
+  },
+
+  openMenu: function(event) {
+    this.$('.profile-menu-items').addClass('open');
+  },
 })

@@ -26,4 +26,4 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
     this.$el.append(this.indexTemplate({groups: this.collection}));
     return this;
   }
-})
+});
