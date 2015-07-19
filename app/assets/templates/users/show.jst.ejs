@@ -1,0 +1,24 @@
+<section class="user-profile-main">
+  <h1> <%= user.get('username') %></h1>
+  <h2><strong>Location:</strong><%= user.get('zip_code') %></h2>
+  <h2><strong>Location:</strong><%= user.get('created_at') %></h2>
+
+  <ul class="user-group-memberships">
+    <li>Placeholder</li>
+  </ul>
+
+</section>
+
+
+<section class="user-profile-sidebar">
+  <div class="profile-picture">
+    <img src="<%= user.avatar_url %>">
+  </div>
+
+
+  <div class="user-interests">
+    <ul>
+      List of Interests.
+    </ul>
+  </div>
+</section>
