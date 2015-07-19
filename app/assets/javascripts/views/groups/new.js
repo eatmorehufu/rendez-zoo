@@ -4,7 +4,8 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "submit .group-form": "submitForm"
+    "submit form": "submit",
+    "change #input-user-avatar": "fileInputChange"
   },
 
   initialize: function (options) {
@@ -19,15 +20,25 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
     return this;
   },
 
-  submitForm: function(event){
+  submit: function(event){
     event.preventDefault();
-    var attrs = $(event.currentTarget).serializeJSON();
-    this.model.save(attrs, {
+    attrs = $(event.currentTarget).serializeJSON().group;
+    var file = this.$("#input-group-avatar")[0].files[0];
+
+    var formData = new FormData();
+    formData.append("group[avatar]", file);
+    formData.append("group[title]", attrs.title);
+    formData.append("group[zip_code]", attrs.zip_code);
+    formData.append("group[description]", attrs.description);
+    var that = this;
+    this.model.saveFormData(formData, {
       success: function(){
         RendezZoo.groups.add(this.model, { merge: true });
         RendezZoo.currentUser.organizerGroups().add(this.model, { merge: true });
         Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
       }.bind(this)
-    })
+    });
   }
 });
+
+_.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.fileInputMixin);
