@@ -34,4 +34,7 @@ RendezZoo.Models.Group = Backbone.Model.extend({
 
     return this._groupOrganizers;
   }
+
 })
+
+_.extend(RendezZoo.Models.Group.prototype, RendezZoo.formDataMixin);

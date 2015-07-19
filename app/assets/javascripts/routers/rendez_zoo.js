@@ -10,6 +10,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "groupsIndex",
+    "profile": "userProfile",
     "users/new": "newUser",
     "session/new": "signIn",
     "groups/new": "newGroup",
@@ -29,6 +30,13 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapViews(groupIndexView);
+  },
+
+  userProfile: function() {
+    if (!this._requireSignedIn(this.newGroup.bind(this))) { return; };
+    var userProfileView = new RendezZoo.Views.UserShow({model: RendezZoo.currentUser});
+
+    this._swapViews(userProfileView);
   },
 
   newGroup: function (){
