@@ -11,6 +11,9 @@
   <label>Where are you located? (zip code)
     <input type="text" name="group[zip_code]" value="<%= group.escape('zip_code')%>">
   </label>
+  <label>Select an image to represent your group!
+    <input type="file" name="group[avatar]" id="input-group-avatar">
+  </label>
 
   <button><%= buttonText %></button>
 </form>

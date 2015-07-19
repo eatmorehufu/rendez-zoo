@@ -100,4 +100,4 @@ Stack:
 Fix mouseover bug(????)
 O-Auth
 Change RSVP text when RSVPING
-prevent RSVPing for groups you're no longer a member of after you leave the group.
+generate robust feedback when form inputs are incorrect
