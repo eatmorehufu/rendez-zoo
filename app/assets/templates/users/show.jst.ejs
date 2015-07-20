@@ -4,23 +4,13 @@
   <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
   <h3><strong>Bio:</strong></h3>
   <p><%=user.get('description') %></p>
-  <ul class="user-group-memberships">
-    <li>Placeholder</li>
-  </ul>
 
-  <form>
-
-  <label>
-    Image
-    <input type="file" name="user[avatar]" id="input-user-avatar">
-  </label>
-
-  <button>Save</button> or <a href="#">Cancel</a>
-
-  </form>
   <article class="group-memberships">
-    <h2>
+    <h2>Member Of: </h2>
     <ul class="group-memberships">
+      <% user.memberGroups().forEach(function(group){ %>
+        <li><%= group.escape('title') %></li>
+        <% })%>
     </ul>
   </article>
 </section>
@@ -33,6 +23,7 @@
 
 
   <div class="user-interests">
+    <h2>Interested In: </h2>
     <ul>
       List of Interests.
     </ul>

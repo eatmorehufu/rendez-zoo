@@ -1,9 +1,13 @@
 .user-profile {
   border: 1px solid #ccc;
-  width: 920px;
+  max-width: 920px;
   margin: auto;
   padding: 20px;
   background: white;
+}
+
+.user-profile h2 {
+  font-size: 24px;
 }
 
 .user-profile h1 {
@@ -33,6 +37,7 @@
 
 .user-profile-main {
   position: relative;
+  width: calc(100% - 270px);
   float: left;
 }
 

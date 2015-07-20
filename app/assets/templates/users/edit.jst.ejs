@@ -1,0 +1,21 @@
+<form class="userEditForm">
+  <label>Displayed Name
+    <input type="text" name="user[username]" value="<%= user.escape('username')%>">
+  </label>
+
+  <label>Zip Code
+    <input type="text" name="user[zip_code]" value="<%= user.escape('zip_code')%>">
+  </label>
+
+  <label>Bio
+    <textarea><%=user.escape('description')%></textarea>
+  </label>
+
+  <label>
+    Profile Picture
+    <input type="file" name="user[avatar]" id="input-user-avatar">
+  </label>
+
+<button>Save</button> or <a href="#">Cancel</a>
+
+</form>
