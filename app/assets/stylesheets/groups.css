@@ -16,6 +16,7 @@
 }
 
 .groups-list > li > a{
+  display: block;
   height: 100px;
   width: 260px;
   padding: 10px;
@@ -58,6 +59,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   color: darkgray;
+  display: block;
 }
 
 .group-banner-nav a:hover {
@@ -209,16 +211,28 @@
   border: 1px solid #ccc;
 }
 
-.group-form input {
+.group-form-main p {
+  margin-bottom: 20px;
+}
+
+.group-form input, .group-form textarea{
+  width: calc(100% - 40px);
   display: block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.group-form input {
 }
 
 .group-form textarea {
-  display: block;
+  height: 140px;
 }
 
 .group-form-title {
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .group-banner-buttons {
@@ -240,6 +254,7 @@
   padding: 5px 10px;
   border-radius: 3px;
   margin: 0px 5px;
+  display: block;
 }
 
 .group-banner-buttons a:hover {
