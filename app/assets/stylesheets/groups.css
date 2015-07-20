@@ -37,7 +37,6 @@
   border: 1px solid white;
   border-radius: 3px;
   background: #F4001B;
-  font-family: sans-serif;
   margin-bottom: 20px;
 }
 
@@ -94,7 +93,6 @@
 }
 
 .group-sidebars {
-  font-family: sans-serif;
   float: left;
   display: block;
   border-radius: 3px;
@@ -208,7 +206,6 @@
   width: 698px;
   margin: auto;
   background: white;
-  font-family: sans-serif;
   border: 1px solid #ccc;
 }
 

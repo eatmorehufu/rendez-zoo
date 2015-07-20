@@ -1,5 +1,6 @@
 RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
+  tagName: "article",
 
   events: {
     "submit form": "submit",
@@ -7,6 +8,7 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function(options){
+    this.$el.addClass("user-profile group");
     this.listenTo(this.model, 'sync', this.render);
   },
 

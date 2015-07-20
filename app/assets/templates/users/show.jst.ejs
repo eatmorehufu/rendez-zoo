@@ -1,8 +1,9 @@
 <section class="user-profile-main">
   <h1> <%= user.get('username') %></h1>
-  <h2><strong>Location:</strong><%= user.get('zip_code') %></h2>
-  <h2><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h2>
-
+  <h3><strong>Location:</strong><%= user.get('zip_code') %></h3>
+  <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
+  <h3><strong>Bio:</strong></h3>
+  <p><%=user.get('description') %></p>
   <ul class="user-group-memberships">
     <li>Placeholder</li>
   </ul>
@@ -16,8 +17,12 @@
 
   <button>Save</button> or <a href="#">Cancel</a>
 
-</form>
-
+  </form>
+  <article class="group-memberships">
+    <h2>
+    <ul class="group-memberships">
+    </ul>
+  </article>
 </section>
 
 

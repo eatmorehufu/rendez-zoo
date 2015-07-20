@@ -1,0 +1,46 @@
+.user-profile {
+  border: 1px solid #ccc;
+  width: 920px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+}
+
+.user-profile h1 {
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+
+.user-profile h1:after{
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  background: #ccc;
+  top: 55px;
+  left: 0;
+  right: 0;
+}
+
+.user-profile h3 > strong {
+  font-weight: bold;
+}
+
+.user-profile h3 {
+  margin-top: 20px;
+}
+
+
+.user-profile-main {
+  position: relative;
+  float: left;
+}
+
+
+.user-profile-sidebar {
+  float: right;
+}
+
+.profile-picture {
+  width: 240px;
+}

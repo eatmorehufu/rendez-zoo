@@ -1,5 +1,4 @@
 .navigation-header {
-  font-family: sans-serif;
   background: white;
   border-bottom: 1px solid #ccc;
 }
@@ -55,13 +54,11 @@
   display: block;
   color: #F4001B;
   font-size: 20px;
-  font-family: sans-serif;
 }
 
 .left-header-nav small {
   color: lightgray;
   font-size: 13px;
-  font-family: sans-serif;
 }
 
 .navigation-header .right-header-nav {
@@ -98,6 +95,7 @@
 
 .profile-menu > h3 {
   margin-top: 7px;
+  margin-bottom: 0;
   padding: 10px;
   font-size: 15px;
   font-weight: bold;

@@ -1,28 +1,53 @@
-html, body, main, section, h1, h2, h3, h4,
-p, li, ul, div, span, strong,
-small, a, button, small, strong {
-  color: inherit;
-  border: 0;
+/* --- RESET --- */
+
+html, body, header, nav, h1, a, ul, li,
+strong, main, section, img, div, h2, p,
+form, fieldset, label, input, textarea,
+button, article, footer, small {
   margin: 0;
   padding: 0;
+  border: 0;
   outline: 0;
   font: inherit;
-  text-decoration: none;
-  background: transparent;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
   vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+/* --- NEEDED FOR PHANTOMJS --- */
+
+html, body, header, nav, main,
+section, article, footer, small {
+  display: block;
+}
+
+/* --- ELEMENTS --- */
+
+body {
+  box-sizing: content-box;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.1666666666;
 }
 
 ul {
   list-style: none;
 }
 
-.group:after{
-  content: "";
-  clear: both;
+img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
-img, a {
+/* --- CLEARFIX --- */
+
+.group:after {
+  content: "";
+  clear: both;
   display: block;
 }
 

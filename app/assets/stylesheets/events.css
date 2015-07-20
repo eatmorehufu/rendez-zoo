@@ -12,7 +12,6 @@
   background: white;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  font-family: sans-serif;
 }
 
 .upcoming-events-mini > h3 {
@@ -51,7 +50,6 @@
 
 .mini-event-sidebar {
   float: right;
-  font-family: sans-serif;
   width: 200px;
   padding-left: 10px;
 }
@@ -83,10 +81,6 @@
   padding: 5px 0px;
 }
 
-.past-events-mini {
-  font-family: sans-serif;
-}
-
 .past-events-mini > h3 {
   font-size: 30px;
   margin-bottom: 10px;
@@ -107,7 +101,6 @@
   background: white;
   border: 1px solid #ccc;
   padding: 20px;
-  font-family: sans-serif;
 }
 
 .event-details-main {

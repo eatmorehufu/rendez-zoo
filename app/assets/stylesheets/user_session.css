@@ -26,7 +26,6 @@
 
 .new-user h3 {
   font-size: 16;
-  font-family: sans-serif;
   margin-bottom: 5px;
 }
 
@@ -40,7 +39,6 @@
   display: block;
   width: 100%;
   font-weight: bold;
-  font-family: sans-serif;
   background: #F4001B;
   color: white;
   padding: 15px;
@@ -63,10 +61,6 @@
 
 .new-user footer > a >small{
   color: black
-}
-
-.new-session {
-  font-family: sans-serif;
 }
 
 .new-session h1 {
