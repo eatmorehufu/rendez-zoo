@@ -1,7 +1,7 @@
 <section class="user-profile-main">
   <h1> <%= user.get('username') %></h1>
   <h2><strong>Location:</strong><%= user.get('zip_code') %></h2>
-  <h2><strong>Location:</strong><%= user.get('created_at') %></h2>
+  <h2><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h2>
 
   <ul class="user-group-memberships">
     <li>Placeholder</li>

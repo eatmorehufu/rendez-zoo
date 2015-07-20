@@ -11,7 +11,8 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({ user: this.model }));
+    var timeParsed = this.formatTime(this.model.get('created_at'));
+    this.$el.html(this.template({ user: this.model, timeParse: timeParsed }));
 
     return this;
   },
@@ -35,3 +36,4 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
 })
 
 _.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.fileInputMixin)
+_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.formatTimeMixin)

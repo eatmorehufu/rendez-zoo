@@ -109,9 +109,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   toggleRSVP: function(event){
     event.preventDefault();
+    debugger;
     if (RendezZoo.currentUser.isNew()) {
       alert("please sign in!");
-    } else if (!this.model.groupMembers().get(RendezZoo.currentUser.id && !this.model.groupOrganizers().get(RendezZoo.currentUser.id))){
+    } else if (!this.model.groupMembers().get(RendezZoo.currentUser.id) && !this.model.groupOrganizers().get(RendezZoo.currentUser.id)){
       alert("You don't belong to this group!");
     } else if (this.subModel.attendees().get(RendezZoo.currentUser.id)) {
       $.ajax({
@@ -157,16 +158,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   memberDetail: function() {
 
-  },
-
-  formatTime: function(timeString) {
-    var formatted = {}
-    if (timeString) {
-      formatted.fullDay = Date.parse(timeString.slice(0, -5)).toString("dddd, MMMM d, yyyy");
-      formatted.shortDay = Date.parse(timeString.slice(0, -5)).toString("ddd, MMM d");
-      formatted.fullTime = Date.parse(timeString.slice(0, -5)).toString("h:mm tt");
-      formatted.mediumDay = Date.parse(timeString.slice(0, -5)).toString("MMMM dd");
-    }
-    return formatted;
   }
-})
+});
+
+_.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.formatTimeMixin)

@@ -15,7 +15,7 @@ module Api
         render json: "error, error"
       else
         current_user.update!(user_params)
-        debugger
+        @user = current_user
         render :show
       end
     end
