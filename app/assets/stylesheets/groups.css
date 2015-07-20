@@ -1,4 +1,5 @@
 .groups-index {
+  background: #eee;
 }
 
 .groups-index .banner {
@@ -6,17 +7,43 @@
   display: block;
 }
 
-.groups-list > li {
+.groups-index-item {
+  position: relative;
   float: left;
-  margin: 20px;
-  background: orange;
+  margin: 10px;
+  background: #888;
+  overflow: hidden;
+
 }
 
-.groups-list > li > a{
+.groups-index-item > a > img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline;
+}
+
+.groups-index-item > a{
+  color: white;
   display: block;
-  height: 100px;
-  width: 260px;
+  height: 170px;
+  width: 280px;
   padding: 10px;
+}
+
+.groups-index-item > a > h2 {
+  position: absolute;
+  font-weight: bold;
+  font-size: 24px;
+  bottom: 30px;
+}
+
+.groups-index-item > a > h3 {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 14px;
+  bottom: 10px;
 }
 
 .group-show-main {

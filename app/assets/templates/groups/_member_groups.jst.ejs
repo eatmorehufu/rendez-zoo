@@ -1,6 +1,11 @@
   <h2><%= heading %></h2>
   <ul class="groups-list group">
     <% groups.forEach(function(group){ %>
-      <li><a href="<%="/#/groups/" + group.id%>"><%= group.escape("title") %></a></li>
+      <li class="groups-index-item">
+        <a href="<%="/#/groups/" + group.id%>">
+          <img src="<%= group.escape('avatar_url') %>">
+          <h2><%= group.escape("title") %></h2>
+        </a>
+      </li>
     <% }); %>
   </ul>

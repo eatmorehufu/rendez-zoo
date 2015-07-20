@@ -8,7 +8,7 @@ module Api
     end
 
     def index
-      @groups = Group.all
+      @groups = Group.includes(:members, :organizers).all
 
       render :index
     end
