@@ -338,3 +338,37 @@ input.zip {
   width: 960px;
   margin: auto;
 }
+
+.splash-message a {
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.splash-message a:hover {
+  color: black;
+  background: white;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+#group-index-body > h2 {
+  font-size: 24px;
+  margin: 10px 0px;
+}
+
+.member-thumbs h1 {
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.member-thumbs li {
+  margin: 0px 5px;
+  display: block;
+  float: left;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}

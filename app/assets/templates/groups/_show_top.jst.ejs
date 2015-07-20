@@ -1,9 +1,22 @@
 
 <section id="group-show-top">
-  <p><%= group.escape('description') %></p>
+  <p><%= group.get('description') %></p>
   <nav class="group-show-top-nav">
-    <div class="member-thumbs" data-event="all">
-      Member thumbnails here in Backbone
+    <div class="member-thumbs group" data-event="all">
+      <h1>Members:</h1>
+      <ul>
+        <% group.groupMembers().forEach(function(groupMember){ %>
+          <li>
+            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"</a>
+          </li>
+        <% }) %>
+        <% group.groupOrganizers().forEach(function(groupMember){ %>
+          <li>
+            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"</a>
+          </li>
+        <% }) %>
+      </ul>
+      <h2><a href="/#/groups/<%= group.id%>/members/">See more</a></h2>
     </div>
   </nav>
 </section>
