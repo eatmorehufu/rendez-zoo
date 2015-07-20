@@ -174,3 +174,13 @@
   right: 0;
   top: 100px
 }
+
+.event-form-page {
+  background: white;
+  padding: 20px;
+}
+
+.event-form-page h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
