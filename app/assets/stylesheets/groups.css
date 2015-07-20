@@ -211,14 +211,20 @@
 }
 
 .group-form input, .group-form textarea{
-  width: calc(100% - 40px);
+  width: calc(100% - 22px);
   display: block;
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px 0px;
 }
 
-.group-form input {
+input.zip {
+  width: 45px;
+}
+
+.new-group-padding {
+  padding: 20px 0px;
+  background: #eee;
 }
 
 .group-form textarea {
@@ -243,7 +249,7 @@
   margin-left: 5px;
 }
 
-.group-banner-buttons a {
+.red-button {
   background: #F4001B;
   color: white;
   padding: 5px 10px;

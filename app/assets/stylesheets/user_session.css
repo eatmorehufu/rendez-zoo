@@ -6,7 +6,6 @@
 }
 
 .new-user form {
-  height: 390px;
   width: 320px;
   margin: auto;
   background: white;
@@ -35,7 +34,7 @@
   width: calc(100% - 10px);
 }
 
-.new-user button {
+.red-button-large {
   margin-top: 15px;
   display: block;
   font-weight: bold;
@@ -62,6 +61,8 @@
 }
 
 .new-user footer > a >small{
+  display: inline;
+  width: inherit;
   color: black
 }
 
