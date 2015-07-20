@@ -34,7 +34,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       group: this.model,
       currentUser: RendezZoo.currentUser,
     });
-    this.$el.prepend(bannercontent);
+    this.$('#group-banner-header').html(bannercontent);
     this.setBannerButtons();
 
     var sidebarTopView = new RendezZoo.Views.GroupSidebarTopSub({
@@ -45,8 +45,8 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       model: this.model
     });
 
-    this.$('.group-sidebars').append(sidebarTopView.render().$el);
-    this.$('.group-sidebars').append(sidebarBottomView.render().$el);
+    this.$('#group-sidebars').append(sidebarTopView.render().$el);
+    this.$('#group-sidebars').append(sidebarBottomView.render().$el);
 
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
       model: this.model,
@@ -54,7 +54,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       subModel: this.subModel
     });
 
-    this.$el.append(groupShowMainView.render().$el);
+    this.$('#group-main-content').append(groupShowMainView.render().$el);
 
     return this;
   },

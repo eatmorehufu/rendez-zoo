@@ -46,7 +46,7 @@
   width: 100%;
 }
 
-.new-user button:hover {
+.red-button-large:hover {
   cursor: pointer;
   background: #E3000A;
 }

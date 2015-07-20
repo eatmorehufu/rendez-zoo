@@ -19,12 +19,8 @@
   padding: 10px;
 }
 
-#page-body {
-}
-
 .group-show-main {
-  width: 960px;
-  margin: auto;
+  background: #eee;
 }
 
 #group-banner {
@@ -89,14 +85,14 @@
   opacity: 0.7;
 }
 
-.group-sidebars {
+#group-sidebars {
   float: left;
   display: block;
   border-radius: 3px;
   width: 200px;
 }
 
-.group-sidebars li {
+#group-sidebars li {
   float: none;
   display: block;
 }
@@ -166,11 +162,6 @@
   padding: 20px 10px;
 }
 
-#group-banner {
-  display: block;
-  width: 100%
-}
-
 .group-main {
   display: block;
   float: right;
@@ -222,7 +213,7 @@ input.zip {
   width: 45px;
 }
 
-.new-group-padding {
+.pad-twenty {
   padding: 20px 0px;
   background: #eee;
 }
@@ -258,7 +249,7 @@ input.zip {
   display: block;
 }
 
-.group-banner-buttons a:hover {
+.red-button a:hover {
   background: #CA352B;
 }
 
