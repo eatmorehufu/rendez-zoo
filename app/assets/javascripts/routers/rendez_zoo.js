@@ -51,8 +51,6 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   groupShow: function (id){
     window.scrollTo(0, 0);
     var group = RendezZoo.groups.getOrFetch(id);
-    console.log("entering group Show")
-    console.log(group)
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group
     });
@@ -61,7 +59,6 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   editGroup: function(id){
-    console.log(RendezZoo.currentUser.organizerGroups());
     if (!this._requireSignedIn(this.editGroup.bind(this, id))) { return; };
     if (!RendezZoo.currentUser.organizerGroups().get(id)) { return; };
     var editGroup = RendezZoo.groups.getOrFetch(id);

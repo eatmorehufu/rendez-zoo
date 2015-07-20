@@ -3,7 +3,8 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "submit form.new-session": "signIn"
+    "submit form.new-session": "signIn",
+    "click #demo-login": "demoLogin"
   },
 
   initialize: function(options){
@@ -24,8 +25,6 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
     RendezZoo.currentUser.signIn({
       email: attrs.email,
       password: attrs.password,
-      success: function(){
-      },
       error: function() {
         alert("Wrong username/password combination. Please try again.");
       }
@@ -38,5 +37,13 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
     } else {
       Backbone.history.navigate("", { trigger: true });
     }
+  },
+
+  demoLogin: function(event){
+    event.preventDefault();
+    RendezZoo.currentUser.signIn({
+      email: "sennacy@cat.com",
+      password: "password"
+    })
   }
 })

@@ -27,8 +27,6 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    console.log("entering group show render");
-    console.log(this.model);
     var content = this.template({ group: this.model });
     this.$el.html(content);
 
