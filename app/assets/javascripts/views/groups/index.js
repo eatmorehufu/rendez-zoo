@@ -16,14 +16,14 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
 
     if (RendezZoo.currentUser.isSignedIn()) {
       if (RendezZoo.currentUser.organizerGroups().length > 0) {
-        this.$el.append(this.memberTemplate({groups: RendezZoo.currentUser.organizerGroups(), heading: "Your Admin Groups"}));
+        this.$('#group-index-body').append(this.memberTemplate({groups: RendezZoo.currentUser.organizerGroups(), heading: "Your Admin Groups"}));
       }
       if (RendezZoo.currentUser.memberGroups().length > 0) {
-        this.$el.append(this.memberTemplate({groups: RendezZoo.currentUser.memberGroups(), heading: "Your Member Groups"}));
+        this.$('#group-index-body').append(this.memberTemplate({groups: RendezZoo.currentUser.memberGroups(), heading: "Your Member Groups"}));
       }
     }
 
-    this.$el.append(this.indexTemplate({groups: this.collection}));
+    this.$('#group-index-body').append(this.indexTemplate({groups: this.collection}));
     return this;
   }
 });

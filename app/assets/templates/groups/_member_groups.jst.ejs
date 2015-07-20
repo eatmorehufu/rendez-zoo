@@ -1,6 +1,6 @@
-<h2><%= heading %></h2>
-<ul class="groups-list group">
-  <% groups.forEach(function(group){ %>
-    <li><a href="<%="/#/groups/" + group.id%>"><%= group.escape("title") %></a></li>
-  <% }); %>
-</ul>
+  <h2><%= heading %></h2>
+  <ul class="groups-list group">
+    <% groups.forEach(function(group){ %>
+      <li><a href="<%="/#/groups/" + group.id%>"><%= group.escape("title") %></a></li>
+    <% }); %>
+  </ul>
