@@ -5,7 +5,6 @@ RendezZoo.Models.Group = Backbone.Model.extend({
     this.groupEvents().set(response.groupEvents);
     this.groupMembers().set(response.members);
     this.groupOrganizers().set(response.organizers);
-    console.log(response);
     delete response.members;
     delete response.organizers;
     delete response.groupEvents;

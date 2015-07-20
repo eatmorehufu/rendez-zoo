@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
   validates_format_of :email, with: /.+@.+\..+/i
-  has_attached_file :avatar, :styles => { :medium => "240x240>", :thumb => "52x52>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "240x240>", :thumb => "52x52>" }, :default_url => "/images/profile-missing.gif"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :sessions, dependent: :destroy

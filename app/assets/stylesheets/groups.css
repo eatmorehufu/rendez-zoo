@@ -30,6 +30,7 @@
   height: 170px;
   width: 280px;
   padding: 10px;
+  text-shadow: 1px 1px 5px #000;
 }
 
 .groups-index-item > a > h2 {
@@ -37,11 +38,13 @@
   font-weight: bold;
   font-size: 24px;
   bottom: 30px;
+  box-shadow: 5px #eee;
 }
 
 .groups-index-item > a > h3 {
   position: absolute;
   font-weight: lighter;
+  color: #ccc;
   font-size: 14px;
   bottom: 10px;
 }
