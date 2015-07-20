@@ -110,6 +110,7 @@
 }
 
 .profile-menu-items {
+  z-index: 999;
   position: absolute;
   width: 100px;
   right: 10px;
