@@ -1,7 +1,6 @@
 RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   template: JST['groups/_form'],
   helperNewTemplate: JST['groups/new'],
-  tagName: "section",
 
   events: {
     "submit form": "submit",
@@ -9,7 +8,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.$el.addClass("group-form-main")
+    // this.$el.addClass("group-form-main")
   },
 
   render: function(){
