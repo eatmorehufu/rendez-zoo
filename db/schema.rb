@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721145833) do
+ActiveRecord::Schema.define(version: 20150721215453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,9 +85,13 @@ ActiveRecord::Schema.define(version: 20150721145833) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "city"
+    t.string   "state"
   end
 
+  add_index "groups", ["city"], name: "index_groups_on_city", using: :btree
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree
+  add_index "groups", ["state"], name: "index_groups_on_state", using: :btree
   add_index "groups", ["title"], name: "index_groups_on_title", using: :btree
   add_index "groups", ["zip_code"], name: "index_groups_on_zip_code", using: :btree
 
@@ -122,8 +126,12 @@ ActiveRecord::Schema.define(version: 20150721145833) do
     t.datetime "avatar_updated_at"
     t.text     "description"
     t.string   "zip_code"
+    t.string   "city"
+    t.string   "state"
   end
 
+  add_index "users", ["city"], name: "index_users_on_city", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["state"], name: "index_users_on_state", using: :btree
 
 end

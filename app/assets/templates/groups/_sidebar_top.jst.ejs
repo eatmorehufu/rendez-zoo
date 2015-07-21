@@ -10,11 +10,11 @@
   </a></li>
   <li class="group">
     <span class="link-label">Upcoming Events</span>
-    <span class="link-num">num</span>
+    <span class="link-num"><%= group.groupEvents().upcomingEvents().length %></span>
   </li>
   <li class="group">
     <span class="link-label">Past Events</span>
-    <span class="link-num">num</span>
+    <span class="link-num"><%= group.groupEvents().pastEvents().length %></span>
   </li>
   <li><a href="/#/groups/<%= group.id%>/calendar">Calendar Events</a></li>
 </ul>
