@@ -18,7 +18,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     "groups/:id/edit": "editGroup",
     "groups/:group_id/events/:event_id/edit" : "editEvent",
     "groups/:group_id/events/:event_id": "eventDetail",
-    "groups/:group_id/members/:member_id": "groupMemberShow"
+    "groups/:group_id/members/:member_id": "groupMemberShow",
     "groups/:id/members": "groupMemberIndex",
     "groups/:id/photos": "groupPhotoIndex",
     "groups/:id": "groupShow"
@@ -109,11 +109,13 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   groupMemberIndex: function(id) {
-    var group = RendezZoo.groups.getOrFetch(group_id);
+    console.log("entering groupMemberIndex");
+    var group = RendezZoo.groups.getOrFetch(id);
     var memberIndexView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "memberIndex"
     })
+
     this._swapViews(memberIndexView);
   },
 

@@ -1,0 +1,36 @@
+<main class="group-member-index-main">
+  <h1>Members</h1>
+  <nav class="members-or-organizers">
+    <div>All Members</div>
+    <div>The Leadership Team</div>
+  </nav>
+
+  <ul class="group-member-index">
+    <h2>Members</h2>
+    <% members.forEach(function(member){ %>
+      <li>
+        <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+          <img src="<%=member.escape('avatar_url')%>">
+        </a>
+        <h3>
+          <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+            <%= member.get('username')%>
+          </a>
+        </h3>
+      </li>
+    <% }) %>
+    <h2>Organizers</h2>
+    <% organizers.forEach(function(member){ %>
+      <li>
+        <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+          <img src="<%=member.escape('avatar_url')%>">
+        </a>
+        <h3>
+          <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+            <%= member.get('username')%>
+          </a>
+        </h3>
+      </li>
+    <% }) %>
+  </ul>
+</main>

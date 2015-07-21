@@ -69,3 +69,8 @@
 .new-session h1 {
   font-size: 20px;
 }
+
+.group-member-index img {
+  max-width: 50px;
+  max-height: 50px;
+}

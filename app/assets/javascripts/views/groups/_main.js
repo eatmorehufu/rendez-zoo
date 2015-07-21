@@ -28,9 +28,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.newEvent();
         break;
       case "editEvent":
-        var heading = "Edit Event"
-        var buttonText = "Edit Event"
-        var mainTop = this.eventFormTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
+        var mainTop = this.editEvent();
         break;
       case "editGroup":
         var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
@@ -56,27 +54,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
     if (mainBottom) {
       this.$el.append(mainBottom);
-      this.model.groupEvents().forEach(function(groupEvent){
-        var startTime = this.formatTime(groupEvent.get('start_time'));
-        var endTime = this.formatTime(groupEvent.get('end_time'));
-        this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
-          group: this.model,
-          groupEvent: groupEvent,
-          startTime: startTime,
-          endTime: endTime
-        }))
-      }.bind(this))
 
-      this.model.groupEvents().forEach(function(groupEvent){
-        var startTime = this.formatTime(groupEvent.get('start_time'));
-        var endTime = this.formatTime(groupEvent.get('end_time'));
-        this.$('.past-events-mini').append(this.pastEventMiniTemplate({
-          group: this.model,
-          groupEvent: groupEvent,
-          startTime: startTime,
-          endTime: endTime
-        }))
-      }.bind(this))
+      this.attachUpcoming();
+      this.attachPast();
     }
 
     this.$(".datepicker").datepicker();
@@ -108,29 +88,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     } else if (!this.model.groupMembers().get(RendezZoo.currentUser.id) && !this.model.groupOrganizers().get(RendezZoo.currentUser.id)){
       alert("You don't belong to this group!");
     } else if (this.subModel.attendees().get(RendezZoo.currentUser.id)) {
-      $.ajax({
-        url: "/api/events/" + this.subModel.id + "/unrsvp",
-        dataType: 'json',
-        type: "DELETE",
-        success: function(result){
-          alert("No longer attending the event!")
-          this.subModel.attendees().remove(RendezZoo.currentUser)
-          RendezZoo.currentUser.rsvpEvents().remove(this.subModel)
-          this.render();
-        }.bind(this)
-      });
+      this.unRSVPEvent();
     } else {
-      $.ajax({
-        url: "/api/events/" + this.subModel.id + "/rsvp",
-        dataType: 'json',
-        type: "POST",
-        success: function(result){
-          alert("Attending the event!")
-          this.subModel.attendees().add(RendezZoo.currentUser)
-          RendezZoo.currentUser.rsvpEvents().add(this.subModel)
-          this.render();
-        }.bind(this)
-      })
+      this.rsvpEvent();
     }
   },
 
@@ -149,7 +109,15 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var heading = "Create a new Event"
     var buttonText = "Create Event"
     this.subModel = new RendezZoo.Models.Event();
+
     return this.eventFormTemplate({groupEvent: this.subModel, buttonText: buttonText, heading: heading});
+  },
+
+  editEvent: function() {
+    var heading = "Edit Event"
+    var buttonText = "Edit Event"
+
+    return this.eventFormTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
   },
 
   eventDetail: function() {
@@ -160,15 +128,79 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       groupEvent: this.subModel,
       startTime: startTime,
       endTime: endTime
-    )}
+    });
   },
 
   memberIndex: function() {
+    console.log(this.model.groupMembers());
+    return this.memberIndexTemplate({
+      group: this.model,
+      members: this.model.groupMembers(),
+      organizers: this.model.groupOrganizers()
+    })
 
   },
 
   memberDetail: function() {
+    var timeParse = this.formatTime(this.subModel.get('created_at'));
+    return this.memberDetailTemplate({
+      user: this.subModel,
+      timeParse: timeParse
+    })
+  },
 
+  attachUpcoming: function() {
+    this.model.groupEvents().forEach(function(groupEvent){
+      var startTime = this.formatTime(groupEvent.get('start_time'));
+      var endTime = this.formatTime(groupEvent.get('end_time'));
+      this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
+        group: this.model,
+        groupEvent: groupEvent,
+        startTime: startTime,
+        endTime: endTime
+      }))
+    }.bind(this))
+  },
+
+  attachPast: function(){
+    this.model.groupEvents().forEach(function(groupEvent){
+      var startTime = this.formatTime(groupEvent.get('start_time'));
+      var endTime = this.formatTime(groupEvent.get('end_time'));
+      this.$('.past-events-mini').append(this.pastEventMiniTemplate({
+        group: this.model,
+        groupEvent: groupEvent,
+        startTime: startTime,
+        endTime: endTime
+      }))
+    }.bind(this))
+  },
+
+  unRSVPEvent: function() {
+    $.ajax({
+      url: "/api/events/" + this.subModel.id + "/unrsvp",
+      dataType: 'json',
+      type: "DELETE",
+      success: function(result){
+        alert("No longer attending the event!")
+        this.subModel.attendees().remove(RendezZoo.currentUser)
+        RendezZoo.currentUser.rsvpEvents().remove(this.subModel)
+        this.render();
+      }.bind(this)
+    });
+  },
+
+  rsvpEvent: function () {
+    $.ajax({
+      url: "/api/events/" + this.subModel.id + "/rsvp",
+      dataType: 'json',
+      type: "POST",
+      success: function(result){
+        alert("Attending the event!")
+        this.subModel.attendees().add(RendezZoo.currentUser)
+        RendezZoo.currentUser.rsvpEvents().add(this.subModel)
+        this.render();
+      }.bind(this)
+    });
   }
 });
 
