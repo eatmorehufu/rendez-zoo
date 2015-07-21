@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719210921) do
+ActiveRecord::Schema.define(version: 20150721145833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "event_attendances", force: :cascade do |t|
     t.integer  "attendant_id", null: false
@@ -44,6 +52,15 @@ ActiveRecord::Schema.define(version: 20150719210921) do
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
   add_index "events", ["start_time"], name: "index_events_on_start_time", using: :btree
+
+  create_table "group_categories", force: :cascade do |t|
+    t.integer  "group_id",    null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "group_categories", ["group_id", "category_id"], name: "index_group_categories_on_group_id_and_category_id", unique: true, using: :btree
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer  "member_id",                     null: false
@@ -83,6 +100,15 @@ ActiveRecord::Schema.define(version: 20150719210921) do
 
   add_index "sessions", ["session_token"], name: "index_sessions_on_session_token", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
+
+  create_table "user_interests", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_interests", ["user_id", "category_id"], name: "index_user_interests_on_user_id_and_category_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               null: false
