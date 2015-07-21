@@ -300,12 +300,16 @@ input.zip {
 }
 
 .index-banner {
-  background: #eee;
+  background: #B4CDCD;
   margin-bottom: 20px;
   background-size: cover;
+}
+
+.logged-out {
   background-image: url(http://i.imgur.com/s8RuUXQ.jpg);
   background-position: 0px 70%, center;
 }
+
 
 .banner-content {
   position: relative;
