@@ -5,6 +5,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   eventDetailTemplate: JST['events/_show'],
   groupEditTemplate: JST['groups/_form'],
   memberDetailTemplate: JST['users/_show'],
+  miniMemberTemplate: JST['users/_thumb'],
   memberIndexTemplate: JST['users/index'],
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
@@ -55,6 +56,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     if (mainBottom) {
       this.$el.append(mainBottom);
 
+      this.attachMemberMini();
       this.attachUpcoming();
       this.attachPast();
     }
@@ -159,7 +161,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   attachUpcoming: function() {
-    this.model.groupEvents().forEach(function(groupEvent){
+    this.model.groupEvents().upcomingEvents().forEach(function(groupEvent){
       var startTime = this.formatTime(groupEvent.get('start_time'));
       var endTime = this.formatTime(groupEvent.get('end_time'));
       this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
@@ -168,11 +170,12 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         startTime: startTime,
         endTime: endTime
       }))
+      this.attachAttendees(groupEvent);
     }.bind(this))
   },
 
   attachPast: function(){
-    this.model.groupEvents().forEach(function(groupEvent){
+    this.model.groupEvents().pastEvents().forEach(function(groupEvent){
       var startTime = this.formatTime(groupEvent.get('start_time'));
       var endTime = this.formatTime(groupEvent.get('end_time'));
       this.$('.past-events-mini').append(this.pastEventMiniTemplate({
@@ -181,6 +184,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         startTime: startTime,
         endTime: endTime
       }))
+      this.attachAttendees(groupEvent);
     }.bind(this))
   },
 
@@ -210,6 +214,18 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         this.render();
       }.bind(this)
     });
+  },
+
+  attachMemberMini: function() {
+
+  },
+
+  attachAttendees: function(groupEvent) {
+    groupEvent.attendees().forEach(function(attendee){
+      console.log(attendee);
+      var content = this.miniMemberTemplate({user: attendee, group_id: this.model.id})
+      this.$(".member-thumbs[data-event-id=" + groupEvent.id + "]").append(content)
+    }.bind(this))
   }
 });
 

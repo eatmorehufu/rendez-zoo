@@ -4,9 +4,15 @@ json.categories do
     json.extract! category, :id, :name
   end
 end
+
 json.groupEvents do
   json.array! @group.events do |event|
     json.merge! event.attributes
+    json.attendees do
+      json.array! event.attendees do |attendee|
+        json.partial! "/api/users/thumb", user: attendee
+      end
+    end
   end
 end
 

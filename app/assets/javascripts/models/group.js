@@ -2,7 +2,7 @@ RendezZoo.Models.Group = Backbone.Model.extend({
   urlRoot: "/api/groups/",
 
   parse: function(response){
-    this.groupEvents().set(response.groupEvents);
+    this.groupEvents().set(response.groupEvents, { parse: true });
     this.groupMembers().set(response.members);
     this.groupOrganizers().set(response.organizers);
     this.groupCategories().set(response.categories);

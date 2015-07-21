@@ -1,7 +1,8 @@
 <li class="past-event-list-item">
   <h4><%= startTime.mediumDay %>, <%= startTime.fullTime %> </h4>
   <h2><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
-  <div> attendees aaagh </div>
+  <ul class="member-thumbs group" data-event-id="<%=groupEvent.id%>"> </ul>
+  <small><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">and more!</a></small>
   <h3><%= groupEvent.attendees().length%> attended</h3>
 
   <p><%= groupEvent.escape("description")%></p>
