@@ -3,6 +3,7 @@ window.RendezZoo = {
   Collections: {},
   Views: {},
   Routers: {},
+  Mixins: {},
   initialize: function() {
     RendezZoo.groups = new RendezZoo.Collections.Groups()
     RendezZoo.users = new RendezZoo.Collections.Users();

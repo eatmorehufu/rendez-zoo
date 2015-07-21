@@ -5,6 +5,7 @@ RendezZoo.Models.User = Backbone.Model.extend({
     response.memberGroups && this.memberGroups().set(response.memberGroups);
     response.organizerGroups && this.organizerGroups().set(response.organizerGroups);
     response.rsvpEvents && this.rsvpEvents().set(response.rsvpEvents);
+    response.interests && this.interests().set(response.interests);
     delete response.memberGroups;
     delete response.rsvpEvents;
     delete response.organizerGroups;
@@ -34,6 +35,14 @@ RendezZoo.Models.User = Backbone.Model.extend({
     }
 
     return this._rsvpEvents;
+  },
+
+  interests: function(){
+    if (!this._interests) {
+      this._interests = new RendezZoo.Collections.Categories({ user: this});
+    }
+
+    return this._interests;
   }
 })
 
@@ -111,4 +120,4 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
 
 });
 
-_.extend(RendezZoo.Models.User.prototype, RendezZoo.formDataMixin);
+_.extend(RendezZoo.Models.User.prototype, RendezZoo.Mixins.formData);

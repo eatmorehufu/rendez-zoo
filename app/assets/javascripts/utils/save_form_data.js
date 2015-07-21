@@ -1,4 +1,4 @@
-RendezZoo.formDataMixin = {
+RendezZoo.Mixins.formData = {
   saveFormData: function(formData, options){
     var method = this.isNew() ? "POST" : "PUT";
     var model = this;

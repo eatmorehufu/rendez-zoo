@@ -21,7 +21,7 @@ module Api
     end
 
     def show
-      @user = User.includes(member_groups: [:members, :organizers], organizer_groups: [:members, :organizers]).find(params[:id])
+      @user = User.includes(:interests, member_groups: [:members, :organizers], organizer_groups: [:members, :organizers]).find(params[:id])
     end
 
     private

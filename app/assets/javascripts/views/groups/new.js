@@ -49,4 +49,4 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   }
 });
 
-_.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.fileInputMixin);
+_.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.fileInput);

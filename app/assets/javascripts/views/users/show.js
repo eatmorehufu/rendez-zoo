@@ -41,5 +41,5 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
 
 })
 
-_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.fileInputMixin)
-_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.formatTimeMixin)
+_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.Mixins.fileInput)
+_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.Mixins.formatTime)

@@ -1,4 +1,4 @@
-RendezZoo.fileInputMixin = {
+RendezZoo.Mixins.fileInput = {
   fileInputChange: function(event){
 
     var that = this;

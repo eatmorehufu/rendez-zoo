@@ -1,4 +1,4 @@
-RendezZoo.formatTimeMixin = {
+RendezZoo.Mixins.formatTime = {
   formatTime: function(timeString) {
     var formatted = {}
     if (timeString) {

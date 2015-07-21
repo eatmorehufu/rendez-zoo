@@ -10,3 +10,8 @@ json.memberGroups do
     json.partial! "/api/groups/group", group: group
   end
 end
+json.interests do
+  json.array! user.interests.each do |interest|
+    json.extract! interest, :id, :name
+  end
+end

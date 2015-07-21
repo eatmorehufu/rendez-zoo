@@ -213,4 +213,4 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   }
 });
 
-_.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.formatTimeMixin)
+_.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime)
