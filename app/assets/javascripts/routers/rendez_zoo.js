@@ -108,7 +108,10 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   groupMemberIndex: function(id) {
-
+    var group = RendezZoo.groups.getOrFetch(group_id);
+    var memberIndexView = new RendezZoo.Views.GroupShow({
+      
+    })
   },
 
   groupPhotoIndex: function(id) {

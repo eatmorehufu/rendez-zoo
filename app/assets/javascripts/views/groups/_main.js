@@ -40,6 +40,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var startTime = this.formatTime(this.subModel.get('start_time'));
         var endTime = this.formatTime(this.subModel.get('end_time'));
         var mainTop = this.eventDetailTemplate({
+          group: this.model,
           groupEvent: this.subModel,
           startTime: startTime,
           endTime: endTime

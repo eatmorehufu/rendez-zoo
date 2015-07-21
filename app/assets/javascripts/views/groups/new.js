@@ -8,7 +8,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.$el.addClass("new-group-padding")
+    this.$el.addClass("pad-twenty")
   },
 
   render: function(){

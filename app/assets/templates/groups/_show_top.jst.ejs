@@ -7,12 +7,12 @@
       <ul>
         <% group.groupMembers().forEach(function(groupMember){ %>
           <li>
-            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"</a>
+            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"></a>
           </li>
         <% }) %>
         <% group.groupOrganizers().forEach(function(groupMember){ %>
           <li>
-            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"</a>
+            <a href="/#/groups/<%= group.id%>/members/<%=groupMember.id%>"><img src="<%= groupMember.escape('avatar_url')%>"></a>
           </li>
         <% }) %>
       </ul>

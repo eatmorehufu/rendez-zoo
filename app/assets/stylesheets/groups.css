@@ -289,6 +289,7 @@ input.zip {
 }
 
 .group-banner-buttons .join-leave-button:hover {
+  cursor: pointer;
   background: #CA352B;
 }
 
@@ -371,4 +372,14 @@ input.zip {
   height: 50px;
   width: 50px;
   overflow: hidden;
+}
+
+#demo-login {
+  background: #aaa;
+  color: #000;
+}
+
+#demo-login:hover {
+  background: #333;
+  color: #fff;
 }
