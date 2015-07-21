@@ -1,6 +1,7 @@
 RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   innerTemplate: JST['users/_show'],
+  userPicUpload: JST['users/_picForm'],
   tagName: "article",
 
   events: {
@@ -17,6 +18,7 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
     var timeParsed = this.formatTime(this.model.get('created_at'));
     this.$el.html(this.template());
     this.$('.user-profile').html(this.innerTemplate({ user: this.model, timeParse: timeParsed }));
+    this.$('.profile-picture').append(this.userPicUpload());
 
     return this;
   },

@@ -110,24 +110,34 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var buttonText = "Create Event"
     this.subModel = new RendezZoo.Models.Event();
 
-    return this.eventFormTemplate({groupEvent: this.subModel, buttonText: buttonText, heading: heading});
+    return this.eventFormTemplate({
+      groupEvent: this.subModel,
+      buttonText: buttonText,
+      heading: heading
+    });
   },
 
   editEvent: function() {
     var heading = "Edit Event"
     var buttonText = "Edit Event"
 
-    return this.eventFormTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
+    return this.eventFormTemplate({
+      groupEvent: this.subModel,
+      buttonText: buttonText,
+      heading: heading
+    });
   },
 
   eventDetail: function() {
     var startTime = this.formatTime(this.subModel.get('start_time'));
     var endTime = this.formatTime(this.subModel.get('end_time'));
+    var rsvpText = this.subModel.attendees().get(RendezZoo.currentUser.id) ? "Cancel RSVP" : "RSVP";
     return this.eventDetailTemplate({
       group: this.model,
       groupEvent: this.subModel,
       startTime: startTime,
-      endTime: endTime
+      endTime: endTime,
+      rsvpText: rsvpText
     });
   },
 

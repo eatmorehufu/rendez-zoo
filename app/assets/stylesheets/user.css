@@ -46,7 +46,7 @@
   float: right;
 }
 
-.profile-picture {
+.profile-picture img{
   width: 240px;
 }
 
@@ -58,4 +58,8 @@
 .group-member-index-main {
   background: #fff;
   border: #ccc;
+}
+
+.profile-picture {
+  width: 240px;
 }

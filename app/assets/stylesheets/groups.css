@@ -279,7 +279,8 @@ input.zip {
   display: block;
 }
 
-.red-button a:hover {
+.red-button:hover {
+  cursor: pointer;
   background: #CA352B;
 }
 
