@@ -49,6 +49,9 @@ class User < ActiveRecord::Base
     class_name: "Group",
     foreign_key: :owner_id
 
+  has_many :user_interests, inverse_of: :user
+  has_many :interests, through: :user_interests, source: :category
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

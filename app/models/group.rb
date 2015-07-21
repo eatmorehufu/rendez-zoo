@@ -36,4 +36,7 @@ class Group < ActiveRecord::Base
 
   has_many :organizers, through: :organizer_memberships, source: :member
 
+  has_many :group_categories, inverse_of: :group
+  has_many :categories, through: :group_categories, source: :category
+
 end
