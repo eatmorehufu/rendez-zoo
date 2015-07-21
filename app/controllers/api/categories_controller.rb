@@ -1,7 +1,7 @@
 module Api
   class CategoriesController < ApplicationController
-    def search
-
+    def show
+      @category = Category.includes(:users, :groups).find(params[:id])
     end
 
     def index

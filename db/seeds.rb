@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create!(username: 'sennacy', email: 'sennacy@cat.com', password: 'password')
-group = Group.create!(title: 'Pound Dawgs', description: "Ruff 'n' Tuff", owner_id: user.id, zip_code: "11111")
-GroupMembership.create!(member_id: user.id, group_id: group.id, status: "organizer")
+User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password')
+["Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Merekat", "Flamingo"].each do |name|
+  User.create!(username: name, email: name + "@" + name + "." + name, password: 'password')
+end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       delete "leave"
       post "join"
     end
-    resources :categories, only: [:search, :index]
+    resources :categories, only: [:show, :index]
     resources :events, only: [:index, :show, :update, :create] do
       post "rsvp"
       delete "unrsvp"

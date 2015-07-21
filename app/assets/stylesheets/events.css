@@ -196,7 +196,7 @@
   width: 100%;
 }
 
-#event-attendee-profiles img {
+.profile-pic-img {
   float: left;
   max-width: 50px;
   max-height: 50px;

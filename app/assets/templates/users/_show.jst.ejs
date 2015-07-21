@@ -10,7 +10,19 @@
         <h2>Member Of: </h2>
         <ul class="group-memberships">
           <% user.memberGroups().forEach(function(group){ %>
-            <li><%= group.escape('title') %></li>
+            <li><a href="/#/groups/<%=group.id%>">
+              <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
+              <h3><%= group.escape('title') %></h3>
+            </a></li>
+            <% })%>
+        </ul>
+        <h2>Organizer for: </h2>
+        <ul class="organizer-memberships">
+          <% user.organizerGroups().forEach(function(group){ %>
+            <li><a href="/#/groups/<%=group.id%>">
+              <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
+              <h3><%= group.escape('title') %></h3>
+            </a></li>
             <% })%>
         </ul>
       </article>
@@ -26,7 +38,9 @@
       <div class="user-interests">
         <h2>Interested In: </h2>
         <ul>
-          List of Interests.
+          <% user.interests().forEach(function(interest){ %>
+            <li><%= interest.escape('name') %></li>
+          <% })%>
         </ul>
       </div>
     </section>

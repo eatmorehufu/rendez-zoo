@@ -6,6 +6,8 @@ RendezZoo.Models.Category = Backbone.Model.extend({
     response.associated_groups && this.associatedGroups().set(response.associated_groups);
     delete response.associated_users;
     delete response.associated_groups;
+
+    return response;
   },
 
   associatedUsers: function(){
