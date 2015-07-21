@@ -388,3 +388,7 @@ input.zip {
   background: #333;
   color: #fff;
 }
+
+.errors {
+  color: #f00;
+}

@@ -142,7 +142,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   memberIndex: function() {
-    console.log(this.model.groupMembers());
     return this.memberIndexTemplate({
       group: this.model,
       members: this.model.groupMembers(),

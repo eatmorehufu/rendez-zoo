@@ -1,6 +1,6 @@
 <article class="splash-message">
   <h1>Welcome, <%= currentUser.escape('username') %>!</h1>
-  <h2>You are currently a member of <%= currentUser.memberGroups().length %> groups.</h2>
   <h2>You are managing <%= currentUser.organizerGroups().length %> groups. </h2>
+  <h2>You are currently a member of <%= currentUser.memberGroups().length %> other groups.</h2>
   <p>Go wild!</p>
 </article>
