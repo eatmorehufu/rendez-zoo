@@ -1,9 +1,11 @@
 RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   templateTop: JST['groups/_show_top'],
   templateBottom: JST['groups/_show_bottom'],
-  newEventTemplate: JST['events/_new'],
+  eventFormTemplate: JST['events/_form'],
   eventDetailTemplate: JST['events/_show'],
   groupEditTemplate: JST['groups/_form'],
+  memberDetailTemplate: JST['users/_show'],
+  memberIndexTemplate: JST['users/index'],
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
   tagName: "section",
@@ -23,28 +25,18 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   render: function() {
     switch (this.subPage) {
       case "newEvent":
-        var heading = "Create a new Event"
-        var buttonText = "Create Event"
-        this.subModel = new RendezZoo.Models.Event();
-        var mainTop = this.newEventTemplate({groupEvent: this.subModel, buttonText: buttonText, heading: heading});
+        var mainTop = this.newEvent();
         break;
       case "editEvent":
         var heading = "Edit Event"
         var buttonText = "Edit Event"
-        var mainTop = this.newEventTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
+        var mainTop = this.eventFormTemplate({ groupEvent: this.subModel, buttonText: buttonText, heading: heading });
         break;
       case "editGroup":
         var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
         break;
       case "eventDetail":
-        var startTime = this.formatTime(this.subModel.get('start_time'));
-        var endTime = this.formatTime(this.subModel.get('end_time'));
-        var mainTop = this.eventDetailTemplate({
-          group: this.model,
-          groupEvent: this.subModel,
-          startTime: startTime,
-          endTime: endTime
-        });
+        var mainTop = this.eventDetail();
         break;
       case "memberIndex":
         var mainTop = this.memberIndex();
@@ -151,6 +143,24 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
       }.bind(this)
     })
+  },
+
+  newEvent: function() {
+    var heading = "Create a new Event"
+    var buttonText = "Create Event"
+    this.subModel = new RendezZoo.Models.Event();
+    return this.eventFormTemplate({groupEvent: this.subModel, buttonText: buttonText, heading: heading});
+  },
+
+  eventDetail: function() {
+    var startTime = this.formatTime(this.subModel.get('start_time'));
+    var endTime = this.formatTime(this.subModel.get('end_time'));
+    return this.eventDetailTemplate({
+      group: this.model,
+      groupEvent: this.subModel,
+      startTime: startTime,
+      endTime: endTime
+    )}
   },
 
   memberIndex: function() {

@@ -20,7 +20,11 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
 
   bindModels: function(subId) {
     if (this.subPage === "eventDetail" || this.subPage === "editEvent") {
-      this.subModel = this.model.groupEvents().getOrFetch(subId)
+      this.subModel = this.model.groupEvents().getOrFetch(subId);
+    };
+
+    if (this.subPage === "memberDetail") {
+      this.subModel = RendezZoo.users.getOrFetch(subId);
     };
 
     this.listenTo(this.subModel, 'sync', this.render.bind(this));
