@@ -222,7 +222,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   attachAttendees: function(groupEvent) {
     groupEvent.attendees().forEach(function(attendee){
-      console.log(attendee);
       var content = this.miniMemberTemplate({user: attendee, group_id: this.model.id})
       this.$(".member-thumbs[data-event-id=" + groupEvent.id + "]").append(content)
     }.bind(this))

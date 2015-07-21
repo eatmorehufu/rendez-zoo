@@ -4,7 +4,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
 
   events: {
     "submit form": "submit",
-    "change #input-user-avatar": "fileInputChange"
+    "keyup input.zip": "getZipCode"
   },
 
   initialize: function (options) {
@@ -30,6 +30,8 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
       formData.append("group[title]", attrs.title);
       formData.append("group[zip_code]", attrs.zip_code);
       formData.append("group[description]", attrs.description);
+      formData.append("group[city]", this._city);
+      formData.append("group[state]", this._state);
       var that = this;
       this.model.saveFormData(formData, {
         success: function(){
@@ -46,6 +48,22 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
 
   validateAttrs: function(attrs) {
     return attrs.title && attrs.zip_code && attrs.description;
+  },
+
+  getZipCode: function(event) {
+    var zipcode = $(event.currentTarget).val().substring(0, 5);
+    if (zipcode.length == 5 && /^[0-9]+$/.test(zipcode)) {
+      $.ajax({
+        url: "http://ZiptasticAPI.com/" + zipcode,
+        dataType: "json",
+        success: function(data){
+          this.$('#city').html(data.city);
+          this.$('#state').html(data.state);
+          this._city = data.city;
+          this._state = data.state;
+        }.bind(this)
+      })
+    }
   }
 });
 
