@@ -1,31 +1,3 @@
-<section class="user-profile-main">
-  <h1> <%= user.get('username') %></h1>
-  <h3><strong>Location:</strong><%= user.get('zip_code') %></h3>
-  <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
-  <h3><strong>Bio:</strong></h3>
-  <p><%=user.get('description') %></p>
+<section class="user-profile pad-twenty">
 
-  <article class="group-memberships">
-    <h2>Member Of: </h2>
-    <ul class="group-memberships">
-      <% user.memberGroups().forEach(function(group){ %>
-        <li><%= group.escape('title') %></li>
-        <% })%>
-    </ul>
-  </article>
-</section>
-
-
-<section class="user-profile-sidebar">
-  <div class="profile-picture">
-    <img src="<%= user.escape("avatar_url") %>">
-  </div>
-
-
-  <div class="user-interests">
-    <h2>Interested In: </h2>
-    <ul>
-      List of Interests.
-    </ul>
-  </div>
 </section>

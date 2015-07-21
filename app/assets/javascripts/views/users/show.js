@@ -1,5 +1,6 @@
 RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
+  innerTemplate: JST['users/_show'],
   tagName: "article",
 
   events: {
@@ -8,13 +9,14 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   initialize: function(options){
-    this.$el.addClass("user-profile group");
+    this.$el.addClass("current-user-profile");
     this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function(){
     var timeParsed = this.formatTime(this.model.get('created_at'));
-    this.$el.html(this.template({ user: this.model, timeParse: timeParsed }));
+    this.$el.html(this.template());
+    this.$('.user-profile').html(this.innerTemplate({ user: this.model, timeParse: timeParsed }));
 
     return this;
   },

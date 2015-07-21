@@ -1,4 +1,4 @@
-.user-profile {
+.entire-user-profile {
   border: 1px solid #ccc;
   max-width: 920px;
   margin: auto;
@@ -6,16 +6,16 @@
   background: white;
 }
 
-.user-profile h2 {
+.entire-user-profile h2 {
   font-size: 24px;
 }
 
-.user-profile h1 {
+.entire-user-profile h1 {
   padding-bottom: 20px;
   font-size: 30px;
 }
 
-.user-profile h1:after{
+.entire-user-profile h1:after{
   content: "";
   display: block;
   height: 1px;
@@ -26,11 +26,11 @@
   right: 0;
 }
 
-.user-profile h3 > strong {
+.entire-user-profile h3 > strong {
   font-weight: bold;
 }
 
-.user-profile h3 {
+.entire-user-profile h3 {
   margin-top: 20px;
 }
 
@@ -48,4 +48,9 @@
 
 .profile-picture {
   width: 240px;
+}
+
+
+.current-user-profile {
+  background: #eee;
 }
