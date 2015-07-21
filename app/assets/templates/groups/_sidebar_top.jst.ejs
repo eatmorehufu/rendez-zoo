@@ -27,5 +27,7 @@
 
 
 <ul id="sidebar-categories">
-  tags
+  <% group.groupCategories().forEach(function(category){ %>
+    <li><a href="#"><%= category.escape('name')%></a></li>
+  <% }) %>
 </ul>

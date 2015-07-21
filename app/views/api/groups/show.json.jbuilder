@@ -1,4 +1,9 @@
 json.partial! "group", group: @group
+json.categories do
+  json.array! @group.categories do |category|
+    json.extract! category, :id, :name
+  end
+end
 json.groupEvents do
   json.array! @group.events do |event|
     json.merge! event.attributes

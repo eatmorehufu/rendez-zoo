@@ -5,6 +5,8 @@ RendezZoo.Models.Group = Backbone.Model.extend({
     this.groupEvents().set(response.groupEvents);
     this.groupMembers().set(response.members);
     this.groupOrganizers().set(response.organizers);
+    this.groupCategories().set(response.categories);
+    delete response.categories;
     delete response.members;
     delete response.organizers;
     delete response.groupEvents;
@@ -33,6 +35,14 @@ RendezZoo.Models.Group = Backbone.Model.extend({
     };
 
     return this._groupOrganizers;
+  },
+
+  groupCategories: function(){
+    if (!this._groupCategories){
+      this._groupCategories = new RendezZoo.Collections.Categories({group: this});
+    }
+
+    return this._groupCategories;
   }
 
 })
