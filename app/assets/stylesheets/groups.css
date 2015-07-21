@@ -231,7 +231,7 @@
   margin-bottom: 20px;
 }
 
-.group-form input, .group-form textarea{
+.form-style input, .form-style textarea{
   width: calc(100% - 22px);
   display: block;
   border: 1px solid #ccc;
@@ -248,7 +248,7 @@ input.zip {
   background: #eee;
 }
 
-.group-form textarea {
+.form-style textarea {
   height: 140px;
 }
 
