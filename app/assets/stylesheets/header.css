@@ -175,3 +175,22 @@
 .profile-menu-items.open {
   display: block;
 }
+
+h3.menu-thumb {
+  position: relative;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  padding: 0px;
+  margin-top: 10px;
+}
+
+h3.menu-thumb img {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  left: 0px;
+  top: 0px;
+}
