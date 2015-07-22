@@ -1,0 +1,40 @@
+.search-form {
+  position: absolute;
+  color: #fff;
+  background: #505050;
+  padding: 20px;
+  width: 580px;
+  left: calc(50% - 300px);
+  top: 400px;
+}
+
+
+.search-form .query {
+  background: white;
+  padding: 5px;
+  color: black;
+}
+
+.search-form .distance, .search-form .location {
+  padding: 5px;
+  color: gray;
+  text-decoration: underline;
+}
+
+.search-form .red-button {
+  display: inline;
+}
+
+.search-form .location {
+  width: 150px;
+}
+
+.search-form .distance {
+  width: 35px;
+}
+
+.search-form .distance:focus, .search-form .location:focus{
+  background: lightgray;
+  color: black;
+  text-decoration: none;
+}

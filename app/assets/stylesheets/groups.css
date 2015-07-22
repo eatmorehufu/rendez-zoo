@@ -58,7 +58,7 @@
   height: 158px;
   border: 1px solid white;
   border-radius: 3px;
-  background: #F4001B;
+  background: #E0393E;
   margin-bottom: 20px;
 }
 
@@ -85,7 +85,7 @@
 
 .group-banner-nav a:hover {
   color: white;
-  background: #F4001B;
+  background: #E0393E;
 }
 
 .group-banner-buttons {
@@ -262,7 +262,7 @@ input.zip {
 }
 .group-banner-buttons button {
   position: relative;
-  background: #F4001B;
+  background: #E0393E;
   color: white;
   padding: 5px 10px;
   border-radius: 3px;
@@ -271,7 +271,7 @@ input.zip {
 }
 
 .red-button {
-  background: #F4001B;
+  background: #E0393E;
   color: white;
   padding: 5px 10px;
   border-radius: 3px;
@@ -358,6 +358,10 @@ input.zip {
   padding: 10px 20px;
   border: 2px solid white;
   border-radius: 3px;
+}
+
+#group-index-body {
+  margin-top: 70px;
 }
 
 #group-index-body > h2 {

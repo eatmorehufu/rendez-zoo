@@ -21,7 +21,7 @@
 }
 
 .left-header-nav a:hover {
-  background: #F4001B;
+  background: #E0393E;
 }
 
 .left-header-nav a:hover strong {
@@ -52,7 +52,7 @@
   letter-spacing: 1px;
   font-weight: 700;
   display: block;
-  color: #F4001B;
+  color: #E0393E;
   font-size: 20px;
 }
 
@@ -73,7 +73,7 @@
 
 .sign-up-header-button {
   color: white;
-  background: #F4001B;
+  background: #E0393E;
   border-radius: 3px;
 }
 
@@ -99,7 +99,7 @@
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
-  color: #F4001B;
+  color: #E0393E;
   border-radius: 3px;
   border: 1px solid #ccc;
 }
@@ -169,7 +169,7 @@
 }
 
 .profile-menu-items > li:hover a, .profile-menu-items > li:hover button {
-  background: #F4001B;
+  background: #E0393E;
   color: white;
 }
 .profile-menu-items.open {
