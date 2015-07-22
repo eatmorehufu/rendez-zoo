@@ -14,6 +14,6 @@
 #
 
 class Geolocation < ActiveRecord::Base
-  validates :lat, :lng, :locatable_id, :locatable_type, presence: true
+  validates :lat, :lng, :city, :state, :locatable_id, :locatable_type, presence: true
   belongs_to :locatable, polymorphic: true
 end

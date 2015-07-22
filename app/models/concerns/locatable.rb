@@ -28,18 +28,24 @@ module Locatable
 
     resp = RestClient.get(url)
     parse = JSON.parse(resp)
+    return false if parse["status"] != "OK"
     coords = parse["results"].first["geometry"]["location"]
-
+    state = parse["results"].first["address_components"][-2]["short_name"]
+    city = parse["results"].first["address_components"][1]["long_name"]
+    loc_values = {
+      lat: coords["lat"],
+      lng: coords["lng"],
+      city: city,
+      state: state
+    }
 
     if self.location.nil?
-      self.create_location!(lat: coords["lat"], lng: coords["lng"])
+      self.create_location!(loc_values)
     else
-      self.location.lat = coords["lat"]
-      self.location.lng = coords["lng"]
-      self.location.save!
+      self.location.update!(loc_values)
     end
 
-    return nil
+    true
   end
 
 
