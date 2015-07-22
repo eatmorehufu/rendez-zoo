@@ -248,7 +248,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   generateLocLink: function(){
     var locString = "";
     for (var i = 0; i < this.address_vars.length; i++) {
-      var address_component = this.subModel.get(this.address_vars[i])
+      var address_component = this.subModel.escape(this.address_vars[i])
       if (address_component) {
         locString += address_component + " "
       }

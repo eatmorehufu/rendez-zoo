@@ -40,6 +40,7 @@ group = user.owned_groups.create!(
   description: "Come hang out with the bears in the city. Fun fur all.",
   zip_code: "10002"
 )
+group.set_geoloc("zip_code")
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
 
 event = add_past_event(group,
@@ -50,13 +51,15 @@ event = add_past_event(group,
   "NY"
 )
 event.attendee_ids = [user.id]
+event.set_geoloc("loc_name", "city", "state")
 
 user = User.find_by(username: "Otter")
 group = user.owned_groups.create!(
-  title: "Significant Otters of LA",
+  title: "Significant Otters of SF",
   description: "A meet and greet for otters and those who love them.",
   zip_code: "94101"
 )
+group.set_geoloc("zip_code")
 
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
 
@@ -69,3 +72,4 @@ event = add_future_event(group,
 )
 
 event.attendee_ids = [user.id]
+event.set_geoloc("loc_name", "city", "state")
