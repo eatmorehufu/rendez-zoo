@@ -31,6 +31,8 @@ gem 'aws-sdk', '~> 1.6'
 
 gem 'backbone-on-rails'
 gem 'jquery-ui-rails'
+gem 'addressable'
+gem 'rest-client'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

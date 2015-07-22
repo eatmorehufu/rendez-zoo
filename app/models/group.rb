@@ -13,13 +13,12 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
-#  city                :string
-#  state               :string
 #
 
 class Group < ActiveRecord::Base
   include Locatable
   validates :title, :zip_code, :owner_id, presence: true
+  validates :zip_code, format: { with: /\A[0-9]{5}\z/ }
   has_attached_file :avatar, :styles => { :medium => "311x184>", :thumb => "100x100>" }, :default_url => "/images/group-missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -45,5 +44,5 @@ class Group < ActiveRecord::Base
 
   has_many :group_categories, inverse_of: :group
   has_many :categories, through: :group_categories, source: :category
-  
+
 end

@@ -9,6 +9,8 @@
 #  lng            :float            not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  city           :string           not null
+#  state          :string           not null
 #
 
 class Geolocation < ActiveRecord::Base

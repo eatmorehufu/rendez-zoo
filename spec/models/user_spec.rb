@@ -14,8 +14,6 @@
 #  avatar_updated_at   :datetime
 #  description         :text
 #  zip_code            :string
-#  city                :string
-#  state               :string
 #
 
 describe "user" do
