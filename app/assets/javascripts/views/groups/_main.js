@@ -96,7 +96,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       this.rsvpEvent();
     }
   },
-  
+
   newEvent: function() {
     var heading = "Create a new Event"
     var buttonText = "Create Event"
@@ -207,14 +207,41 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   attachMemberMini: function() {
-
+    var i = 0;
+    this.model.groupMembers().forEach(function(groupMember){
+      if (i > 6){
+        return;
+      }
+      var content = this.miniMemberTemplate({
+        user: groupMember,
+        group_id: this.model.id
+      });
+      this.$('.group-show-top-nav > .member-thumbs').append(content);
+      i++;
+    }.bind(this))
+    this.model.groupOrganizers().forEach(function(groupOrganizer){
+      if (i > 6){
+        return;
+      }
+      var content = this.miniMemberTemplate({
+        user: groupOrganizer,
+        group_id: this.model.id
+      });
+      this.$('.group-show-top-nav > .member-thumbs').append(content);
+      i++;
+    }.bind(this))
+    console.log(i);
   },
 
   attachAttendees: function(groupEvent) {
-    groupEvent.attendees().forEach(function(attendee){
-      var content = this.miniMemberTemplate({user: attendee, group_id: this.model.id})
+    var numThumbs = (groupEvent.attendees() > 6) ? 6 : groupEvent.attendees();
+    for (var i = 0; i < numThumbs; i++ ) {
+      var content = this.miniMemberTemplate({
+        user: groupEvent.attendees().at(i),
+        group_id: this.model.id
+      })
       this.$(".member-thumbs[data-event-id=" + groupEvent.id + "]").append(content)
-    }.bind(this))
+    }
   }
 });
 
