@@ -4,12 +4,21 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   indexTemplate: JST['groups/_index_groups'],
   notLoggedInTemplate: JST['groups/_splash_banner'],
   loggedInTemplate: JST['groups/_user_welcome'],
+  searchTemplate: JST['groups/_search_template'],
   tagName: "section",
+
+  events: {
+    "change .query": "search",
+    "submit .search-form": "search"
+  },
 
   initialize: function(options) {
     this.$el.addClass("groups-index");
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(RendezZoo.currentUser, 'signIn signOut', this.render);
+    this.searchResults = new RendezZoo.Collections.SearchResults();
+    this.searchResults.pageNum = 1;
+    this.listenTo(this.searchResults, "sync", this.renderSearch);
   },
 
   render: function() {
@@ -33,8 +42,41 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
         groups: RendezZoo.groups
       }));
     }
-
-    this.$('#group-index-body').append(this.indexTemplate({groups: this.collection}));
+    this.attachSearch();
+    this.$('#group-index-body').append(this.memberTemplate({groups: this.collection, heading: "Suggested Groups"}));
     return this;
-  }
+  },
+
+  attachSearch: function() {
+    if (RendezZoo.currentUser.isSignedIn() && RendezZoo.currentUser.get('city') && RendezZoo.currentUser.get('state')){
+      var location = RendezZoo.currentUser.city + ", " + RendezZoo.currentUser.state;
+    } else {
+      var location = "New York, NY";
+    }
+
+    var content = this.searchTemplate({ location: location });
+    this.$('#search-box').html(content);
+  },
+
+  search: function (event) {
+    event.preventDefault();
+    this.searchResults.pageNum = 1;
+    this.searchResults.query = this.$(".query").val();
+    this.searchResults.fetch({
+      data: {
+        query: this.searchResults.query,
+        location: this.$(".location").val(),
+        distance: this.$(".distance").val(),
+        type: "Group",
+        page: 1
+      }
+    });
+  },
+
+  renderSearch: function () {
+    var content = this.memberTemplate({groups: this.searchResults, heading: "Search Results"});
+    this.$('#group-index-body').html(content);
+
+    return this;
+  },
 });

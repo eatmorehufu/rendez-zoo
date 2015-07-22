@@ -17,8 +17,8 @@
 
 class Group < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search_by_keyword, against: [:title, :description], associated_against: {categories: :name}
-
+  pg_search_scope :search_by_keyword, against: [:title, :description], associated_against: { categories: :name }
+  pg_search_scope :search_by_category, associated_against: { categories: :name }
   validates :title, :zip_code, :owner_id, presence: true
   validates :zip_code, format: { with: /\A[0-9]{5}\z/ }
   has_attached_file :avatar,

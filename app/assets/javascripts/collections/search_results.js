@@ -3,7 +3,7 @@ RendezZoo.Collections.SearchResults = Backbone.Collection.extend({
 
   parse: function(resp) {
     return resp.results;
-  }
+  },
 
   model: function (attrs) {
     var type = attrs._type;
