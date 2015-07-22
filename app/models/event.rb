@@ -18,6 +18,7 @@
 #
 
 class Event < ActiveRecord::Base
+  include Locatable
   validates :group_id, :start_time, :title, :description, presence: true
   validate :future_start_time
   validate :start_time_limit
@@ -26,6 +27,7 @@ class Event < ActiveRecord::Base
   has_many :event_attendances, dependent: :destroy, inverse_of: :event
   has_many :attendees, through: :event_attendances, source: :attendee
   after_initialize :parse_time
+
 
   def start_timepick=(timepick)
     return if timepick == ""

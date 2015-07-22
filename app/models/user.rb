@@ -19,6 +19,7 @@
 #
 
 class User < ActiveRecord::Base
+  include Locatable
   validates :email, :password_digest, :username, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
