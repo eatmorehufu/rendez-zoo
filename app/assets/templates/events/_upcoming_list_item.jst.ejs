@@ -1,7 +1,7 @@
 <li class="mini-event-list-item group" >
   <h2 class="event-mini-title"><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
   <section class="mini-event-main">
-    <h3>location</h3>
+    <h3><%= groupEvent.escape('city')%>, <%= groupEvent.escape('state') %></h3>
     <ul class="member-thumbs group" data-event-id="<%=groupEvent.id%>"> </ul>
     <a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><small>SEE MORE</small></a>
     <p><%= groupEvent.escape("description")%></p>

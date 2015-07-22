@@ -16,6 +16,7 @@ module Locatable
       address_components.push(self.send(term.to_sym))
     end
     address = address_components.join(" ")
+    return false if address.length < 5
     url = Addressable::URI.new(
       scheme: 'https',
       host: 'maps.googleapis.com',

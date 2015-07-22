@@ -3,6 +3,7 @@ module Api
     def create
       @event = Event.includes(:group).new(event_params)
       if @event.group.organizers.include?(current_user) && @event.save
+        @event.set_geoloc("street1", "street2", "city", "zip_code", "state")
         @event.attendee_ids = [current_user.id]
         render :show
       else
@@ -16,7 +17,7 @@ module Api
     end
 
     def show
-      @event = Event.includes(:attendees).find(params[:id])
+      @event = Event.includes(:location, :attendees).find(params[:id])
     end
 
     def index
