@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721215453) do
+ActiveRecord::Schema.define(version: 20150722131723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 20150721215453) do
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
   add_index "events", ["start_time"], name: "index_events_on_start_time", using: :btree
+
+  create_table "geolocations", force: :cascade do |t|
+    t.integer  "locatable_id",   null: false
+    t.string   "locatable_type", null: false
+    t.float    "lat",            null: false
+    t.float    "lng",            null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "geolocations", ["lat"], name: "index_geolocations_on_lat", using: :btree
+  add_index "geolocations", ["lng"], name: "index_geolocations_on_lng", using: :btree
+  add_index "geolocations", ["locatable_type", "locatable_id"], name: "index_geolocations_on_locatable_type_and_locatable_id", using: :btree
 
   create_table "group_categories", force: :cascade do |t|
     t.integer  "group_id",    null: false

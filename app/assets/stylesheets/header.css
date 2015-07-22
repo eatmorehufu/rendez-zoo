@@ -188,8 +188,10 @@ h3.menu-thumb {
 }
 
 h3.menu-thumb img {
-  position: absolute;
-  width: 45px;
+  min-height: 35px;
+  min-width: 35px;
   height: auto;
-  left: -5px;
+  width: auto;
+  max-height: 40px;
+  max-width: 40px;
 }
