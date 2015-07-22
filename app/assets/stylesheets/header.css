@@ -191,6 +191,5 @@ h3.menu-thumb img {
   position: absolute;
   width: 45px;
   height: auto;
-  left: 0px;
-  top: 0px;
+  left: -5px;
 }
