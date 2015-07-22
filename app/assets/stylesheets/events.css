@@ -20,9 +20,9 @@
 }
 
 .mini-event-list-item {
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top: 2px solid #ccc;
   position: relative;
+  padding-bottom: 20px;
 }
 
 .mini-event-main {
@@ -54,7 +54,7 @@
   padding-left: 10px;
 }
 
-.learn-more {
+.mini-event-main small {
   font-size: 10px;
 }
 
@@ -205,4 +205,8 @@
 #event-attendee-profiles h2 {
   padding: 5px;
   float: left;
+}
+
+.mini-event-main p {
+  padding: 10px 0px;
 }
