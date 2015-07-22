@@ -2,7 +2,7 @@ module Api
   class GroupsController < ApplicationController
 
     def show
-      @group = Group.includes(:members, :organizers, :categories, events: :attendees).find(params[:id])
+      @group = Group.includes(:location, :members, :organizers, :categories, events: :attendees).find(params[:id])
       render :show
     end
 
@@ -41,6 +41,7 @@ module Api
       @group = current_user.owned_groups.find(params[:id])
 
       if @group.update(group_params)
+        @group.set_geoloc("zip_code")
         render :show
       else
         render json: @group.errors.full_messages
@@ -50,7 +51,7 @@ module Api
     private
 
     def group_params
-      params.require(:group).permit(:title, :city, :state, :description, :zip_code, :owner_id, :avatar)
+      params.require(:group).permit(:title, :description, :zip_code, :owner_id, :avatar)
     end
 
   end

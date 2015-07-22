@@ -6,6 +6,7 @@ RendezZoo.Models.User = Backbone.Model.extend({
     response.organizerGroups && this.organizerGroups().set(response.organizerGroups);
     response.rsvpEvents && this.rsvpEvents().set(response.rsvpEvents);
     response.interests && this.interests().set(response.interests);
+    response.location && this.location().set(response.location);
     delete response.memberGroups;
     delete response.rsvpEvents;
     delete response.organizerGroups;
@@ -121,3 +122,4 @@ RendezZoo.Models.CurrentUser = RendezZoo.Models.User.extend({
 });
 
 _.extend(RendezZoo.Models.User.prototype, RendezZoo.Mixins.formData);
+_.extend(RendezZoo.Models.User.prototype, RendezZoo.Mixins.Locatable);

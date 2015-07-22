@@ -2,10 +2,11 @@ RendezZoo.Models.Group = Backbone.Model.extend({
   urlRoot: "/api/groups/",
 
   parse: function(response){
-    this.groupEvents().set(response.groupEvents, { parse: true });
-    this.groupMembers().set(response.members);
-    this.groupOrganizers().set(response.organizers);
-    this.groupCategories().set(response.categories);
+    response.groupEvents && this.groupEvents().set(response.groupEvents, { parse: true });
+    response.members && this.groupMembers().set(response.members);
+    response.organizers && this.groupOrganizers().set(response.organizers);
+    response.categories && this.groupCategories().set(response.categories);
+    response.location && this.location().set(response.location);
     delete response.categories;
     delete response.members;
     delete response.organizers;
@@ -48,3 +49,4 @@ RendezZoo.Models.Group = Backbone.Model.extend({
 })
 
 _.extend(RendezZoo.Models.Group.prototype, RendezZoo.Mixins.formData);
+_.extend(RendezZoo.Models.Group.prototype, RendezZoo.Mixins.Locatable);

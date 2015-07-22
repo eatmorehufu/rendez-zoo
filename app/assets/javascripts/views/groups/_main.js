@@ -14,8 +14,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   events: {
     "submit .event-form": "saveEvent",
     "click .rsvp-button": "toggleRSVP",
-    "submit .group-form": "submit",
-    "keyup input.zip": "getZipCode"
+    "submit .group-form": "submit"
   },
 
   initialize: function(options){
@@ -245,5 +244,5 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 });
 
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime);
-_.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.getZipCode);
+// _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.getZipCode);
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.groupFormSubmit);

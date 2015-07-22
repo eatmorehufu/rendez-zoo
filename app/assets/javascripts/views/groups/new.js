@@ -3,8 +3,7 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
   helperNewTemplate: JST['groups/new'],
 
   events: {
-    "submit form": "submit",
-    "keyup input.zip": "getZipCode"
+    "submit form": "submit"
   },
 
   initialize: function (options) {
@@ -22,5 +21,5 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
 });
 
 _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.fileInput);
-_.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.getZipCode);
+// _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.getZipCode);
 _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.groupFormSubmit);

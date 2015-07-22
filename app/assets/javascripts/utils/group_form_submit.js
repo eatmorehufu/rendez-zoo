@@ -10,8 +10,6 @@ RendezZoo.Mixins.groupFormSubmit = {
       formData.append("group[title]", attrs.title);
       formData.append("group[zip_code]", attrs.zip_code);
       formData.append("group[description]", attrs.description);
-      formData.append("group[city]", this._city);
-      formData.append("group[state]", this._state);
       var that = this;
       this.model.saveFormData(formData, {
         success: function(){
