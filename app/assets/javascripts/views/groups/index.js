@@ -8,7 +8,7 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   tagName: "section",
 
   events: {
-    "change .query": "search",
+    "keyup .query, .location": "search",
     "submit .search-form": "search"
   },
 

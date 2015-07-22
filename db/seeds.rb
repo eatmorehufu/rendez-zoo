@@ -54,7 +54,7 @@ user = User.find_by(username: "Otter")
 group = user.owned_groups.create!(
   title: "Significant Otters of SF",
   description: "A meet and greet for otters and those who love them.",
-  zip_code: "94101"
+  zip_code: "94110"
 )
 
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
