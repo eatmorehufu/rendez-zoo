@@ -2,12 +2,19 @@ module Api
   class GroupsController < ApplicationController
 
     def show
-      @group = Group.includes(:location, :members, :organizers, :categories, events: :attendees).find(params[:id])
+      @group = Group.includes(:members, :organizers, :categories, events: :attendees).find(params[:id])
       render :show
     end
 
     def index
-      @groups = Group.includes(:members, :organizers).all
+      if logged_in?
+        @groups = Group.includes(:members, :organizers).near(
+          [current_user.latitude, current_user.longitude],
+          20
+        )
+      else
+        @groups = Group.includes(:members, :organizers).near(request.location, 20)
+      end
 
       render :index
     end

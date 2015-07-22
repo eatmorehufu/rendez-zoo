@@ -1,7 +1,7 @@
 <main class="entire-user-profile group">
   <section class="user-profile-main">
     <h1> <%= user.get('username') %></h1>
-      <h3><strong>Location:</strong><%= user.get('zip_code') %></h3>
+      <h3><strong>Location:</strong><%= user.escape('city') %>, <%= user.escape('state') %></h3>
       <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
       <h3><strong>Bio:</strong></h3>
       <p><%=user.get('description') %></p>

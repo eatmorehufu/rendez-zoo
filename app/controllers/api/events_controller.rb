@@ -16,7 +16,7 @@ module Api
     end
 
     def show
-      @event = Event.includes(:location, :attendees).find(params[:id])
+      @event = Event.includes(:attendees).find(params[:id])
     end
 
     def index
