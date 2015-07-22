@@ -57,6 +57,7 @@ module Api
         :end_timepick,
         :title,
         :description,
+        :loc_name,
         :street1,
         :street2,
         :city,

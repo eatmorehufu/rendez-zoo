@@ -3,7 +3,7 @@
     <h1><%= groupEvent.escape("title") %></h1>
     <h2><%= startTime.fullDay %></h2>
     <h3><%= startTime.fullTime %></h3>
-    <h2 id="event-location">Google Map</h2>
+    <h2 id="event-location"><%= groupEvent.escape("loc_name")%></h2>
     <p><%= groupEvent.escape("description") %></p>
   </section>
 

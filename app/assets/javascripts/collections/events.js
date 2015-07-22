@@ -4,14 +4,12 @@ RendezZoo.Collections.Events = Backbone.Collection.extend({
   comparator: "start_time",
 
   pastEvents: function(){
-    if (!this._pastEvents) {
-      this._pastEvents = []
-      this.forEach(function(groupEvent) {
-        if (Date.parse(groupEvent.get('start_time')) > Date.now()){
-          this._pastEvents.push(groupEvent);
-        }
-      }.bind(this))
-    }
+    this._pastEvents = []
+    this.forEach(function(groupEvent) {
+      if (groupEvent.get('start_time') && Date.parse(groupEvent.get('start_time').slice(0, -5)) < Date.now()){
+        this._pastEvents.push(groupEvent);
+      }
+    }.bind(this))
 
     return this._pastEvents
   },

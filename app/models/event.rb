@@ -20,7 +20,7 @@
 class Event < ActiveRecord::Base
   include Locatable
   validates :group_id, :start_time, :title, :description, presence: true
-  validate :future_start_time
+  # validate :future_start_time
   validate :start_time_limit
   validate :end_time_limit
   belongs_to :group
