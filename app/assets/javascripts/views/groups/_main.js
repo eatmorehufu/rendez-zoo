@@ -70,6 +70,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON();
     attrs.event.group_id = this.model.id;
+    console.log(attrs);
     this.subModel.save(attrs, {
       success: function(){
         this.model.groupEvents().add(this.subModel, { merge: true });
@@ -123,12 +124,14 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var startTime = this.formatTime(this.subModel.get('start_time'));
     var endTime = this.formatTime(this.subModel.get('end_time'));
     var rsvpText = this.subModel.attendees().get(RendezZoo.currentUser.id) ? "Cancel RSVP" : "RSVP";
+    var locLink = this.generateLocLink();
     return this.eventDetailTemplate({
       group: this.model,
       groupEvent: this.subModel,
       startTime: startTime,
       endTime: endTime,
-      rsvpText: rsvpText
+      rsvpText: rsvpText,
+      locLink: locLink
     });
   },
 
@@ -240,7 +243,28 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       })
       this.$(".member-thumbs[data-event-id=" + groupEvent.id + "]").append(content)
     }
-  }
+  },
+
+  generateLocLink: function(){
+    var locString = "";
+    for (var i = 0; i < this.address_vars.length; i++) {
+      var address_component = this.subModel.get(this.address_vars[i])
+      if (address_component) {
+        locString += address_component + " "
+      }
+    }
+
+    return locString.slice(0, -1);
+  },
+
+  address_vars: [
+    "loc_name",
+    "street1",
+    "street2",
+    "city",
+    "state",
+    "zip_code"
+  ]
 });
 
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime);
