@@ -34,6 +34,8 @@ gem 'jquery-ui-rails'
 gem 'addressable'
 gem 'rest-client'
 gem 'geocoder'
+gem 'pg_search'
+gem 'kaminari'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

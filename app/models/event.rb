@@ -18,6 +18,9 @@
 #
 
 class Event < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_keyword, against: [:title, :description, :loc_name]
+
   validates :group_id, :start_time, :title, :description, presence: true
   # validate :future_start_time
   validate :start_time_limit

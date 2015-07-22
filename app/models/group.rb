@@ -16,9 +16,14 @@
 #
 
 class Group < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_keyword, against: [:title, :description], associated_against: {categories: :name}
+
   validates :title, :zip_code, :owner_id, presence: true
   validates :zip_code, format: { with: /\A[0-9]{5}\z/ }
-  has_attached_file :avatar, :styles => { :medium => "311x184>", :thumb => "100x100>" }, :default_url => "/images/group-missing.png"
+  has_attached_file :avatar,
+    :styles => { :medium => "311x184>", :thumb => "100x100>" },
+    :default_url => "/images/group-missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :events, dependent: :destroy

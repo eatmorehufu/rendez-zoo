@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'root#root'
 
   namespace :api, defaults: { format: :json } do
+    get "/search", to: "searches#search"
     resource :session, only: [:show, :create, :destroy]
     resources :users, only: [:show, :create, :edit, :update]
     resources :groups, only: [:index, :show, :update, :create] do
