@@ -230,11 +230,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       this.$('.group-show-top-nav > .member-thumbs').append(content);
       i++;
     }.bind(this))
-    console.log(i);
   },
 
   attachAttendees: function(groupEvent) {
-    var numThumbs = (groupEvent.attendees() > 6) ? 6 : groupEvent.attendees();
+    var numThumbs = (groupEvent.attendees().length > 6) ? 6 : groupEvent.attendees().length;
     for (var i = 0; i < numThumbs; i++ ) {
       var content = this.miniMemberTemplate({
         user: groupEvent.attendees().at(i),
