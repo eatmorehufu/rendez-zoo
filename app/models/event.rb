@@ -18,7 +18,6 @@
 #
 
 class Event < ActiveRecord::Base
-  include Locatable
   validates :group_id, :start_time, :title, :description, presence: true
   # validate :future_start_time
   validate :start_time_limit
@@ -27,6 +26,9 @@ class Event < ActiveRecord::Base
   has_many :event_attendances, dependent: :destroy, inverse_of: :event
   has_many :attendees, through: :event_attendances, source: :attendee
   after_initialize :parse_time
+
+  geocoded_by :full_street_address
+  after_validation :geocode
 
 
   def start_timepick=(timepick)
@@ -47,6 +49,10 @@ class Event < ActiveRecord::Base
   def end_day=(day)
     return if day == ""
     @end_day = day
+  end
+
+  def full_street_address
+    [self.loc_name, self.street1, self.street2, self.city, self.state, self.zip_code].join(" ")
   end
 
   private

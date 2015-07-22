@@ -33,6 +33,7 @@ gem 'backbone-on-rails'
 gem 'jquery-ui-rails'
 gem 'addressable'
 gem 'rest-client'
+gem 'geocoder'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

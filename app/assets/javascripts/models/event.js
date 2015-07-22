@@ -3,7 +3,7 @@ RendezZoo.Models.Event = Backbone.Model.extend({
 
   parse: function(response) {
     response.attendees && this.attendees().set(response.attendees);
-    response.location && this.location().set(response.location);
+    // response.location && this.location().set(response.location);
     delete response.attendees;
 
     return response;
@@ -19,4 +19,4 @@ RendezZoo.Models.Event = Backbone.Model.extend({
 })
 
 
-_.extend(RendezZoo.Models.Event.prototype, RendezZoo.Mixins.Locatable);
+// _.extend(RendezZoo.Models.Event.prototype, RendezZoo.Mixins.Locatable);

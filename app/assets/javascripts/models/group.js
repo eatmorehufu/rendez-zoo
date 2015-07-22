@@ -6,7 +6,7 @@ RendezZoo.Models.Group = Backbone.Model.extend({
     response.members && this.groupMembers().set(response.members);
     response.organizers && this.groupOrganizers().set(response.organizers);
     response.categories && this.groupCategories().set(response.categories);
-    response.location && this.location().set(response.location);
+    // response.location && this.location().set(response.location);
     delete response.categories;
     delete response.members;
     delete response.organizers;
@@ -49,4 +49,4 @@ RendezZoo.Models.Group = Backbone.Model.extend({
 })
 
 _.extend(RendezZoo.Models.Group.prototype, RendezZoo.Mixins.formData);
-_.extend(RendezZoo.Models.Group.prototype, RendezZoo.Mixins.Locatable);
+// _.extend(RendezZoo.Models.Group.prototype, RendezZoo.Mixins.Locatable);

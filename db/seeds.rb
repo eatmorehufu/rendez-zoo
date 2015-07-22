@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 sennacy = User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password', zip_code: "10003")
-sennacy.set_geoloc("zip_code");
 ["Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Merekat", "Flamingo"].each do |name|
   User.create!(username: name, email: name + "@" + name + "." + name, password: 'password')
 end
@@ -40,7 +39,6 @@ group = user.owned_groups.create!(
   description: "Come hang out with the bears in the city. Fun fur all.",
   zip_code: "10002"
 )
-group.set_geoloc("zip_code")
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
 
 event = add_past_event(group,
@@ -51,7 +49,6 @@ event = add_past_event(group,
   "NY"
 )
 event.attendee_ids = [user.id]
-event.set_geoloc("loc_name", "city", "state")
 
 user = User.find_by(username: "Otter")
 group = user.owned_groups.create!(
@@ -59,17 +56,15 @@ group = user.owned_groups.create!(
   description: "A meet and greet for otters and those who love them.",
   zip_code: "94101"
 )
-group.set_geoloc("zip_code")
 
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
 
 event = add_future_event(group,
   "Splish Splash",
   "Cool off in the water",
-  "AT&T Park",
+  "ATT Park",
   "San Francisco",
-  "California"
+  "CA"
 )
 
 event.attendee_ids = [user.id]
-event.set_geoloc("loc_name", "city", "state")

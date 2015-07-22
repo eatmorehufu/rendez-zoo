@@ -17,7 +17,6 @@
 #
 
 class User < ActiveRecord::Base
-  include Locatable
   validates :email, :password_digest, :username, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
@@ -58,6 +57,11 @@ class User < ActiveRecord::Base
 
   has_many :user_interests, inverse_of: :user
   has_many :interests, through: :user_interests, source: :category
+
+  geocoded_by :zip_code
+  reverse_geocoded_by :lattitude, :longitude 
+  after_validation :geocode
+
 
   attr_reader :password
 
