@@ -45,6 +45,11 @@ class Group < ActiveRecord::Base
   has_many :categories, through: :group_categories, source: :category
 
   geocoded_by :zip_code
-  after_validation :geocode
-
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if (geo = results.first)
+      obj.city = geo.city
+      obj.state = geo.state
+    end
+  end
+  after_validation :geocode, :reverse_geocode
 end

@@ -59,8 +59,13 @@ class User < ActiveRecord::Base
   has_many :interests, through: :user_interests, source: :category
 
   geocoded_by :zip_code
-  reverse_geocoded_by :lattitude, :longitude 
-  after_validation :geocode
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if (geo = results.first)
+      obj.city = geo.city
+      obj.state = geo.state
+    end
+  end
+  after_validation :geocode, :reverse_geocode
 
 
   attr_reader :password
