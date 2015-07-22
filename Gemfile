@@ -36,6 +36,7 @@ gem 'rest-client'
 gem 'geocoder'
 gem 'pg_search'
 gem 'kaminari'
+gem 'faker'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
