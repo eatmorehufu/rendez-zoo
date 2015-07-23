@@ -60,6 +60,10 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
 
   search: function (event) {
     event.preventDefault();
+    if (!this.$(".query").val()) {
+      this.render();
+      return;
+    }
     this.searchResults.pageNum = 1;
     this.searchResults.query = this.$(".query").val();
     this.searchResults.fetch({

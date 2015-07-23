@@ -13,7 +13,7 @@ module Api
           20
         )
       else
-        @groups = Group.includes(:members, :organizers).near(request.location, 20)
+        @groups = Group.includes(:members, :organizers).near("New York, NY", 20)
       end
 
       render :index

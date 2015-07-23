@@ -5,12 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-sennacy = User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password', zip_code: "10003")
-["Bear", "Polar Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Meerkat", "Flamingo"].each do |name|
-  User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: (rand(20) + 10000).to_s)
-  sleep 0.3
-  # , avatar: File.new('/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/' + name + '.jpg'
-end
 
 def add_past_event(group, title, desc, loc_name, city, state)
   group.events.create!(
@@ -34,6 +28,17 @@ def add_future_event(group, title, desc, loc_name, city, state)
   )
 end
 
+sennacy = User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password', zip_code: "10003")
+["Bear", "Polar Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Meerkat", "Flamingo"].each do |name|
+  user = User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: (rand(20) + 94101).to_s)
+  sleep 0.3
+  3.times do
+    group = user.owned_groups.create!(title: Faker::Team.name, description: Faker::Lorem.paragraph(3), zip_code: user.zip_code)
+    sleep 0.2
+    GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
+  end
+  # , avatar: File.new('/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/' + name + '.jpg'
+end
 
 user = User.find_by(username: "Bear")
 group = user.owned_groups.create!(
