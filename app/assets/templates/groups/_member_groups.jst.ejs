@@ -2,7 +2,7 @@
   <ul class="groups-list group">
     <% groups.forEach(function(group){ %>
       <li class="groups-index-item">
-        <a href="<%="/#/groups/" + group.id%>">
+        <a href="/#/<%=group.escape('slug')%>">
           <img src="<%= group.escape('avatar_url') %>">
           <h2><%= group.escape("title") %></h2>
           <h3>We're <%= group.escape("totalMemberCount")%> members!</h3>

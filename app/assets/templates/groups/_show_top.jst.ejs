@@ -5,6 +5,6 @@
     <h1>Members:</h1>
     <ul class="member-thumbs group" data-event="all">
     </ul>
-      <small><a href="/#/groups/<%= group.id%>/members">See more</a></small>
+      <small><a href="/#/<%= group.escape('slug') %>/members">See more</a></small>
   </nav>
 </section>

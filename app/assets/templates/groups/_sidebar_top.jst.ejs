@@ -4,7 +4,7 @@
 </div>
 
 <ul class="sidebar-top-events-links">
-  <li class="group"><a href="/#/groups/<%= group.id %>/members">
+  <li class="group"><a href="/#/<%= group.escape('slug') %>/members">
     <span class="link-label">Members </span>
     <span class="link-num"><%= group.groupOrganizers().length + group.groupMembers().length %></span>
   </a></li>
@@ -16,11 +16,11 @@
     <span class="link-label">Past Events</span>
     <span class="link-num"><%= group.groupEvents().pastEvents().length %></span>
   </li>
-  <li><a href="/#/groups/<%= group.id%>/calendar">Calendar Events</a></li>
+  <li><a href="/#/<%= group.escape('slug')%>/calendar">Calendar Events</a></li>
 </ul>
 
 <div class="sidebar-top-organizer">
-  <a href="/#/groups/<%=group.id%>/members/<%= group.escape('owner_id')%>">
+  <a href="/#/<%=group.escape('slug')%>/members/<%= group.escape('owner_id')%>">
     Owner
   </a>
 </div>

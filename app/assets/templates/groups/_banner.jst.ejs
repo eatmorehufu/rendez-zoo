@@ -1,11 +1,11 @@
 <header id="group-banner" class="group">
 
-<h1><a href="/#/groups/<%= group.id %>"><%= group.escape("title") %></a></h1>
+<h1><a href="/#/<%= group.escape('slug') %>"><%= group.escape("title") %></a></h1>
   <nav class="group-banner-nav-bar group">
     <ul class="group-banner-nav group">
-      <li><a href="/#/groups/<%= group.id %>">Home</a></li>
-      <li><a href="/#/groups/<%= group.id %>/members">Members</a></li>
-      <li><a href="/#/groups/<%= group.id %>/photos">Photos</a></li>
+      <li><a href="/#/<%= group.escape('slug') %>">Home</a></li>
+      <li><a href="/#/<%= group.escape('slug') %>/members">Members</a></li>
+      <li><a href="/#/<%= group.escape('slug') %>/photos">Photos</a></li>
     </ul>
     <ul class="group-banner-buttons">
     </ul>

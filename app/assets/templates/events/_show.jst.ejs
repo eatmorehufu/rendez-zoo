@@ -17,7 +17,7 @@
       <ul>
         <% groupEvent.attendees().forEach(function(attendee){ %>
           <li class="group">
-            <a href="/#/groups/<%= group.id%>/members/<%=attendee.id%>">
+            <a href="/#/<%= group.escape('slug') %>/members/<%=attendee.id%>">
               <img class="profile-pic-img" src="<%= attendee.escape('avatar_url')%>">
               <h2><%= attendee.escape('username')%></h2>
             </a>

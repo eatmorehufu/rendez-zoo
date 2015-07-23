@@ -2,7 +2,7 @@
   <nav class="upcoming-navigation group">
     <button>Upcoming Events</button>
     <button>Past Events</button>
-    <a href="/#/groups/<%= group.id %>/calendar">Calendar</a>
+    <a href="/#/<%= group.escape('slug') %>/calendar">Calendar</a>
   </nav>
   <section id="bottom-pane">
       <ul class="upcoming-events-mini">

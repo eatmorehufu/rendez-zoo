@@ -4,13 +4,13 @@
       <h3><strong>Location:</strong><%= user.escape('city') %>, <%= user.escape('state') %></h3>
       <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
       <h3><strong>Bio:</strong></h3>
-      <p><%=user.get('description') %></p>
+      <p><%=user.escape('description') %></p>
 
       <article class="group-memberships">
         <h2>Member Of: </h2>
         <ul class="group-memberships">
           <% user.memberGroups().forEach(function(group){ %>
-            <li><a href="/#/groups/<%=group.id%>">
+            <li><a href="/#/<%=group.escape('slug') %>">
               <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
               <h3><%= group.escape('title') %></h3>
             </a></li>
@@ -19,7 +19,7 @@
         <h2>Organizer for: </h2>
         <ul class="organizer-memberships">
           <% user.organizerGroups().forEach(function(group){ %>
-            <li><a href="/#/groups/<%=group.id%>">
+            <li><a href="/#/<%=group.escape('slug') %>">
               <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
               <h3><%= group.escape('title') %></h3>
             </a></li>

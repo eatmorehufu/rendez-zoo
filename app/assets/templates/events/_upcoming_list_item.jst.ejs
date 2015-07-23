@@ -1,17 +1,17 @@
 <li class="mini-event-list-item group" >
-  <h2 class="event-mini-title"><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
+  <h2 class="event-mini-title"><a href="/#/<%= group.escape('slug') %>/events/<%= groupEvent.id%>"><%= groupEvent.escape('title')%></a></h2>
   <section class="mini-event-main">
     <h3><%= groupEvent.escape('city')%>, <%= groupEvent.escape('state') %></h3>
     <ul class="member-thumbs group" data-event-id="<%=groupEvent.id%>"> </ul>
-    <a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><small>SEE MORE</small></a>
+    <a href="/#/<%= group.escape('slug') %>/events/<%= groupEvent.id%>"><small>SEE MORE</small></a>
     <p><%= groupEvent.escape("description")%></p>
-    <a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><small class="learn-more">LEARN MORE</small></a>
+    <a href="/#/<%= group.escape('slug') %>/events/<%= groupEvent.id%>"><small class="learn-more">LEARN MORE</small></a>
   </section>
 
   <ul class="mini-event-sidebar">
     <li><h2><%= startTime.shortDay %></h2></li>
     <li><h3> <%=startTime.fullTime %></h3></li>
-    <li><h3><strong><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>">RSVP</a></strong></h3></li>
-    <li><small><a href="/#/groups/<%= group.id %>/events/<%= groupEvent.id%>"><%= groupEvent.attendees().length %><strong> Attending</strong></a></small></li>
+    <li><h3><strong><a href="/#/<%= group.escape('slug') %>/events/<%= groupEvent.id%>">RSVP</a></strong></h3></li>
+    <li><small><a href="/#/<%= group.escape('slug') %>/events/<%= groupEvent.id%>"><%= groupEvent.attendees().length %><strong> Attending</strong></a></small></li>
   </ul>
 </li>

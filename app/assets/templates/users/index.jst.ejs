@@ -9,11 +9,11 @@
     <h2>Members</h2>
     <% members.forEach(function(member){ %>
       <li>
-        <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+        <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
           <img src="<%=member.escape('avatar_url')%>">
         </a>
         <h3>
-          <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+          <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
             <%= member.get('username')%>
           </a>
         </h3>
@@ -22,11 +22,11 @@
     <h2>Organizers</h2>
     <% organizers.forEach(function(member){ %>
       <li>
-        <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+        <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
           <img src="<%=member.escape('avatar_url')%>">
         </a>
         <h3>
-          <a href="/#/groups/<%=group.id%>/members/<%=member.id%>">
+          <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
             <%= member.get('username')%>
           </a>
         </h3>

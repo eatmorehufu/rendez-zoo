@@ -15,7 +15,7 @@ RendezZoo.Mixins.groupFormSubmit = {
         success: function(){
           RendezZoo.groups.add(this.model, { merge: true });
           RendezZoo.currentUser.organizerGroups().add(this.model, { merge: true });
-          Backbone.history.navigate("/groups/" + this.model.id, { trigger: true });
+          Backbone.history.navigate("/" + this.model.escape('slug'), { trigger: true });
         }.bind(this)
       });
     } else {

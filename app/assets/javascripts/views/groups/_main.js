@@ -74,7 +74,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.subModel.save(attrs, {
       success: function(){
         this.model.groupEvents().add(this.subModel, { merge: true });
-        Backbone.history.navigate("/groups/" + this.model.id + "/events/" + this.subModel.id, { trigger: true });
+        Backbone.history.navigate("/" + this.model.escape('slug') + "/events/" + this.subModel.id, { trigger: true });
       }.bind(this),
 
       fail: function(){
@@ -216,7 +216,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       }
       var content = this.miniMemberTemplate({
         user: groupMember,
-        group_id: this.model.id
+        group: this.model
       });
       this.$('.group-show-top-nav > .member-thumbs').append(content);
       i++;
@@ -227,7 +227,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       }
       var content = this.miniMemberTemplate({
         user: groupOrganizer,
-        group_id: this.model.id
+        group: this.model
       });
       this.$('.group-show-top-nav > .member-thumbs').append(content);
       i++;
@@ -239,7 +239,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     for (var i = 0; i < numThumbs; i++ ) {
       var content = this.miniMemberTemplate({
         user: groupEvent.attendees().at(i),
-        group_id: this.model.id
+        group: this.model
       })
       this.$(".member-thumbs[data-event-id=" + groupEvent.id + "]").append(content)
     }
