@@ -59,7 +59,6 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     });
 
     this.$('#group-main-content').append(groupShowMainView.render().$el);
-
     return this;
   },
 

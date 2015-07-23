@@ -53,6 +53,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         break;
       case "photosIndex":
         var mainTop = this.photosIndex();
+        break;
       break;
       default:
         var mainTop = this.templateTop({
@@ -71,7 +72,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       this.attachUpcoming();
       this.attachPast();
     }
-    
+
     return this;
   },
 
@@ -79,7 +80,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     event.preventDefault();
     var attrs = $(event.currentTarget).serializeJSON();
     attrs.event.group_id = this.model.id;
-    console.log(attrs);
     this.subModel.save(attrs, {
       success: function(){
         this.model.groupEvents().add(this.subModel, { merge: true });
@@ -268,9 +268,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   photosIndex: function () {
     var photos = new RendezZoo.Collections.Photos({ group: this.model });
-    var photoIndexView = new RendezZoo.Views.PhotoIndex({ collection: photos });
+    var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
 
-    return photoIndexView.render().$el;
+    return photosIndexView.render().$el;
   }
 
 });

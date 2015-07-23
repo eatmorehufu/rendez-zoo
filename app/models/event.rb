@@ -65,14 +65,14 @@ class Event < ActiveRecord::Base
 
   def parse_time
     if @start_day && @start_timepick
-      #"07/30/2015 2:00am"
+      #""start_day"=>"2015-07-24", "start_timepick"=>"18:00"
       starting_time = @start_day + "-" + @start_timepick
-      self.start_time = DateTime.strptime(starting_time, "%m/%d/%Y-%H:%M %p")
+      self.start_time = DateTime.strptime(starting_time, "%Y-%m-%d-%H: %M")
     end
 
     if @end_timepick && @end_day
       ending_time = @end_day + "-" + @end_timepick
-      self.end_time = DateTime.strptime(ending_time, "%m/%d/%Y-%H:%M %p")
+      self.end_time = DateTime.strptime(ending_time, "%Y-%m-%d-%H: %M")
     end
 
   end
