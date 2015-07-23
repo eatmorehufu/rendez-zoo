@@ -65,6 +65,8 @@ class Group < ActiveRecord::Base
   end
   after_validation :geocode, :reverse_geocode
 
+  has_many :photos, as: :imagable
+
   private
 
   def set_slug
