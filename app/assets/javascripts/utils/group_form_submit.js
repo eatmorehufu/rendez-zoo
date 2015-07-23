@@ -3,6 +3,8 @@ RendezZoo.Mixins.groupFormSubmit = {
     event.preventDefault();
     attrs = $(event.currentTarget).serializeJSON().group;
     if (this.validateAttrs(attrs)) {
+      this.$('.group-form button').prop("disabled", true);
+      this.$('.group-form button').val("Creating group...");
       var file = this.$("#input-group-avatar")[0].files[0];
 
       var formData = new FormData();
@@ -16,6 +18,12 @@ RendezZoo.Mixins.groupFormSubmit = {
           RendezZoo.groups.add(this.model, { merge: true });
           RendezZoo.currentUser.organizerGroups().add(this.model, { merge: true });
           Backbone.history.navigate("/" + this.model.escape('slug'), { trigger: true });
+        }.bind(this),
+
+        error: function(model, response) {
+          this.$('.errors').html(response.responseText.slice(2, -2));
+          this.$('.group-form button').prop("disabled", false);
+          this.$('.group-form button').val("Create group");
         }.bind(this)
       });
     } else {
