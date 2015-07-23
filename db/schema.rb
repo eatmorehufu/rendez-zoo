@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723030214) do
+ActiveRecord::Schema.define(version: 20150723135908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_photos", force: :cascade do |t|
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "album_photos", ["imagable_type", "imagable_id"], name: "index_album_photos_on_imagable_type_and_imagable_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false

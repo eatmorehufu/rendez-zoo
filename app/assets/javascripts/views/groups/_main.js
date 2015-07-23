@@ -10,6 +10,14 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
   tagName: "section",
+  address_vars: [
+    "loc_name",
+    "street1",
+    "street2",
+    "city",
+    "state",
+    "zip_code"
+  ],
 
   events: {
     "submit .event-form": "saveEvent",
@@ -42,6 +50,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         break;
       case "memberDetail":
         var mainTop = this.memberDetail();
+        break;
+        case "groupCalendar":
+        var mainTop = this.groupCalendar();
         break;
       default:
         var mainTop = this.templateTop({
@@ -257,14 +268,10 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     return locString.slice(0, -1);
   },
 
-  address_vars: [
-    "loc_name",
-    "street1",
-    "street2",
-    "city",
-    "state",
-    "zip_code"
-  ]
+  groupCalendar: function(){
+    
+  }
+
 });
 
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime);
