@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       delete "unrsvp"
     end
   end
+
+  get "/auth/:provider/callback", to: "api/sessions#omniauth"
 end
