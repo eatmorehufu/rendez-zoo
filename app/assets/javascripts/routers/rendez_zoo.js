@@ -92,7 +92,7 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
   },
 
   groupPhotoIndex: function(id) {
-
+    this._groupShowSubpage(slug, "photoIndex")
   },
 
   newUser: function () {
@@ -153,6 +153,6 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
       subId: subId
     })
 
-    this._swapViews(memberIndexView);
+    this._swapViews(newView);
   }
 })

@@ -51,9 +51,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       case "memberDetail":
         var mainTop = this.memberDetail();
         break;
-        case "groupCalendar":
-        var mainTop = this.groupCalendar();
-        break;
+      case "photosIndex":
+        var mainTop = this.photosIndex();
+      break;
       default:
         var mainTop = this.templateTop({
           group: this.model,
@@ -71,9 +71,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       this.attachUpcoming();
       this.attachPast();
     }
-
-    this.$(".datepicker").datepicker();
-    this.$(".timepicker").timepicker();
+    
     return this;
   },
 
@@ -256,7 +254,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     }
   },
 
-  generateLocLink: function(){
+  generateLocLink: function() {
     var locString = "";
     for (var i = 0; i < this.address_vars.length; i++) {
       var address_component = this.subModel.escape(this.address_vars[i])
@@ -268,12 +266,14 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     return locString.slice(0, -1);
   },
 
-  groupCalendar: function(){
-    
+  photosIndex: function () {
+    var photos = new RendezZoo.Collections.Photos({ group: this.model });
+    var photoIndexView = new RendezZoo.Views.PhotoIndex({ collection: photos });
+
+    return photoIndexView.render().$el;
   }
 
 });
 
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime);
-// _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.getZipCode);
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.groupFormSubmit);

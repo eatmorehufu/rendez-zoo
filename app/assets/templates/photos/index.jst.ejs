@@ -1,0 +1,14 @@
+<section class="photo-index">
+<form>
+  <label>
+    Add new photo!
+    <input type="file" name="pic" id="group-pic">
+  </label>
+  <button>Add</button>
+</form>
+  <ul class="photos-list">
+    <% photos.forEach(function(photo){ %>
+      <li><img src="<%= photo.escape('pic_url') %>"</li>
+    <% }) %>
+  </ul>
+</section>

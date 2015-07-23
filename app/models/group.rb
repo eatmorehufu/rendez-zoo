@@ -70,6 +70,6 @@ class Group < ActiveRecord::Base
   private
 
   def set_slug
-    self.slug = self.title.downcase.gsub("\'", "").parameterize
+    self.slug = self.title.gsub("\'", "").parameterize
   end
 end
