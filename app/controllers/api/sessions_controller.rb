@@ -27,11 +27,10 @@ module Api
       logout!(current_sesh.id)
       render json: {}
     end
-    
+
     def omniauth
-      # do something with the auth_hash
       user = User.find_or_create_by_auth_hash(auth_hash)
-      sign_in!(user)
+      login!(user)
       redirect_to root_url
     end
 

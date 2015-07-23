@@ -8,8 +8,10 @@ module Api
 
     def index
       if logged_in?
+        latitude = current_user.latitude || 40.7142700
+        longitude = current_user.longitude || -74.0059700
         @groups = Group.includes(:members, :organizers).near(
-          [current_user.latitude, current_user.longitude],
+          [latitude, longitude],
           20
         )
       else
