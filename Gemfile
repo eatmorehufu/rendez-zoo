@@ -15,8 +15,8 @@ gem 'aws-sdk', '~> 1.6'
 gem 'backbone-on-rails'
 gem 'jquery-ui-rails'
 #
-# gem 'addressable'
-# gem 'rest-client'
+gem 'addressable'
+gem 'rest-client'
 
 gem 'geocoder'
 gem 'pg_search'
