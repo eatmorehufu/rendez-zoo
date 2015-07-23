@@ -6,7 +6,7 @@ module Api
         @event.attendee_ids = [current_user.id]
         render :show
       else
-        render json: "Error, error!"
+        render json: @event.errors.full_messages, status: :unprocessable_entity
       end
     end
 
@@ -43,7 +43,7 @@ module Api
       if @event.update(event_params)
         render :show
       else
-        render json: @event.errors.full_messages
+        render json: @event.errors.full_messages, status: :unprocessable_entity
       end
     end
 

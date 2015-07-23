@@ -6,7 +6,7 @@ module Api
       if photo.save
         render :index
       else
-        render json: "error, error"
+        render json: photo.errors.full_messages, status: :unprocessable_entity
       end
     end
 

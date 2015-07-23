@@ -6,18 +6,14 @@ module Api
         login!(@user)
         render :show
       else
-        render json: "error, error"
+        render json: @user.errors.full_messages, status: :unprocessable_entity
       end
     end
 
     def update
-      if params[:id].to_i != current_user.id
-        render json: "error, error"
-      else
-        current_user.update!(user_params)
-        @user = current_user
-        render :show
-      end
+      current_user.update!(user_params)
+      @user = current_user
+      render :show
     end
 
     def show

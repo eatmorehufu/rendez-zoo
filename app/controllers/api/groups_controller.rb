@@ -27,7 +27,7 @@ module Api
         GroupMembership.create!(group_id: @group.id, member_id: current_user.id, status: "organizer")
         render :show
       else
-        render json: @group.errors.full_messages
+        render json: @group.errors.full_messages, status: :unprocessable_entity
       end
     end
 
@@ -51,7 +51,7 @@ module Api
       if @group.update(group_params)
         render :show
       else
-        render json: @group.errors.full_messages
+        render json: @group.errors.full_messages, status: :unprocessable_entity
       end
     end
 

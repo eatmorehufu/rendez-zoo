@@ -94,7 +94,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   toggleRSVP: function(event){
     event.preventDefault();
-    debugger;
     if (RendezZoo.currentUser.isNew()) {
       alert("please sign in!");
     } else if (!this.model.groupMembers().get(RendezZoo.currentUser.id) && !this.model.groupOrganizers().get(RendezZoo.currentUser.id)){
