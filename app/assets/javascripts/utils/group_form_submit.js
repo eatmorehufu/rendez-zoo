@@ -4,7 +4,7 @@ RendezZoo.Mixins.groupFormSubmit = {
     attrs = $(event.currentTarget).serializeJSON().group;
     if (this.validateAttrs(attrs)) {
       this.$('.group-form button').prop("disabled", true);
-      this.$('.group-form button').val("Creating group...");
+      this.$('.group-form button').html("Creating group...");
       var file = this.$("#input-group-avatar")[0].files[0];
 
       var formData = new FormData();
@@ -23,7 +23,7 @@ RendezZoo.Mixins.groupFormSubmit = {
         error: function(model, response) {
           this.$('.errors').html(response.responseText.slice(2, -2));
           this.$('.group-form button').prop("disabled", false);
-          this.$('.group-form button').val("Create group");
+          this.$('.group-form button').html("Create group");
         }.bind(this)
       });
     } else {
