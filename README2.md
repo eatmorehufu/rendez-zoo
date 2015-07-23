@@ -15,8 +15,8 @@ Rendez-zoo is a clone of MeetUp built on Rails and Backbone. Users can:
 - [x] Create group events
 - [x] Join meet-up groups
 - [x] RSVP for events
-- [ ] Search for groups and events
-- [ ] Create group galleries of photos
+- [X] Search for groups
+- [X] Create group galleries of photos
 - [X] View members on group page
 - [X] Tag group by category
 - [ ] View related groups by shared membership
@@ -81,7 +81,7 @@ the member show page.
 - [ ] Event comment system
 - [ ] Pagination/infinite scroll
 - [ ] Typeahead search bar
-- [ ] Multiple sessions/session management
+- [X] Multiple sessions/session management
 - [ ] Internal messaging system
 - [ ] Internal friend system
 - [ ] Notification system
@@ -99,7 +99,8 @@ the member show page.
 Stack:
 O-Auth
 generate robust feedback when form inputs are incorrect
-Make Partials for group list views
-zip code parsing
-search
-event-timing (turn off recent event validation)
+fix gallerie displays
+add location linking
+have banner icons light up as active if you're on the selected page
+prevent non-group-members from uploading photos
+add photo deletion function to group organizer

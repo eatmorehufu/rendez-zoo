@@ -5,12 +5,13 @@ RendezZoo.Collections.Groups = Backbone.Collection.extend({
   getOrFetchBySlug: function(slug) {
     var model = this.findWhere({slug: slug});
     if (model) {
+      var id = model.id;
       model.id = slug;
-      model.fetch();
+      model.fetch()
     } else {
-      model = new this.model({id: slug});
+      model = new this.model({id: slug, slug: slug});
       model.fetch({
-        success: function(){
+        success: function(some, thing){
           this.remove(model);
           this.add(model, { merge: true });
         }.bind(this)

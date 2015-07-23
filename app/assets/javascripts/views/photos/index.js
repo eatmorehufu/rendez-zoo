@@ -16,6 +16,17 @@ RendezZoo.Views.PhotosIndex = Backbone.CompositeView.extend({
 
   addPhoto: function(event){
     event.preventDefault();
-    
+    var file = this.$("#group-pic")[0].files[0];
+    if (file) {
+      var formData = new FormData();
+      formData.append("photo[pic]", file);
+      var newPhoto = new RendezZoo.Models.Photo({ group: this.collection.group });
+      newPhoto.saveFormData(formData, {
+        success: function(){
+          this.collection.add(newPhoto, { merge: true });
+          this.$('#group-pic').val('');
+        }.bind(this)
+      });
+    }
   }
 })

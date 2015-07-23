@@ -8,7 +8,7 @@
 </form>
   <ul class="photos-list">
     <% photos.forEach(function(photo){ %>
-      <li><img src="<%= photo.escape('pic_url') %>"</li>
+      <li><img src="<%= photo.escape('thumb_url') %>"></li>
     <% }) %>
   </ul>
 </section>

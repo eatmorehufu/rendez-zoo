@@ -268,6 +268,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   photosIndex: function () {
     var photos = new RendezZoo.Collections.Photos({ group: this.model });
+    photos.fetch();
+
     var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
 
     return photosIndexView.render().$el;
