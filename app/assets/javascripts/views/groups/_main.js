@@ -40,7 +40,11 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         var mainTop = this.editEvent();
         break;
       case "editGroup":
-        var mainTop = this.groupEditTemplate({ group: this.model, heading: "Edit Group", buttonText: "Save Edits"})
+        var mainTop = this.groupEditTemplate({
+          group: this.model,
+          heading: "Edit Group",
+          buttonText: "Save Edits"
+        })
         break;
       case "eventDetail":
         var mainTop = this.eventDetail();
@@ -56,9 +60,13 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         break;
       break;
       default:
+        if (this.model.get('description')) {
+          var desc = this.model.escape('description').replace(/\n/g, "\<br\> \n")
+        }
         var mainTop = this.templateTop({
           group: this.model,
           currentUser: RendezZoo.currentUser,
+          desc: desc
         });
         var mainBottom = this.templateBottom({ group: this.model });
     }
