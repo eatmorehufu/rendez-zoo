@@ -14,14 +14,14 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     "users/new": "newUser",
     "session/new": "signIn",
     "groups/new": "newGroup",
-    "groups/:id/events/new": "newEvent",
-    "groups/:id/edit": "editGroup",
-    "groups/:group_id/events/:event_id/edit" : "editEvent",
-    "groups/:group_id/events/:event_id": "eventDetail",
-    "groups/:group_id/members/:member_id": "groupMemberShow",
-    "groups/:id/members": "groupMemberIndex",
-    "groups/:id/photos": "groupPhotoIndex",
-    "groups/:id": "groupShow"
+    ":slug/events/new": "newEvent",
+    ":slug/edit": "editGroup",
+    ":slug/events/:event_id/edit" : "editEvent",
+    ":slug/events/:event_id": "eventDetail",
+    ":slug/members/:member_id": "groupMemberShow",
+    ":slug/members": "groupMemberIndex",
+    ":slug/photos": "groupPhotoIndex",
+    ":slug": "groupShow"
   },
 
   groupsIndex: function() {
@@ -49,9 +49,9 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(newGroupView);
   },
 
-  groupShow: function (id){
+  groupShow: function (slug){
     window.scrollTo(0, 0);
-    var group = RendezZoo.groups.getOrFetch(id);
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group
     });
@@ -59,10 +59,10 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(groupShowView);
   },
 
-  editGroup: function(id){
-    if (!this._requireSignedIn(this.editGroup.bind(this, id))) { return; };
-    if (!RendezZoo.currentUser.organizerGroups().get(id)) { return; };
-    var editGroup = RendezZoo.groups.getOrFetch(id);
+  editGroup: function(slug){
+    if (!this._requireSignedIn(this.editGroup.bind(this, slug))) { return; };
+    if (!RendezZoo.currentUser.organizerGroups().findWhere({slug: slug})) { return; };
+    var editGroup = RendezZoo.groups.getOrFetchBySlug(slug);
     var newGroupView = new RendezZoo.Views.GroupShow({
       model: editGroup,
       subPage: "editGroup"
@@ -71,10 +71,10 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(newGroupView);
   },
 
-  newEvent: function (id) {
-    if (!this._requireSignedIn(this.newEvent.bind(this, id))) { return; };
+  newEvent: function (slug) {
+    if (!this._requireSignedIn(this.newEvent.bind(this, slug))) { return; };
 
-    var group = RendezZoo.groups.getOrFetch(id);
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "newEvent"
@@ -83,10 +83,10 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(groupShowView);
   },
 
-  editEvent: function(group_id, event_id) {
-    if (!this._requireSignedIn(this.editEvent.bind(this, group_id, event_id))) { return; };
-    if (!RendezZoo.currentUser.organizerGroups().get(group_id)) { return; };
-    var group = RendezZoo.groups.getOrFetch(group_id);
+  editEvent: function(slug, event_id) {
+    if (!this._requireSignedIn(this.editEvent.bind(this, slug, event_id))) { return; };
+    if (!RendezZoo.currentUser.organizerGroups().findWhere({slug: slug})) { return; };
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "editEvent",
@@ -96,9 +96,9 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(groupShowView);
   },
 
-  eventDetail: function(group_id, event_id) {
+  eventDetail: function(slug, event_id) {
     window.scrollTo(0, 0);
-    var group = RendezZoo.groups.getOrFetch(group_id);
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var groupShowView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "eventDetail",
@@ -108,8 +108,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(groupShowView);
   },
 
-  groupMemberIndex: function(id) {
-    var group = RendezZoo.groups.getOrFetch(id);
+  groupMemberIndex: function(slug) {
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var memberIndexView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "memberIndex"
@@ -118,8 +118,8 @@ RendezZoo.Routers.Router = Backbone.Router.extend({
     this._swapViews(memberIndexView);
   },
 
-  groupMemberShow: function(group_id, member_id) {
-    var group = RendezZoo.groups.getOrFetch(group_id);
+  groupMemberShow: function(slug, member_id) {
+    var group = RendezZoo.groups.getOrFetchBySlug(slug);
     var memberDetailView = new RendezZoo.Views.GroupShow({
       model: group,
       subPage: "memberDetail",

@@ -14,6 +14,10 @@
 #  avatar_updated_at   :datetime
 #  description         :text
 #  zip_code            :string
+#  latitude            :float
+#  longitude           :float
+#  city                :string
+#  state               :string
 #
 
 FactoryGirl.define do

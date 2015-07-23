@@ -2,7 +2,7 @@ module Api
   class GroupsController < ApplicationController
 
     def show
-      @group = Group.includes(:members, :organizers, :categories, events: :attendees).find(params[:id])
+      @group = Group.includes(:members, :organizers, :categories, events: :attendees).find_by(slug: params[:id])
       render :show
     end
 
@@ -56,7 +56,7 @@ module Api
     private
 
     def group_params
-      params.require(:group).permit(:title, :description, :zip_code, :owner_id, :avatar)
+      params.require(:group).permit(:title, :flair, :description, :zip_code, :owner_id, :avatar)
     end
 
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722185004) do
+ActiveRecord::Schema.define(version: 20150723030214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,12 +93,12 @@ ActiveRecord::Schema.define(version: 20150722185004) do
   add_index "group_memberships", ["member_id"], name: "index_group_memberships_on_member_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "title",               null: false
+    t.string   "title",                                  null: false
     t.text     "description"
-    t.string   "zip_code",            null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "owner_id",            null: false
+    t.string   "zip_code",                               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "owner_id",                               null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 20150722185004) do
     t.float    "longitude"
     t.string   "city"
     t.string   "state"
+    t.string   "slug",                                   null: false
+    t.string   "flair",               default: "member", null: false
   end
 
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree

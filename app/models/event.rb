@@ -15,6 +15,9 @@
 #  city        :string
 #  zip_code    :string
 #  state       :string
+#  loc_name    :string
+#  latitude    :float
+#  longitude   :float
 #
 
 class Event < ActiveRecord::Base

@@ -13,6 +13,12 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  latitude            :float
+#  longitude           :float
+#  city                :string
+#  state               :string
+#  slug                :string           not null
+#  flair               :string           default("member"), not null
 #
 
 FactoryGirl.define do
