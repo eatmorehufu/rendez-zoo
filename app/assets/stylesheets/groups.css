@@ -72,7 +72,7 @@
 }
 
 .group-banner-nav .active{
-  color: white;
+  color: #fff;
   background: #33241A;
 }
 
@@ -81,10 +81,16 @@
   border-radius: 5px;
   color: darkgray;
   display: block;
+  margin-right: 5px;
 }
 
 .group-banner-nav a:hover {
-  color: white;
+  color: #fff;
+  background: #E0393E;
+}
+
+.group-banner-nav a.highlighted {
+  color: #fff;
   background: #E0393E;
 }
 

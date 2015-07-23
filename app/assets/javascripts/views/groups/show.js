@@ -40,6 +40,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     });
     this.$('#group-banner-header').html(bannercontent);
     this.setBannerButtons();
+    this.highlightHeader();
 
     var sidebarTopView = new RendezZoo.Views.GroupSidebarTopSub({
       model: this.model
@@ -123,5 +124,19 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
         this.render();
       }.bind(this)
     });
+  },
+
+  highlightHeader: function() {
+    switch (this.subPage) {
+      case "memberIndex":
+        this.$('#members-link').addClass('highlighted');
+        break;
+      case "photosIndex":
+        this.$('#photos-link').addClass('highlighted');
+        break;
+    }
+    if (!this.subPage) {
+      this.$('#home-link').addClass('highlighted');
+    }
   }
 })
