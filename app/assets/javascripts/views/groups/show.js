@@ -45,13 +45,12 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
     var sidebarTopView = new RendezZoo.Views.GroupSidebarTopSub({
       model: this.model
     });
-
-    var sidebarBottomView = new RendezZoo.Views.GroupSidebarBottomSub({
-      model: this.model
-    });
+    // var sidebarBottomView = new RendezZoo.Views.GroupSidebarBottomSub({
+    //   model: this.model
+    // });
 
     this.$('#group-sidebars').append(sidebarTopView.render().$el);
-    this.$('#group-sidebars').append(sidebarBottomView.render().$el);
+    // this.$('#group-sidebars').append(sidebarBottomView.render().$el);
 
     var groupShowMainView = new RendezZoo.Views.GroupShowMainSub({
       model: this.model,
