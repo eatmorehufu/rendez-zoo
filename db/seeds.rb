@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 sennacy = User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password', zip_code: "10003")
 ["Bear", "Polar Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Meerkat", "Flamingo"].each do |name|
-  User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', avatar: File.new('/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/' + name + '.jpg'))
+  User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: (rand(20) + 10000).to_s)
+  # , avatar: File.new('/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/' + name + '.jpg'
 end
 
 def add_past_event(group, title, desc, loc_name, city, state)
@@ -95,6 +96,7 @@ Join 200+ singles & swim around the bay for a 4 hour tour & party! Mix, mingle &
 event.attendee_ids += [user.id]
 
 15.times do
-  user = User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: "password", zip_code: Faker::Address.zip, avatar: File.new("/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/" + (rand(13) + 1).to_s + ".jpg"))
+  user = User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: "password", zip_code: (rand(98) + 94101).to_s)
+  #, avatar: File.new("/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/" + (rand(13) + 1).to_s + ".jpg"
   GroupMembership.create!(group_id: group.id, member_id: user.id)
 end

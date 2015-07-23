@@ -49,7 +49,7 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
 
   attachSearch: function() {
     if (RendezZoo.currentUser.isSignedIn() && RendezZoo.currentUser.get('city') && RendezZoo.currentUser.get('state')){
-      var location = RendezZoo.currentUser.city + ", " + RendezZoo.currentUser.state;
+      var location = RendezZoo.currentUser.escape('city') + ", " + RendezZoo.currentUser.escape('state');
     } else {
       var location = "New York, NY";
     }
