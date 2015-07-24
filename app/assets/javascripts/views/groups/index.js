@@ -5,10 +5,10 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   notLoggedInTemplate: JST['groups/_splash_banner'],
   loggedInTemplate: JST['groups/_user_welcome'],
   searchTemplate: JST['groups/_search_template'],
+  groupListItemTemplate: JST['groups/_group_list_item'],
   tagName: "section",
 
   events: {
-    "keyup .query, .location": "search",
     "submit .search-form": "search"
   },
 
@@ -31,10 +31,10 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
         currentUser: RendezZoo.currentUser
       }));
       if (RendezZoo.currentUser.organizerGroups().length > 0) {
-        this.$('#group-index-body').append(this.memberTemplate({groups: RendezZoo.currentUser.organizerGroups(), heading: "Your Admin Groups"}));
+        this.attachGroups(RendezZoo.currentUser.organizerGroups(), "Groups you manage");
       }
       if (RendezZoo.currentUser.memberGroups().length > 0) {
-        this.$('#group-index-body').append(this.memberTemplate({groups: RendezZoo.currentUser.memberGroups(), heading: "Your Member Groups"}));
+        this.attachGroups(RendezZoo.currentUser.memberGroups(), "Groups you belong to");
       }
     } else {
       this.$('.index-banner').addClass("logged-out");
@@ -43,8 +43,17 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
       }));
     }
     this.attachSearch();
-    this.$('#group-index-body').append(this.memberTemplate({groups: this.collection, heading: "Suggested Groups"}));
+    this.attachGroups(this.collection, "Suggested Groups");
     return this;
+  },
+
+  attachGroups: function(groups, heading) {
+    this.$('#group-index-body').append(this.memberTemplate({heading: heading}));
+    groups.forEach(function(group){
+      var content = this.groupListItemTemplate({ group: group })
+      this.$("ul[data-section='" + heading + "']").append(content);
+      this.$(".fade-in").removeClass("fade-in");
+    }.bind(this))
   },
 
   attachSearch: function() {

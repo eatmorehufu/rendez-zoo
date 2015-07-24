@@ -1,12 +1,3 @@
   <h2><%= heading %></h2>
-  <ul class="groups-list group">
-    <% groups.forEach(function(group){ %>
-      <li class="groups-index-item">
-        <a href="/#/<%=group.escape('slug')%>">
-          <img src="<%= group.escape('avatar_url') %>">
-          <h2><%= group.escape("title") %></h2>
-          <h3>We're <%= group.escape("totalMemberCount")%> members!</h3>
-        </a>
-      </li>
-    <% }); %>
+  <ul class="groups-list group" data-section="<%= heading %>">
   </ul>
