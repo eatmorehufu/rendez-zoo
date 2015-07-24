@@ -10,6 +10,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   userIndexListItemTemplate: JST['users/_index_list_item'],
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
+  usersGroupsListItemTemplate: JST['users/_member_groups_list_item'],
   tagName: "section",
   address_vars: [
     "loc_name",
@@ -177,7 +178,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.$el.html(this.memberDetailTemplate({
       user: this.subModel,
       timeParse: timeParse
-    }))
+    }));
+    this.attachMemberships(this.subModel.organizerGroups(), '.organizer-memberships');
+    this.attachMemberships(this.subModel.memberGroups(), '.group-memberships');
   },
 
   attachUpcoming: function() {
@@ -214,7 +217,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       dataType: 'json',
       type: "DELETE",
       success: function(result){
-        alert("No longer attending the event!")
         this.subModel.attendees().remove(RendezZoo.currentUser)
         RendezZoo.currentUser.rsvpEvents().remove(this.subModel)
         this.render();
@@ -228,7 +230,6 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
       dataType: 'json',
       type: "POST",
       success: function(result){
-        alert("Attending the event!")
         this.subModel.attendees().add(RendezZoo.currentUser)
         RendezZoo.currentUser.rsvpEvents().add(this.subModel)
         this.render();
@@ -308,3 +309,4 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.formatTime);
 _.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.groupFormSubmit);
+_.extend(RendezZoo.Views.GroupShowMainSub.prototype, RendezZoo.Mixins.AttachMemberships);

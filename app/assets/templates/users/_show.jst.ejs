@@ -6,24 +6,12 @@
       <h3><strong>Bio:</strong></h3>
       <p><%=user.escape('description') %></p>
 
-      <article class="group-memberships">
+      <article>
         <h2>Member Of: </h2>
         <ul class="group-memberships">
-          <% user.memberGroups().forEach(function(group){ %>
-            <li><a href="/#/<%=group.escape('slug') %>">
-              <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
-              <h3><%= group.escape('title') %></h3>
-            </a></li>
-            <% })%>
         </ul>
         <h2>Organizer for: </h2>
         <ul class="organizer-memberships">
-          <% user.organizerGroups().forEach(function(group){ %>
-            <li><a href="/#/<%=group.escape('slug') %>">
-              <img class="profile-pic-img" src="<%= group.escape('avatar_url')%>">
-              <h3><%= group.escape('title') %></h3>
-            </a></li>
-            <% })%>
         </ul>
       </article>
     </section>

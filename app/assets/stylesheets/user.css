@@ -72,10 +72,10 @@
 .stacked-list-item img {
   float: left;
   max-height: 50px;
-  width: auto;;
+  width: auto;
+  margin-right: 20px;
 }
 
 .stacked-list-item .user-name-join {
   float: left;
-  margin-left: 20px;
 }

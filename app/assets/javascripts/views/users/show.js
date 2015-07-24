@@ -2,6 +2,7 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
   innerTemplate: JST['users/_show'],
   userPicUpload: JST['users/_picForm'],
+  usersGroupsListItemTemplate: JST['users/_member_groups_list_item'],
   tagName: "article",
 
   events: {
@@ -19,6 +20,8 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
     this.$el.html(this.template());
     this.$('.user-profile').html(this.innerTemplate({ user: this.model, timeParse: timeParsed }));
     this.$('.profile-picture').append(this.userPicUpload());
+    this.attachMemberships(this.model.organizerGroups(), '.organizer-memberships');
+    this.attachMemberships(this.model.memberGroups(), '.group-memberships');
 
     return this;
   },
@@ -43,3 +46,4 @@ RendezZoo.Views.UserShow = Backbone.CompositeView.extend({
 
 _.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.Mixins.fileInput)
 _.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.Mixins.formatTime)
+_.extend(RendezZoo.Views.UserShow.prototype, RendezZoo.Mixins.AttachMemberships)
