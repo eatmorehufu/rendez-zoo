@@ -1,10 +1,10 @@
 
 <section id="group-show-top">
   <p><%= desc %></p>
-  <nav class="group-show-top-nav">
-    <h1>Members:</h1>
+  <nav class="group-show-top-nav group">
+    <h1>We're <%= group.groupOrganizers().length + group.groupMembers().length %> <%= group.escape('flair') %></h1>
     <ul class="member-thumbs group" data-event="all">
     </ul>
-      <small><a href="/#/<%= group.escape('slug') %>/members">See more</a></small>
+      <small><a href="/#/<%= group.escape('slug') %>/members">SEE MORE</a></small>
   </nav>
 </section>

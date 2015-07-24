@@ -138,7 +138,7 @@
   padding: 20px 10px;
   display: block;
   margin-bottom: 10px;
-  border: 1px solid white;
+  border: 1px solid #ccc;
 }
 
 .sidebar-top-details {
@@ -215,6 +215,25 @@
 
 .member-thumbs {
   display: block;
+}
+
+#group-show-top p {
+  padding-bottom: 20px;
+}
+
+.group-show-top-nav ul {
+  float: left;
+}
+
+.group-show-top-nav small {
+  float: left;
+  font-size: 10px;
+}
+
+.group-show-top-nav h1 {
+  font-size: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
 }
 
 .group-show-top-nav button {
@@ -401,4 +420,8 @@ input.zip {
 
 .errors {
   color: #f00;
+}
+
+.group-member-index-main {
+  padding: 10px;
 }
