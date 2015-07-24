@@ -28,16 +28,39 @@ def add_future_event(group, title, desc, loc_name, city, state)
   )
 end
 
-sennacy = User.create!(username: 'Sennacy', email: 'sennacy@cat.com', password: 'password', zip_code: "10003")
+["bears", "predators", "prey", "birds", "mammals", "sealife", "furry",
+"otters", "cats", "giraffes", "basketball"].each do |category|
+  Category.create!(name: category);
+end
+
+
+
+
+sennacy = User.create!(
+  username: 'Sennacy',
+  email: 'sennacy@cat.com',
+  password: 'password',
+  zip_code: "10003",
+  avatar: "http://i.imgur.com/kjH1unY.jpg"
+)
+5.times do |i|
+  UserInterest.create!(user_id: sennacy.id, category_id: i + 1)
+end
+
 ["Bear", "Polar Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Meerkat", "Flamingo"].each do |name|
-  user = User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: (rand(20) + 94101).to_s)
+  user = User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: "0" + (rand(2000) + 7999).to_s)
   sleep 0.3
   3.times do
-    group = user.owned_groups.create!(title: Faker::Team.name, description: Faker::Lorem.paragraph(3), zip_code: user.zip_code)
+    group = user.owned_groups.create!(
+      title: Faker::Team.name + "of the" + Faker::Address.city_suffix,
+      description: Faker::Lorem.paragraph(3),
+      zip_code: user.zip_code,
+      avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(13) + 1}.jpg"))
+    )
     sleep 0.2
     GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
+    GroupCategory.create!(group_id: group.id, category_id: rand(10) + 1)
   end
-  # , avatar: File.new('/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/' + name + '.jpg'
 end
 
 user = User.find_by(username: "Bear")
@@ -74,14 +97,26 @@ event = add_past_event(group,
   "New York",
   "NY"
 )
+
 event.attendee_ids += [user.id]
+
+event = add_past_event(group,
+  "Going to the Maul",
+  "Sometimes, humans are the prey animals.",
+  "Central Park",
+  "New York",
+  "NY"
+)
+
+event.attendee_ids += [user.id]
+
 sleep 0.2
 user = User.find_by(username: "Otter")
 group = user.owned_groups.create!(
-  title: "Significant Otters of SF",
-  description: "Welcome to The SF 20's, 30's and 40's Singles Group. We are a fun group of young otters from the bay area who come together to meet and be merry, as well as make new friendships.
+  title: "Significant Otters of LI",
+  description: "Welcome to The LI 20's, 30's and 40's Singles Group. We are a fun group of young otters from the bay area who come together to meet and be merry, as well as make new friendships.
 
-Our diverse events include: happy hour sea urchins, going to some of the hottest beaches as well as pubs/bars in the bay, themed parties, sporting/recreational events, speed dating, and more!
+Our diverse events include: happy hour sea urchins, going to some of the hottest beaches as well as pubs/bars on the island, themed parties, sporting/recreational events, speed dating, and more!
 
 We aim to be a caring and compassionate group where people will be respectful of each other despite different species, interests, values, and beliefs.  Come join us, and broaden your social horizon, as we seek to be the bridge to bring people together.",
   zip_code: "94110"
@@ -101,9 +136,15 @@ Join 200+ singles & swim around the bay for a 4 hour tour & party! Mix, mingle &
 
 event.attendee_ids += [user.id]
 
-15.times do
-  user = User.create!(username: Faker::Name.name, email: Faker::Internet.email, password: "password", zip_code: (rand(98) + 94101).to_s)
+20.times do
+  user = User.create!(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "password",
+    zip_code: (rand(200) + 10000).to_s,
+    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(13) + 1}.jpg"))
+  )
   sleep 0.3
-  #, avatar: File.new("/Users/huesq/Desktop/rendez-zoo-project-proposal/public/images/" + (rand(13) + 1).to_s + ".jpg"
+  #
   GroupMembership.create!(group_id: group.id, member_id: user.id)
 end
