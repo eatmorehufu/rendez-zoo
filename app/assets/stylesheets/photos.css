@@ -1,0 +1,16 @@
+.photos-list {
+  width: 220px;
+  float: left;
+}
+
+.photos-list.col2 {
+  margin: 0px 10px;
+}
+
+.photos-list img {
+  float: left;
+  width: 218px;
+  height: auto;
+  margin-bottom: 10px;
+  border: 1px solid #aaa;
+}

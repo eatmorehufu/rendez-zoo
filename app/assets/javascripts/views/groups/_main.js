@@ -11,6 +11,8 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
   usersGroupsListItemTemplate: JST['users/_member_groups_list_item'],
+  photoItemTemplate: JST['photos/_index_item'],
+  photoIndexTemplate: JST['photos/index'],
   tagName: "section",
   address_vars: [
     "loc_name",
@@ -26,13 +28,17 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     "click .rsvp-button": "toggleRSVP",
     "submit .group-form": "submit",
     "click .toggle-upcoming": "toggleUpcoming",
-    "click .toggle-past": "togglePast"
+    "click .toggle-past": "togglePast",
+    "click .add-photo": "addPhoto"
   },
 
   initialize: function(options){
     this.$el.addClass("group-main");
     this.subPage = options.subPage;
     this.subModel = options.subModel;
+    this.photos = new RendezZoo.Collections.Photos({ group: this.model });
+    this.photos.fetch();
+    this.listenTo(this.photos, 'add', this.render);
   },
 
   render: function() {
@@ -287,12 +293,34 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   photosIndex: function () {
-    var photos = new RendezZoo.Collections.Photos({ group: this.model });
-    photos.fetch();
+    this.$el.html(this.photoIndexTemplate());
+    this.shovelPhotos();
+  },
 
-    var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
+  shovelPhotos: function () {
+    var i = 1;
+    var columnRoot = ".photos-list.col";
+    this.photos.forEach(function(photo){
+      this.$(columnRoot + i ).append(this.photoItemTemplate({ photo: photo }))
+      i = (i % 3) + 1;
+    }.bind(this));
+  },
 
-    this.$el.html(photosIndexView.render().$el);
+  addPhoto: function(event){
+    event.preventDefault();
+    var file = this.$("#group-pic")[0].files[0];
+    if (file) {
+      var formData = new FormData();
+      formData.append("photo[pic]", file);
+      var newPhoto = new RendezZoo.Models.Photo({ group: this.photos.group });
+      newPhoto.saveFormData(formData, {
+        success: function(){
+          console.log(newPhoto)
+          this.photos.add(newPhoto, { merge: true });
+          this.$('#group-pic').val('');
+        }.bind(this)
+      });
+    }
   },
 
   toggleUpcoming: function () {

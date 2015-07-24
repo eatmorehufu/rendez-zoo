@@ -1,4 +1,4 @@
-<section class="photo-index group-subpage">
+<section class="photo-index group-subpage group">
   <h1>Photos</h1>
   <form>
     <label>
@@ -7,9 +7,10 @@
     </label>
     <button class="add-photo">Add</button>
   </form>
-  <ul class="photos-list">
-    <% photos.forEach(function(photo){ %>
-      <li><img src="<%= photo.escape('thumb_url') %>"></li>
-    <% }) %>
+  <ul class="photos-list group col1">
+  </ul>
+  <ul class="photos-list group col2">
+  </ul>
+  <ul class="photos-list group col3">
   </ul>
 </section>

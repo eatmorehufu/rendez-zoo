@@ -2,11 +2,11 @@ module Api
   class PhotosController < ApplicationController
     def create
       @group = Group.find_by(slug: params[:group_id])
-      photo = @group.photos.new(photo_params)
-      if photo.save
-        render :index
+      @photo = @group.photos.new(photo_params)
+      if @photo.save
+        render :show
       else
-        render json: photo.errors.full_messages, status: :unprocessable_entity
+        render json: @photo.errors.full_messages, status: :unprocessable_entity
       end
     end
 
