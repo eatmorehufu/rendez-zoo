@@ -103,7 +103,6 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       dataType: 'json',
       type: "DELETE",
       success: function(result){
-        alert("Left the group!")
         this.model.groupMembers().remove(RendezZoo.currentUser)
         RendezZoo.currentUser.memberGroups().remove(this.model)
         this.render();
@@ -117,7 +116,6 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
       dataType: 'json',
       type: "POST",
       success: function(result){
-        alert("Joined the group!")
         this.model.groupMembers().add(RendezZoo.currentUser)
         RendezZoo.currentUser.memberGroups().add(this.model)
         this.render();

@@ -26,7 +26,6 @@ RendezZoo.Views.SignIn = Backbone.CompositeView.extend({
       email: attrs.email,
       password: attrs.password,
       error: function() {
-        alert("Wrong username/password combination. Please try again.");
       }
     })
   },

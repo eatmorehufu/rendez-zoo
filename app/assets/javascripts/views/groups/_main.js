@@ -102,8 +102,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
         Backbone.history.navigate("/" + this.model.escape('slug') + "/events/" + this.subModel.id, { trigger: true });
       }.bind(this),
 
-      fail: function(){
-        alert("whoops");
+      error: function(){
       }
     })
   },
@@ -111,7 +110,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   toggleRSVP: function(event){
     event.preventDefault();
     if (RendezZoo.currentUser.isNew()) {
-      alert("please sign in!");
+      alert("Please sign in!");
     } else if (!this.model.groupMembers().get(RendezZoo.currentUser.id) && !this.model.groupOrganizers().get(RendezZoo.currentUser.id)){
       alert("You don't belong to this group!");
     } else if (this.subModel.attendees().get(RendezZoo.currentUser.id)) {

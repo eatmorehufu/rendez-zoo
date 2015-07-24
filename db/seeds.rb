@@ -48,11 +48,11 @@ sennacy = User.create!(
 end
 
 ["Bear", "Polar Bear", "Otter", "Dolphin", "Giraffe", "Hyena", "Shark", "Meerkat", "Flamingo"].each do |name|
-  user = User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: "0" + (rand(2000) + 7999).to_s)
+  user = User.create!(username: name, email: name + "@" + name + "." + name, password: 'password', zip_code: (rand(2000) + 10000).to_s)
   sleep 0.3
   3.times do
     group = user.owned_groups.create!(
-      title: Faker::Team.name + "of the" + Faker::Address.city_suffix,
+      title: Faker::Team.name + " of the " + Faker::Address.city_suffix,
       description: Faker::Lorem.paragraph(3),
       zip_code: user.zip_code,
       avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(13) + 1}.jpg"))
@@ -141,7 +141,7 @@ event.attendee_ids += [user.id]
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password",
-    zip_code: (rand(200) + 10000).to_s,
+    zip_code: (11101 + rand(200)).to_s,
     avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(13) + 1}.jpg"))
   )
   sleep 0.3

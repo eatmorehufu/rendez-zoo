@@ -69,3 +69,24 @@
 .new-session h1 {
   font-size: 20px;
 }
+
+#google-login {
+  display: block;
+  background: #3949AB;
+  color: white;
+  width: calc(100% - 30px);
+  padding: 15px;
+  text-align: center;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+
+#google-login:hover {
+  background: #1A237E;
+}
+
+.new-session > strong {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
