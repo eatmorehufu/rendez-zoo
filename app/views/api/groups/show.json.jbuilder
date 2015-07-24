@@ -20,6 +20,7 @@ end
 json.members do
   json.array! @group.members do |member|
     json.partial! "/api/users/thumb", user: member
+    json.joined_at @group.group_memberships.find_by(member_id: member.id).created_at
   end
 end
 

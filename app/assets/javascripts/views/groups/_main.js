@@ -119,7 +119,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var buttonText = "Create Event"
     this.subModel = new RendezZoo.Models.Event();
 
-    this.html.$el(this.eventFormTemplate({
+    this.$el.html(this.eventFormTemplate({
       groupEvent: this.subModel,
       buttonText: buttonText,
       heading: heading
@@ -130,7 +130,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var heading = "Edit Event"
     var buttonText = "Edit Event"
 
-    this.html.$el(this.eventFormTemplate({
+    this.$el.html(this.eventFormTemplate({
       groupEvent: this.subModel,
       buttonText: buttonText,
       heading: heading
@@ -142,7 +142,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var endTime = this.formatTime(this.subModel.get('end_time'));
     var rsvpText = this.subModel.attendees().get(RendezZoo.currentUser.id) ? "Cancel RSVP" : "RSVP";
     var locLink = this.generateLocLink();
-    this.html.$el(this.eventDetailTemplate({
+    this.$el.html(this.eventDetailTemplate({
       group: this.model,
       groupEvent: this.subModel,
       startTime: startTime,
@@ -153,17 +153,25 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   },
 
   memberIndex: function() {
-    this.html.$el(this.memberIndexTemplate({
+    this.$el.html(this.memberIndexTemplate({
       group: this.model,
-      members: this.model.groupMembers(),
-      organizers: this.model.groupOrganizers()
-    }))
+    }));
+    this.attachMembers(this.model.groupOrganizers(), '.group-organizer-index')
+    this.attachMembers(this.model.groupMembers(), '.group-member-index');
+  },
 
+  attachMembers: function(members, domEl) {
+    members.forEach(function(groupMember){
+      this.$(domEl).append(this.userIndexListItemTemplate({
+        group: this.model,
+        member: groupMember
+      }))
+    }.bind(this));
   },
 
   memberDetail: function() {
     var timeParse = this.formatTime(this.subModel.get('created_at'));
-    this.html.$el(this.memberDetailTemplate({
+    this.$el.html(this.memberDetailTemplate({
       user: this.subModel,
       timeParse: timeParse
     }))
@@ -280,7 +288,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
     var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
 
-    this.html.$el(photosIndexView.render().$el);
+    this.$el.html(photosIndexView.render().$el);
   },
 
   toggleUpcoming: function () {

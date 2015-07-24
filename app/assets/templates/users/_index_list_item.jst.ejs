@@ -1,10 +1,15 @@
-<li class="stacked-list-item">
-  <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
+<li class="stacked-list-item group">
+  <a class="img-wrapper" href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
     <img src="<%=member.escape('avatar_url')%>">
   </a>
-  <strong>
-    <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
-      <%= member.get('username')%>
-    </a>
-  </strong>
+  <div class="user-name-join">
+    <strong>
+      <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
+        <%= member.get('username')%>
+      </a>
+    </strong>
+    <small>
+      <%= member.get('join_date') %>
+    </small>
+  </div>
 </li>
