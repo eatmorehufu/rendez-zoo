@@ -4,6 +4,9 @@ window.RendezZoo = {
   Views: {},
   Routers: {},
   Mixins: {},
+  capitalize: function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  },
   initialize: function() {
     RendezZoo.jsKey = "js-i0AUsVOFc4vCmlD3z4C1A43H2CIRqrmJsWEUSsz4x5GTqjWZoz0YE4GGGpy7QVRi";
     RendezZoo.groups = new RendezZoo.Collections.Groups();

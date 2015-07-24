@@ -147,6 +147,10 @@
   position: relative;
 }
 
+.sidebar-top-details h2 {
+  padding: 5px;
+}
+
 .sidebar-top-details a {
   line-height: 30px;
   padding-top: 10px;
@@ -433,6 +437,7 @@ input.zip {
 
 .group-subpage h3 {
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .fade-in {
@@ -460,4 +465,8 @@ input.zip {
    -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
      -o-transform: rotate(45deg);
+}
+
+.group-member-index-main > ul {
+  margin-bottom: 20px;
 }

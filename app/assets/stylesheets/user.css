@@ -55,3 +55,27 @@
 .profile-picture {
   width: 240px;
 }
+
+.img-wrapper {
+  overflow-x: hidden;
+}
+
+.group-member-index img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.stacked-list-item {
+  margin-bottom: 5px;
+}
+
+.stacked-list-item img {
+  float: left;
+  max-height: 50px;
+  width: auto;;
+}
+
+.stacked-list-item .user-name-join {
+  float: left;
+  margin-left: 20px;
+}

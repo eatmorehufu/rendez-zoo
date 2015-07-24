@@ -7,7 +7,10 @@ RendezZoo.Views.GroupSidebarTopSub = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    var content = this.template({ group: this.model })
+    var content = this.template({
+      group: this.model,
+      flair: RendezZoo.capitalize(this.model.escape('flair'))
+    })
     this.$el.html(content);
 
     return this;

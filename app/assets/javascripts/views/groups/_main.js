@@ -155,6 +155,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   memberIndex: function() {
     this.$el.html(this.memberIndexTemplate({
       group: this.model,
+      flair: RendezZoo.capitalize(this.model.escape('flair'))
     }));
     this.attachMembers(this.model.groupOrganizers(), '.group-organizer-index')
     this.attachMembers(this.model.groupMembers(), '.group-member-index');
@@ -162,9 +163,11 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
   attachMembers: function(members, domEl) {
     members.forEach(function(groupMember){
+      var joinDate = this.formatTime(groupMember.escape('joined_at'));
       this.$(domEl).append(this.userIndexListItemTemplate({
         group: this.model,
-        member: groupMember
+        member: groupMember,
+        joinDate: joinDate
       }))
     }.bind(this));
   },

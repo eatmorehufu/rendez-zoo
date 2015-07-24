@@ -5,11 +5,11 @@
   <div class="user-name-join">
     <strong>
       <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
-        <%= member.get('username')%>
+        <%= member.escape('username')%>
       </a>
     </strong>
     <small>
-      <%= member.get('join_date') %>
+      Member since: <%= joinDate.monthYear %>
     </small>
   </div>
 </li>

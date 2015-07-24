@@ -36,6 +36,7 @@ class Group < ActiveRecord::Base
     :default_url => "/images/group-missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   after_initialize :set_slug
+  before_save :parse_flair
 
   has_many :events, dependent: :destroy
   has_many :group_memberships,
@@ -75,5 +76,9 @@ class Group < ActiveRecord::Base
 
   def set_slug
     self.slug = self.title.gsub("\'", "").parameterize
+  end
+
+  def parse_flair
+    self.flair = self.flair.pluralize
   end
 end
