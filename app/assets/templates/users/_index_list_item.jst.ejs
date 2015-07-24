@@ -1,0 +1,10 @@
+<li class="stacked-list-item">
+  <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
+    <img src="<%=member.escape('avatar_url')%>">
+  </a>
+  <strong>
+    <a href="/#/<%=group.escape('slug')%>/members/<%=member.id%>">
+      <%= member.get('username')%>
+    </a>
+  </strong>
+</li>

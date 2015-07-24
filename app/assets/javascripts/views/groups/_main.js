@@ -7,6 +7,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   memberDetailTemplate: JST['users/_show'],
   miniMemberTemplate: JST['users/_thumb'],
   memberIndexTemplate: JST['users/index'],
+  userIndexListItemTemplate: JST['users/_index_list_item'],
   upcomingEventMiniTemplate: JST['events/_upcoming_list_item'],
   pastEventMiniTemplate: JST['events/_past_list_item'],
   tagName: "section",
@@ -36,44 +37,42 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   render: function() {
     switch (this.subPage) {
       case "newEvent":
-        var mainTop = this.newEvent();
+        this.newEvent();
         break;
       case "editEvent":
-        var mainTop = this.editEvent();
+        this.editEvent();
         break;
       case "editGroup":
-        var mainTop = this.groupEditTemplate({
+        this.$el.html(this.groupEditTemplate({
           group: this.model,
           heading: "Edit Group",
           buttonText: "Save Edits"
-        })
+        }));
         break;
       case "eventDetail":
-        var mainTop = this.eventDetail();
+        this.eventDetail();
         break;
       case "memberIndex":
-        var mainTop = this.memberIndex();
+        this.memberIndex();
         break;
       case "memberDetail":
-        var mainTop = this.memberDetail();
+        this.memberDetail();
         break;
       case "photosIndex":
-        var mainTop = this.photosIndex();
+        this.photosIndex();
         break;
       break;
       default:
         if (this.model.get('description')) {
           var desc = this.model.escape('description').replace(/\n/g, "\<br\> \n")
         }
-        var mainTop = this.templateTop({
+        this.$el.html(this.templateTop({
           group: this.model,
           currentUser: RendezZoo.currentUser,
           desc: desc
-        });
+        }));
         var mainBottom = this.templateBottom({ group: this.model });
     }
-
-    this.$el.html(mainTop);
 
     if (mainBottom) {
       this.$el.append(mainBottom);
@@ -120,22 +119,22 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var buttonText = "Create Event"
     this.subModel = new RendezZoo.Models.Event();
 
-    return this.eventFormTemplate({
+    this.html.$el(this.eventFormTemplate({
       groupEvent: this.subModel,
       buttonText: buttonText,
       heading: heading
-    });
+    }));
   },
 
   editEvent: function() {
     var heading = "Edit Event"
     var buttonText = "Edit Event"
 
-    return this.eventFormTemplate({
+    this.html.$el(this.eventFormTemplate({
       groupEvent: this.subModel,
       buttonText: buttonText,
       heading: heading
-    });
+    }));
   },
 
   eventDetail: function() {
@@ -143,31 +142,31 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var endTime = this.formatTime(this.subModel.get('end_time'));
     var rsvpText = this.subModel.attendees().get(RendezZoo.currentUser.id) ? "Cancel RSVP" : "RSVP";
     var locLink = this.generateLocLink();
-    return this.eventDetailTemplate({
+    this.html.$el(this.eventDetailTemplate({
       group: this.model,
       groupEvent: this.subModel,
       startTime: startTime,
       endTime: endTime,
       rsvpText: rsvpText,
       locLink: locLink
-    });
+    }));
   },
 
   memberIndex: function() {
-    return this.memberIndexTemplate({
+    this.html.$el(this.memberIndexTemplate({
       group: this.model,
       members: this.model.groupMembers(),
       organizers: this.model.groupOrganizers()
-    })
+    }))
 
   },
 
   memberDetail: function() {
     var timeParse = this.formatTime(this.subModel.get('created_at'));
-    return this.memberDetailTemplate({
+    this.html.$el(this.memberDetailTemplate({
       user: this.subModel,
       timeParse: timeParse
-    })
+    }))
   },
 
   attachUpcoming: function() {
@@ -281,7 +280,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
 
     var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
 
-    return photosIndexView.render().$el;
+    this.html.$el(photosIndexView.render().$el);
   },
 
   toggleUpcoming: function () {

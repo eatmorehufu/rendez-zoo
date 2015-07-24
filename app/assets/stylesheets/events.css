@@ -194,6 +194,14 @@
   transition: max-height 0.5s;
 }
 
+.slide-pane button {
+  color: #409BC7;
+}
+
+.slide-pane button:hover {
+  color: #E0393E;
+}
+
 #bottom-pane {
   position: relative;
 }

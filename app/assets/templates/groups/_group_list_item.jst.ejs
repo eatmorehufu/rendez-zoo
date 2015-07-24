@@ -2,6 +2,6 @@
   <a href="/#/<%=group.escape('slug')%>">
     <img src="<%= group.escape('avatar_url') %>">
     <h2><%= group.escape("title") %></h2>
-    <h3>We're <%= group.escape("totalMemberCount")%> members!</h3>
+    <h3>We're <%= group.escape("totalMemberCount")%> <%= group.escape('flair') %>!</h3>
   </a>
 </li>

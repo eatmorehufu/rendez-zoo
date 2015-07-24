@@ -12,6 +12,9 @@
     <label>Where are you located? (zip code)
       <input class="zip" type="text" name="group[zip_code]" value="<%= group.escape('zip_code')%>">
     </label>
+    <label>What would you like to call your group members?
+      <input name="group[flair]" value="<%= group.escape('flair') %>">
+    </label>
     <label>Select an image to represent your group!
       <input type="file" name="group[avatar]" id="input-group-avatar">
     </label>

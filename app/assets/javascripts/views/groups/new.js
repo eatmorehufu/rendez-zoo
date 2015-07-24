@@ -21,5 +21,4 @@ RendezZoo.Views.NewGroup = Backbone.CompositeView.extend({
 });
 
 _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.fileInput);
-// _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.getZipCode);
 _.extend(RendezZoo.Views.NewGroup.prototype, RendezZoo.Mixins.groupFormSubmit);
