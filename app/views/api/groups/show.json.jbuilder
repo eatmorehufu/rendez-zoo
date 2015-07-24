@@ -27,5 +27,6 @@ end
 json.organizers do
   json.array! @group.organizers do |organizer|
     json.partial! "/api/users/thumb", user: organizer
+    json.joined_at @group.organizer_memberships.find_by(member_id: organizer.id).created_at
   end
 end
