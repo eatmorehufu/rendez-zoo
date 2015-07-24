@@ -1,11 +1,12 @@
 <section class="photo-index group-subpage">
-<form>
-  <label>
-    Add new photo!
-    <input type="file" name="pic" id="group-pic">
-  </label>
-  <button class="add-photo">Add</button>
-</form>
+  <h1>Photos</h1>
+  <form>
+    <label>
+      Add new photo!
+      <input type="file" name="pic" id="group-pic">
+    </label>
+    <button class="add-photo">Add</button>
+  </form>
   <ul class="photos-list">
     <% photos.forEach(function(photo){ %>
       <li><img src="<%= photo.escape('thumb_url') %>"></li>

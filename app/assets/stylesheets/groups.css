@@ -220,11 +220,6 @@
   float: left;
 }
 
-.group-show-top-nav small {
-  float: left;
-  font-size: 10px;
-}
-
 .group-show-top-nav h1 {
   font-size: 20px;
   padding-top: 20px;
@@ -395,7 +390,7 @@ input.zip {
 }
 
 .member-thumbs li {
-  margin: 0px 5px;
+  border-right: 1px solid #ccc;
   display: block;
   float: left;
   height: 50px;
@@ -422,4 +417,17 @@ input.zip {
   border: 1px solid #ccc;
   border-radius: 3px;
   background: #fff;
+}
+
+.group-subpage h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.group-subpage h2 {
+  font-size: 24px;
+}
+
+.group-subpage h3 {
+  font-size: 20px;
 }

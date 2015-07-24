@@ -44,6 +44,10 @@ img {
   height: auto;
 }
 
+small {
+  font-size: 14px;
+}
+
 /* --- CLEARFIX --- */
 
 .group:after {

@@ -1,7 +1,7 @@
 <section id="group-show-top" class="group-subpage group">
   <p><%= desc %></p>
   <nav class="group-show-top-nav group">
-    <h1>We're <%= group.groupOrganizers().length + group.groupMembers().length %> <%= group.escape('flair') %></h1>
+    <h3>We're <%= group.groupOrganizers().length + group.groupMembers().length %> <%= group.escape('flair') %></h3>
     <ul class="member-thumbs group" data-event="all">
     </ul>
       <small><a href="/#/<%= group.escape('slug') %>/members">SEE MORE</a></small>

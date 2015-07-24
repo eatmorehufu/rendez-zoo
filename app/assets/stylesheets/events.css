@@ -25,7 +25,7 @@
 .mini-event-main {
   margin-top: 10px;
   float: left;
-  width: 490px;
+  width: 480px;
 }
 
 .past-events-mini {
@@ -46,14 +46,6 @@
   float: right;
   width: 200px;
   padding-left: 10px;
-}
-
-.mini-event-main small {
-  font-size: 10px;
-}
-
-.mini-event-sidebar small {
-  font-size: 14px;
 }
 
 .mini-event-sidebar h2 {
@@ -92,9 +84,6 @@
 
 .event-details {
   position: relative;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 20px;
 }
 
 .event-details-main {
@@ -112,9 +101,8 @@
   right: 200px;
 }
 
-.event-details-main h1 {
+.event-details.group-subpage h1 {
   font-size: 50px;
-  margin-bottom: 20px;
 }
 
 .event-details-main h2 {

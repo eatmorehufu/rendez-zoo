@@ -47,7 +47,7 @@ group = user.owned_groups.create!(
   zip_code: "10002"
 )
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
-
+sleep 0.2
 group = user.owned_groups.create!(
   title: "Polar Bear Club",
   description: "Cold enough for ya?
@@ -66,7 +66,7 @@ FREE ADMISSION TO NY HUMAN PENITENTIARY TO ALL REGISTERED ATTENDEES",
   zip_code: "11224"
 )
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
-
+sleep 0.2
 event = add_past_event(group,
   "Fur Ball",
   "The Furball is a NYC based danceparty & celebration of everything furry & fuzzy.",
@@ -75,7 +75,7 @@ event = add_past_event(group,
   "NY"
 )
 event.attendee_ids += [user.id]
-
+sleep 0.2
 user = User.find_by(username: "Otter")
 group = user.owned_groups.create!(
   title: "Significant Otters of SF",
@@ -88,7 +88,7 @@ We aim to be a caring and compassionate group where people will be respectful of
 )
 
 GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
-
+sleep 0.2
 event = add_future_event(group,
   "Splish Splash",
   "Bid bon voyage to the bar scene for a night and experience a new social experience on the river!
