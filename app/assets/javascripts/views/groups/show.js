@@ -85,7 +85,7 @@ RendezZoo.Views.GroupShow = Backbone.CompositeView.extend({
   joinOrLeave: function(event) {
     event.preventDefault();
     if (RendezZoo.currentUser.isNew()) {
-      alert("please sign in!");
+      alert("Please sign in!");
     } else if (this.model.get('owner_id') === RendezZoo.currentUser.id) {
       alert("Can't leave a group you own or organize!");
     } else if (this.model.groupOrganizers().get(RendezZoo.currentUser.id)) {
