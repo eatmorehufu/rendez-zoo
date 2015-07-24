@@ -6,18 +6,12 @@
   border-bottom: 1px solid #eee;
 }
 
-.upcoming-events-mini {
-  color: #333;
-  margin-bottom: 10px;
-}
-
 .upcoming-events-mini > h3 {
   font-size: 30px;
   margin-bottom: 10px;
 }
 
 .mini-event-list-item {
-  border-top: 2px solid #ccc;
   position: relative;
   padding-bottom: 20px;
 }
@@ -26,10 +20,6 @@
   margin-top: 10px;
   float: left;
   width: 480px;
-}
-
-.past-events-mini {
-  color: #333;
 }
 
 .mini-event-main:after{
@@ -191,4 +181,19 @@
 
 .mini-event-main p {
   padding: 10px 0px;
+}
+
+.slide-pane.collapsed {
+  max-height: 28px;
+}
+
+.slide-pane {
+  overflow-y: hidden;
+  height: auto;
+  max-height: 800px;
+  transition: max-height 0.5s;
+}
+
+#bottom-pane {
+  position: relative;
 }

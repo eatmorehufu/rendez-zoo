@@ -1,17 +1,18 @@
 <section id="group-show-bottom">
   <nav class="upcoming-navigation group">
-    <button>Upcoming Events</button>
-    <button>Past Events</button>
+    <button class="toggle-upcoming">Upcoming Events</button>
+    <button class="toggle-past">Past Events</button>
   </nav>
   <section id="bottom-pane">
-    <div class="group-subpage">
-      <h2>Upcoming Events</h2>
-      <ul class="upcoming-events-mini">
+    <div class="upcoming-events-mini collapsed slide-pane group-subpage">
+      <h2><button class="toggle-upcoming">Upcoming Events (<%= group.groupEvents().upcomingEvents().length %>)</button></h2>
+      <ul>
       </ul>
     </div>
-    <div class="group-subpage">
-      <h2>Past Events</h2>
-      <ul class="past-events-mini">
+    <div class=" past-events-mini collapsed slide-pane group-subpage">
+      <h2><button class="toggle-past">Past Events (<%= group.groupEvents().pastEvents().length %>)</button></h2>
+      <ul>
       </ul>
+    </div>
   </section>
 </section>

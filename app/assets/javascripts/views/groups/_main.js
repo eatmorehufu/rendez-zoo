@@ -22,7 +22,9 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
   events: {
     "submit .event-form": "saveEvent",
     "click .rsvp-button": "toggleRSVP",
-    "submit .group-form": "submit"
+    "submit .group-form": "submit",
+    "click .toggle-upcoming": "toggleUpcoming",
+    "click .toggle-past": "togglePast"
   },
 
   initialize: function(options){
@@ -172,7 +174,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.model.groupEvents().upcomingEvents().forEach(function(groupEvent){
       var startTime = this.formatTime(groupEvent.get('start_time'));
       var endTime = this.formatTime(groupEvent.get('end_time'));
-      this.$('.upcoming-events-mini').append(this.upcomingEventMiniTemplate({
+      this.$('.upcoming-events-mini > ul').append(this.upcomingEventMiniTemplate({
         group: this.model,
         groupEvent: groupEvent,
         startTime: startTime,
@@ -186,7 +188,7 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     this.model.groupEvents().pastEvents().forEach(function(groupEvent){
       var startTime = this.formatTime(groupEvent.get('start_time'));
       var endTime = this.formatTime(groupEvent.get('end_time'));
-      this.$('.past-events-mini').append(this.pastEventMiniTemplate({
+      this.$('.past-events-mini > ul').append(this.pastEventMiniTemplate({
         group: this.model,
         groupEvent: groupEvent,
         startTime: startTime,
@@ -280,6 +282,16 @@ RendezZoo.Views.GroupShowMainSub = Backbone.CompositeView.extend({
     var photosIndexView = new RendezZoo.Views.PhotosIndex({ collection: photos });
 
     return photosIndexView.render().$el;
+  },
+
+  toggleUpcoming: function () {
+    this.$('.upcoming-events-mini').toggleClass("collapsed");
+    this.$('.past-events-mini').addClass("collapsed");
+  },
+
+  togglePast: function () {
+    this.$('.upcoming-events-mini').addClass("collapsed");
+    this.$('.past-events-mini').toggleClass("collapsed");
   }
 
 });

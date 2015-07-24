@@ -59,3 +59,7 @@ small {
 a {
   color: #409BC7;
 }
+
+button:hover{
+  cursor: pointer;
+}
