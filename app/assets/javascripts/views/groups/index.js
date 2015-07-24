@@ -87,9 +87,7 @@ RendezZoo.Views.GroupsIndex = Backbone.CompositeView.extend({
   },
 
   renderSearch: function () {
-    var content = this.memberTemplate({groups: this.searchResults, heading: "Search Results"});
-    this.$('#group-index-body').html(content);
-
-    return this;
+    this.$('#group-index-body').empty()
+    this.attachGroups(this.searchResults, "Search Results");
   },
 });
