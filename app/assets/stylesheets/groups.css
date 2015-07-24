@@ -205,11 +205,6 @@
 }
 
 #group-show-top {
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  display: block;
-  padding: 10px;
-  background: white;
   margin-bottom: 20px;
 }
 
@@ -422,6 +417,9 @@ input.zip {
   color: #f00;
 }
 
-.group-member-index-main {
-  padding: 10px;
+.group-subpage {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
 }

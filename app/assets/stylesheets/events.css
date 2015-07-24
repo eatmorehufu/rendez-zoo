@@ -8,9 +8,6 @@
 
 .upcoming-events-mini {
   color: #333;
-  padding: 10px;
-  background: white;
-  border: 1px solid #ccc;
   margin-bottom: 10px;
 }
 
@@ -33,9 +30,6 @@
 
 .past-events-mini {
   color: #333;
-  padding: 10px;
-  background: white;
-  border: 1px solid #ccc;
 }
 
 .mini-event-main:after{

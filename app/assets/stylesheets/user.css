@@ -1,9 +1,6 @@
 .entire-user-profile {
-  border: 1px solid #ccc;
   max-width: 920px;
   margin: auto;
-  padding: 20px;
-  background: white;
 }
 
 .entire-user-profile h2 {
@@ -53,11 +50,6 @@
 
 .current-user-profile {
   background: #eee;
-}
-
-.group-member-index-main {
-  background: #fff;
-  border: #ccc;
 }
 
 .profile-picture {
