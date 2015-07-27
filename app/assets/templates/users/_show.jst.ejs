@@ -1,10 +1,10 @@
 <main class="entire-user-profile group-subpage group">
   <section class="user-profile-main">
-    <h1> <%= user.get('username') %></h1>
-      <h3><strong>Location:</strong><%= user.escape('city') %>, <%= user.escape('state') %></h3>
+    <h1 class="attach-pencil username" data-field="username"> <%= user.get('username') %></h1>
+      <h3 class="attach-pencil zip_code" data-field="zip_code"><strong>Location: </strong><%= user.escape('city') %>, <%= user.escape('state') %></h3>
       <h3><strong>Rendez-Zoo member since: </strong><%= timeParse.monthYear %></h3>
-      <h3><strong>Bio:</strong></h3>
-      <p><%=user.escape('description') %></p>
+      <h3 class="attach-pencil" data-field="description"><strong>Bio:</strong></h3>
+      <p class="description"><%=user.escape('description') %></p>
 
       <article>
         <h2>Member Of: </h2>

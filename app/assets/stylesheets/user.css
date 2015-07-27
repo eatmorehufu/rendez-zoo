@@ -79,3 +79,21 @@
 .stacked-list-item .user-name-join {
   float: left;
 }
+
+.pencil {
+  float: right;
+}
+
+.user-edit input, .user-edit textarea {
+  background: #eee;
+  padding: 5px;
+}
+
+.user-edit textarea {
+  width: 400px;
+  height: 100px;
+}
+
+p.description {
+  margin-bottom: 20px;
+}
