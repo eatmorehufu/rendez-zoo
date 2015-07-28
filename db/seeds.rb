@@ -61,7 +61,7 @@ end
     description: "Hello! New to this site, I really love " + Faker::Team.creature + ".
     I'm originally from " + Faker::Address.country + " but I've migrated here
     for the summer.",
-    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(22) + 1}.jpg"))
+    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(23) + 1}.jpg"))
   )
   3.times do
     interest_sample = Category.ids.sample
@@ -80,7 +80,7 @@ end
     title: animal + " of the " + Faker::Address.city_suffix.capitalize,
     description: Faker::Lorem.paragraph(3),
     zip_code: valid_zips.sample,
-    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(22) + 1}.jpg")),
+    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(23) + 1}.jpg")),
     flair: animal
   )
   GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
