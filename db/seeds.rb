@@ -52,7 +52,7 @@ sennacy = User.create!(
 end
 
 50.times do |i|
-  animal = Faker::Team.creature.capitalize
+  animal = Faker::Team.creature.capitalize.singularize
   user = User.create!(
     username: Faker::Name.first_name + " " + animal,
     email: animal + i.to_s + "@" + animal + "." + animal,
@@ -61,7 +61,7 @@ end
     description: "Hello! New to this site, I really love " + Faker::Team.creature + ".
     I'm originally from " + Faker::Address.country + " but I've migrated here
     for the summer.",
-    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(18) + 1}.jpg"))
+    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(22) + 1}.jpg"))
   )
   3.times do
     interest_sample = Category.ids.sample
@@ -78,13 +78,19 @@ end
   user = User.find(User.ids.sample)
   group = user.owned_groups.create!(
     title: animal + " of the " + Faker::Address.city_suffix.capitalize,
-    description: Faker::Lorem.paragraphs(3),
+    description: Faker::Lorem.paragraph(3),
     zip_code: valid_zips.sample,
-    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(18) + 1}.jpg")),
+    avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(22) + 1}.jpg")),
     flair: animal
   )
   GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
-
+  3.times do
+    member = User.ids.sample
+    until !GroupMembership.find_by(group_id: group.id, member_id: member)
+      member = User.ids.sample
+    end
+    GroupMembership.create!(group_id: group.id, member_id: member, status: "member")
+  end
   3.times do
     interest_sample = Category.ids.sample
     until !GroupCategory.find_by(group_id: group.id, category_id: interest_sample)
@@ -99,7 +105,8 @@ group = sennacy.owned_groups.create!(
   description: "Come hang out with the bears in the city. Fun fur all, and all fur fun.
   Our mission is to grow our community, attract tourism, and spotlight the individuals who make this forest great, while offering fun opportunities to connect socially, animalistically and more.",
   zip_code: "10002",
-  flair: "bears"
+  flair: "bears",
+  avatar: File.new(File.join(Rails.root, "public", "images", "Bear.jpg"))
 )
 GroupMembership.create!(group_id: group.id, member_id: sennacy.id, status: "organizer")
 sleep 0.2
@@ -141,7 +148,8 @@ SWIM TIME 1:00 PM SHARP, arrive early.
 
 FREE ADMISSION TO NY HUMAN PENITENTIARY TO ALL REGISTERED ATTENDEES",
   zip_code: "11224",
-  flair: "polar bears"
+  flair: "polar bears",
+  avatar: File.new(File.join(Rails.root, "public", "images", "Polar Bear.jpg"))
 )
 GroupMembership.create!(group_id: group.id, member_id: sennacy.id, status: "organizer")
 
@@ -153,6 +161,8 @@ group = sennacy.owned_groups.create!(
 Our diverse events include: happy hour sea urchins, going to some of the hottest beaches as well as pubs/bars on the island, themed parties, sporting/recreational events, speed dating, and more!
 
 We aim to be a caring and compassionate group where people will be respectful of each other despite different species, interests, values, and beliefs.  Come join us, and broaden your social horizon, as we seek to be the bridge to bring people together.",
+  flair: "otters",
+  avatar: File.new(File.join(Rails.root, "public", "images", "Otter.jpg"))
   zip_code: "11101"
 )
 
