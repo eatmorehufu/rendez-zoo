@@ -162,7 +162,7 @@ Our diverse events include: happy hour sea urchins, going to some of the hottest
 
 We aim to be a caring and compassionate group where people will be respectful of each other despite different species, interests, values, and beliefs.  Come join us, and broaden your social horizon, as we seek to be the bridge to bring people together.",
   flair: "otters",
-  avatar: File.new(File.join(Rails.root, "public", "images", "Otter.jpg"))
+  avatar: File.new(File.join(Rails.root, "public", "images", "Otter.jpg")),
   zip_code: "11101"
 )
 
