@@ -4,7 +4,13 @@
     <h2><%= startTime.fullDay %></h2>
     <h3><%= startTime.fullTime %></h3>
     <h2 id="event-location">
-      <a href="http://maps.google.com/maps?q=<%- locLink %>" target="_blank"><%= groupEvent.escape("loc_name")%></a>
+      <a href="http://maps.google.com/maps?q=<%- locLink %>" target="_blank">
+        <% if (groupEvent.escape("loc_name")) { %>
+        <%= groupEvent.escape("loc_name") %>
+        <% } else { %>
+          Location
+        <% } %>
+      </a>
 
     </h2>
     <p><%= groupEvent.escape("description") %></p>
