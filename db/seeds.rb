@@ -44,7 +44,11 @@ sennacy = User.create!(
   avatar: "http://i.imgur.com/kjH1unY.jpg"
 )
 3.times do
-  UserInterest.create!(user_id: sennacy.id, category_id: Category.ids.sample)
+  interest_sample = Category.ids.sample
+  until !UserInterest.find_by(user_id: sennacy.id, category_id: interest_sample)
+    interest_sample = Category.ids.sample
+  end
+  UserInterest.create!(user_id: sennacy.id, category_id: interest_sample)
 end
 
 50.times do |i|
@@ -60,7 +64,11 @@ end
     avatar: File.new(File.join(Rails.root, "public", "images", "#{rand(18) + 1}.jpg"))
   )
   3.times do
-    UserInterest.create!(user_id: user.id, category_id: Category.ids.sample)
+    interest_sample = Category.ids.sample
+    until !UserInterest.find_by(user_id: user.id, category_id: interest_sample)
+      interest_sample = Category.ids.sample
+    end
+    UserInterest.create!(user_id: user.id, category_id: interest_sample)
   end
   sleep 0.3
 end
@@ -78,7 +86,11 @@ end
   GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
 
   3.times do
-    GroupCategory.create!(group_id: group.id, category_id: Category.ids.sample)
+    interest_sample = Category.ids.sample
+    until !GroupCategory.find_by(group_id: group.id, category_id: interest_sample)
+      interest_sample = Category.ids.sample
+    end
+    GroupCategory.create!(group_id: group.id, category_id: interest_sample)
   end
 end
 
@@ -104,10 +116,10 @@ sleep 0.2
   )
   10.times do
     attendant = User.ids.sample
-    until !EventAttendance.find_by(event_id: event.id, attendant_id: attendant.id)
+    until !EventAttendance.find_by(event_id: event.id, attendant_id: attendant)
       attendant = User.ids.sample
     end
-    EventAttendance.create!(event_id: event.id, attendant_id: attendant.id)
+    EventAttendance.create!(event_id: event.id, attendant_id: attendant)
   end
 end
 
@@ -144,7 +156,7 @@ We aim to be a caring and compassionate group where people will be respectful of
   zip_code: "11101"
 )
 
-GroupMembership.create!(group_id: group.id, member_id: user.id, status: "organizer")
+GroupMembership.create!(group_id: group.id, member_id: sennacy.id, status: "organizer")
 # event = add_future_event(group,
 #   "Splish Splash",
 #   "Bid bon voyage to the bar scene for a night and experience a new social experience on the river!

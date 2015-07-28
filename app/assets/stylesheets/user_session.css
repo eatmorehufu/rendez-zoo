@@ -72,17 +72,31 @@
 
 #google-login {
   display: block;
-  background: #3949AB;
+  position: relative;
+  background: linear-gradient(180deg, #4184f3, #1165f0);
   color: white;
-  width: calc(100% - 30px);
-  padding: 15px;
+  width: calc(100% - 78px);
+  padding: 15px 15px 15px 63px;
   text-align: center;
   margin: 10px 0px;
   border-radius: 5px;
 }
 
 #google-login:hover {
-  background: #1A237E;
+  background: linear-gradient(180deg, #4e8df4, #4184f3);
+}
+
+#google-login:before{
+  content: "";
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background-image: url(http://i.imgur.com/HeRUpcF.png);
+  background-size: contain;
+  border-right: 1px solid #ccc;
 }
 
 .new-session > strong {
