@@ -32,8 +32,12 @@ I'm glad you asked!
 - jQuery / AJAX
 - jQuery-UI
 - paperclip / AWS
-- (TBA)
-- (TBA)
+- Geocoder
+- pg_search
+- kaminari
+- figaro
+- jbuilder
+- omniauth
 
 ## What can I do on this website?
 
@@ -43,12 +47,31 @@ You can:
 - Create events if you're an owner or organizer
 - Visibly RSVP for events
 - Edit your own profile, your owned groups' profiles, and event details
-- (TBD) Search for events in your local area
-- (TBD) Search for local groups that match your interests
+- Search for local groups that match your interests
 - Have a great time enjoying animal puns.
 
 ## What kind of problems did you have to solve?
 
-You didn't actually ask this question, but I will answer it anyway
+You didn't actually ask this question, but I will answer it anyway.
 
-(TBD)
+- Search nearby locations for groups
+  - Search involves SQL queries with the Haversine formula
+  - Geocoder gem handles Google geocoding API and nearby search
+- API responses that yield nested data
+  - Groups, members, and events have nested associations that require complex
+    JSON builders and Backbone models to handle
+  - Structuring responses to prevent N+1 database queries
+- Nested composite views
+  - Group show pages contain multi-tiered nested views that all require different
+    data from the server
+  - Group show view functions as a sub-router to display multiple templates
+
+
+## Future polishing touches
+- Infinite scroll
+- Messaging and friending
+- Notifications
+- Comments on groups
+- Hover-over background queries for member profiles and group interests
+- Nearby events search
+- User HuD that reminds user of upcoming events and member groups
