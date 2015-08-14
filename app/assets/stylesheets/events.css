@@ -166,6 +166,7 @@
 #event-attendee-profiles li {
   float: none;
   width: 100%;
+  margin-bottom: 5px;
 }
 
 .profile-pic-img {
@@ -177,6 +178,8 @@
 #event-attendee-profiles h2 {
   padding: 5px;
   float: left;
+  font-size: 15px;
+  width: 100px;
 }
 
 .mini-event-main p {
